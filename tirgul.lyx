@@ -1,0 +1,1641 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass heb-article
+\begin_preamble
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata,positioning}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language hebrew
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.7cm
+\topmargin 1.7cm
+\rightmargin 1.7cm
+\bottommargin 1.7cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\RR}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\norm}[1]{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Rd}{\mathbb{R}^{d}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\set}[2]{\left\{  #1\:\middle|\:#2\right\}  }
+{\left\{ #1\:\mid\:#2\right\} }
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+מבוא למערכות לומדות
+\begin_inset Newline newline
+\end_inset
+
+תרגולים
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\numeric on
+2017-03-01
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+יום ד'
+\end_layout
+
+\begin_layout Subsection
+מכפלה פנימית ואי שוויון קושי שוורץ
+\end_layout
+
+\begin_layout Standard
+בהינתן
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ווקטורים, 
+\begin_inset Formula $u,v\in\Rd$
+\end_inset
+
+ המכפלה הפנימית שלהם היא:
+\begin_inset Formula 
+\[
+\left\langle u,v\right\rangle =u^{t}v=\sum_{i=1}^{d}u_{i}v_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+תכונות: 
+\begin_inset Formula 
+\begin{align*}
+\left\langle u,v\right\rangle  & =\left\langle v,u\right\rangle  & \text{symmetry}\\
+\left\langle au+v,w\right\rangle  & =a & \text{linearity}\\
+\left\langle u,u\right\rangle  & \ge0,\ \left\langle u,u\right\rangle =0\iff u=0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+הנורמה של וקטור 
+\begin_inset Formula $u$
+\end_inset
+
+ מוגדרת להיות: 
+\begin_inset Formula 
+\[
+\norm u=\sqrt{\left\langle u,u\right\rangle }
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+תרגיל: לכל 
+\begin_inset Formula $u,v\in\Rd$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left\langle u,v\right\rangle =\norm u\norm v\cos\theta$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\theta$
+\end_inset
+
+ היא הזווית בין 
+\begin_inset Formula $u$
+\end_inset
+
+ ל-
+\begin_inset Formula $v$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+פתרון: נתבונן במשולש שצלעותיו 
+\begin_inset Formula $u,v,u-v$
+\end_inset
+
+.
+ נזכר במשפט הקוסינוסים - עבור משולש עם צלעות 
+\begin_inset Formula $a,b,c$
+\end_inset
+
+ וזווית 
+\begin_inset Formula $\theta$
+\end_inset
+
+ בין 
+\begin_inset Formula $a$
+\end_inset
+
+ ל-
+\begin_inset Formula $b$
+\end_inset
+
+, אזי מתקיים: 
+\begin_inset Formula 
+\[
+c^{2}=a^{2}+b^{2}-2ab\cos\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+אם כך, 
+\begin_inset Formula 
+\begin{align*}
+ & \norm{u-v}^{2}=\norm u^{2}+\norm v^{2}-2\norm u\norm v\cos\theta\\
+ & \norm{u-v}^{2}=\left(u-v\right)^{t}\left(u-v\right)=u^{t}u+v^{t}v-2u^{t}v\\
+\iff & \norm{u-v}^{2}=\norm u^{2}+\norm v^{2}-2\left\langle u,v\right\rangle \\
+\implies & \left\langle u,v\right\rangle =\norm u\norm v\cos\theta
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כנדרש.
+\end_layout
+
+\begin_layout Corollary
+)אי שוויון קושי שוורץ( 
+\begin_inset Formula 
+\[
+\left|\left\langle u,v\right\rangle \right|\le\norm u\norm v
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+הטלה: חישובים של הטלה
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+להשלים
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+אובייקטים גיאומטריים
+\end_layout
+
+\begin_layout Subsubsection
+כדור היחידה
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\set x{\norm x\le1}
+\]
+
+\end_inset
+
+בנורמה 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ - עיגול
+\end_layout
+
+\begin_layout Definition
+נורמה היא פונקצייה 
+\begin_inset Formula $\norm{\cdot}:\Rd\to\RR$
+\end_inset
+
+ המקיימת שלכל 
+\begin_inset Formula $u,v\in\Rd$
+\end_inset
+
+ ו-
+\begin_inset Formula $a\in\RR$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+לינאריות - 
+\begin_inset Formula $\norm{au}=\left|a\right|\norm u$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+אי שוויון המשולש - 
+\begin_inset Formula $\norm{u+v}\le\norm u+\norm v$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+אי שליליות - 
+\begin_inset Formula $\norm u\ge0$
+\end_inset
+
+ ושוויון מתקיים אם"ם 
+\begin_inset Formula $u=0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+דוגמאות
+\end_layout
+
+\begin_layout Enumerate
+נורמה 
+\begin_inset Formula $\ell_{1}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\norm x_{1}=\sum_{i=1}^{d}\left|x_{i}\right|
+\]
+
+\end_inset
+
+כדור היחידה תחת נורמה זו הוא ריבוע שקדקודיו הם 
+\begin_inset Formula $\left(\pm1,0\right),\left(0,\pm1\right)$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ציור
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+נורמה 
+\begin_inset Formula $\ell_{\infty}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\norm x_{\infty}=\max_{i}\left|x_{i}\right|
+\]
+
+\end_inset
+
+וכדור היחידה לפי נורמה זו הוא ריבוע שקדקודיו הם 
+\begin_inset Formula $\left(\pm1,\pm1\right)$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ציור
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+לא
+\series default
+ נורמה 
+\begin_inset Formula $\ell_{0}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\norm x_{0}=\left|\set i{x_{i}\neq0}\right|=\text{no. of non-zero coordinates}
+\]
+
+\end_inset
+
+לא נורמה כי לא מקיימת את תכונה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+של הנורמה: כפל בסקלר שונה מ-
+\numeric on
+1,0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+)למשל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\numeric off
+( אינו משנה את הנורמה - 
+\begin_inset Formula $\norm{2\left(1,1\right)}_{0}=2\neq4=2\cdot2=2\norm{\left(1,1\right)}_{0}$
+\end_inset
+
+.
+ כדור היחידה בפונקצייה זו הוא הצירים 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ציור
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+על מישור וחצאי מישור
+\end_layout
+
+\begin_layout Definition
+עבור 
+\begin_inset Formula $w\in\Rd$
+\end_inset
+
+ וסקלר 
+\begin_inset Formula $b\in\RR$
+\end_inset
+
+, הנ"ל מגדירים:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+על מישור: 
+\begin_inset Formula 
+\[
+\set x{\left\langle w,x\right\rangle =b}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+חצי מישור: 
+\begin_inset Formula 
+\[
+\set x{\left\langle w,x\right\rangle \ge b}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+המקרה ההומוגני
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture} 
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgftransformscale{.5}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%%% HELP LINES - uncomment to design/extend 
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+draw[step=1cm,gray,very thin] (-7,-7) grid (7,7); 
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+node at (0,0) {
+\backslash
+textbf{(0,0)}};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+coordinate (Origin) at (0,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+coordinate (W) 	 at (-2,2);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Axes
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->, thin] (-4,0) -- (4,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->, thin] (0,-4) -- (0,4);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% w
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->, very thick] (Origin) -- (W) node[midway, above, sloped] {$
+\backslash
+vec{w}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+% separator line
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->] (-3,-3) -- (3,3) node[above, sloped, pos=0.2] {
+\backslash
+emph{Halfspace define by }$
+\backslash
+vec{w}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+node at (-2,1) {
+\backslash
+emph{Halfspace define by }$
+\backslash
+vec{w}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+המקרה בו 
+\begin_inset Formula $b=0$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ציור - ישר דרך הראשית הניצב ל-
+\begin_inset Formula $w$
+\end_inset
+
+.
+ חצי המישור הוא השטח ש"מעל" הישר
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+עבור 
+\begin_inset Formula $b\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+דומה למקרה ההומוגני, מוזז ב-
+\begin_inset Formula $b$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ציור
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture} 
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgftransformscale{.5}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%%% HELP LINES - uncomment to design/extend 
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+draw[step=1cm,gray,very thin] (-7,-7) grid (7,7); 
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+node at (0,0) {
+\backslash
+textbf{(0,0)}};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+coordinate (Origin) at (0,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+coordinate (W) 	 at (-2,2);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Axes
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->, thin] (-4,0) -- (4,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->, thin] (0,-4) -- (0,4);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% w
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->, very thick] (Origin) -- (W) node[midway, above, sloped] {$
+\backslash
+vec{w}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+% separator line
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->] (-3,-3) -- (3,3) node[above, sloped, pos=0.2] {
+\backslash
+emph{Halfspace define by }$
+\backslash
+vec{w}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+node at (-2,1) {
+\backslash
+emph{Halfspace define by }$
+\backslash
+vec{w}$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+אליפסואיד
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\varepsilon\left(M,v\right)=\set{Mw+v}{\norm w\le1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+דוגמה
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $M=\begin{pmatrix}1 & 0\\
+0 & 2
+\end{pmatrix},\,v=\begin{pmatrix}1\\
+0
+\end{pmatrix}$
+\end_inset
+
+.
+ המרכז, 
+\begin_inset Formula $\begin{pmatrix}0\\
+0
+\end{pmatrix}$
+\end_inset
+
+, הוא 
+\begin_inset Formula $\begin{pmatrix}1\\
+0
+\end{pmatrix}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\begin{pmatrix}1 & 0\\
+0 & 2
+\end{pmatrix}\begin{pmatrix}0\\
+0
+\end{pmatrix}+\begin{pmatrix}1\\
+0
+\end{pmatrix} & =\begin{pmatrix}1\\
+0
+\end{pmatrix}\\
+\begin{pmatrix}1 & 0\\
+0 & 2
+\end{pmatrix}\begin{pmatrix}1\\
+0
+\end{pmatrix}+\begin{pmatrix}1\\
+0
+\end{pmatrix} & =\begin{pmatrix}2\\
+0
+\end{pmatrix}\\
+\begin{pmatrix}1 & 0\\
+0 & 2
+\end{pmatrix}\begin{pmatrix}0\\
+1
+\end{pmatrix}+\begin{pmatrix}1\\
+0
+\end{pmatrix} & =\begin{pmatrix}1\\
+2
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+אליפסה לצייר
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+פירוקים
+\end_layout
+
+\begin_layout Subsubsection
+פירוק לפי ערכים עצמיים
+\end_layout
+
+\begin_layout Description
+תזכורת: 
+\begin_inset Formula $A_{ij}^{t}=A_{ji}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+מטריצה 
+\begin_inset Formula $A$
+\end_inset
+
+ תקרא 
+\emph on
+סימטרית
+\emph default
+ אם 
+\begin_inset Formula $A^{t}=A$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+מטריצה 
+\begin_inset Formula $U$
+\end_inset
+
+ תיקרא מטריצה 
+\emph on
+אורתוגונלית
+\emph default
+ אם 
+\begin_inset Formula $U^{t}U=I$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+אם מתקיים עבור וקטור 
+\begin_inset Formula $v\in\Rd$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda\in\RR$
+\end_inset
+
+ ש-
+\begin_inset Formula $Av=\lambda v$
+\end_inset
+
+ אז נקרא ל-
+\begin_inset Formula $v$
+\end_inset
+
+ 
+\emph on
+וקטור עצמי
+\emph default
+ עם 
+\emph on
+ערך עצמי
+\emph default
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+)
+\lang english
+EVD
+\lang hebrew
+( כל מטריצה סימטרית 
+\begin_inset Formula $A$
+\end_inset
+
+ ניתן לכתוב כ-:
+\begin_inset Formula 
+\[
+A=UDU^{t}
+\]
+
+\end_inset
+
+ כאשר 
+\begin_inset Formula $U$
+\end_inset
+
+ מטריצה אורתוגונלית ו-
+\begin_inset Formula $D$
+\end_inset
+
+ מטריצה אלכסונית )איברי האלכסון ב-
+\begin_inset Formula $D$
+\end_inset
+
+ הם הערכים העצמיים של 
+\begin_inset Formula $A$
+\end_inset
+
+(
+\end_layout
+
+\begin_layout Paragraph
+שימוש
+\end_layout
+
+\begin_layout Standard
+אם 
+\begin_inset Formula $A$
+\end_inset
+
+ סימטרית, קל להעלות אותה בעזרת פירוק זה בחזקה:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A^{m}=\overbrace{A\cdot A\cdots A}^{m}=\left(UDU^{t}\right)^{m}\underset{U^{t}U=I}{=}=UD^{m}U^{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+בעיה - 
+\begin_inset Formula $A$
+\end_inset
+
+ חייבת להיות סימטרית.
+\end_layout
+
+\begin_layout Standard
+פתרון:
+\end_layout
+
+\begin_layout Subsubsection
+פירוק לפי ערכים סינגולריים
+\end_layout
+
+\begin_layout Definition
+עבור מטריצה כללית 
+\begin_inset Formula $A\in M_{m\times n}\left(\RR\right)$
+\end_inset
+
+ אם מתקיים 
+\begin_inset Formula 
+\begin{align*}
+Av & =\sigma u\\
+A^{t}u & =\sigma v
+\end{align*}
+
+\end_inset
+
+אז נגיד ש-
+\begin_inset Formula $u$
+\end_inset
+
+ 
+\emph on
+וקטור סינגולרי ימני, 
+\emph default
+
+\begin_inset Formula $v$
+\end_inset
+
+ 
+\emph on
+וקטור סינגולרי שמאלי
+\emph default
+, ו-
+\begin_inset Formula $\sigma$
+\end_inset
+
+ 
+\emph on
+ערך סינגולרי
+\emph default
+.
+ בה"כ 
+\begin_inset Formula $\sigma>0$
+\end_inset
+
+ כי אחרת נגדיר 
+\begin_inset Formula $\sigma^{'}=-\sigma$
+\end_inset
+
+ ו-
+\begin_inset Formula $u'=-u$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+)
+\lang english
+SVD
+\lang hebrew
+( כל מטריצה 
+\begin_inset Formula $A$
+\end_inset
+
+ אפשר לכתוב כ-:
+\begin_inset Formula 
+\[
+A=U\Sigma V^{t}
+\]
+
+\end_inset
+
+כאשר 
+\begin_inset Formula $U,V$
+\end_inset
+
+ מטריצות אורתוגנליות ו-
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ אלכסונית ועל האלכסון הערכים הסינגולריים
+\end_layout
+
+\begin_layout Paragraph
+אינטואיציה
+\end_layout
+
+\begin_layout Standard
+המטריצה 
+\begin_inset Formula $V$
+\end_inset
+
+ אורתוגונלית.
+ לכן
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+AV=U\Sigma
+\]
+
+\end_inset
+
+....
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+להשלים
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+הקשר בין הפירוקים
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+A & =U\Sigma V^{t}
+\end{align*}
+
+\end_inset
+
+נתבונן ב-
+\begin_inset Formula $A^{t}A$
+\end_inset
+
+.
+ היא סימטרית: 
+\begin_inset Formula $\left(A^{t}A\right)^{t}=A^{t}\left(A^{t}\right)^{t}=A^{t}A$
+\end_inset
+
+.
+ כמוכן: 
+\begin_inset Formula 
+\[
+A^{t}A=\left(U\Sigma V^{t}\right)^{t}\left(U\Sigma V^{t}\right)=V\Sigma^{t}U^{t}U\Sigma V^{t}=V\underbrace{\Sigma^{t}\Sigma}_{\text{diagonal}}V^{t}
+\]
+
+\end_inset
+
+באופן דומה: 
+\begin_inset Formula 
+\[
+AA^{t}=U\Sigma\Sigma^{t}U^{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+תרגיל: 
+\end_layout
+
+\begin_layout Standard
+אם 
+\begin_inset Formula $U$
+\end_inset
+
+ אורתוגונלית אז 
+\begin_inset Formula $\varepsilon\left(M,v\right)=\varepsilon\left(MU,v\right)$
+\end_inset
+
+ לכל 
+\begin_inset Formula $M,v$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+נראה שלכל 
+\begin_inset Formula $w\in\Rd$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\norm{Uw}=\norm w$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\norm{Uw}^{2}=\left(Uw\right)^{t}Uw=w^{t}U^{t}Uw=w^{t}w=\norm w^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+אם כך, 
+\begin_inset Formula 
+\begin{align*}
+\varepsilon\left(MU,v\right) & =\set{MUw+v}{\norm w\le1}=\set{MUw+v}{\norm{Uw}\le1}\\
+ & =\set{Mw'+v}{\norm{w'}\le1}=\varepsilon\left(M,v\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+תרגיל:
+\end_layout
+
+\begin_layout Standard
+עבור אלפסואיד 
+\begin_inset Formula $\varepsilon\left(M,v\right)$
+\end_inset
+
+ אפשר בה"כ להניח ש-
+\begin_inset Formula $M$
+\end_inset
+
+ סימטרית
+\end_layout
+
+\begin_layout Proof
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+פירוק
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+SVD
+\lang hebrew
+: 
+\begin_inset Formula $M=U\Sigma V^{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $VU^{t}$
+\end_inset
+
+ אורתוגונלית: 
+\end_layout
+
+\begin_layout Enumerate
+מהתרגיל הקודם: 
+\begin_inset Formula $\varepsilon\left(M,v\right)=\varepsilon\left(MVU^{t},v\right)=\varepsilon\left(U\Sigma U^{t},v\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

@@ -1,0 +1,1479 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass heb-article
+\begin_preamble
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata,positioning}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language hebrew
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.7cm
+\topmargin 1.7cm
+\rightmargin 1.7cm
+\bottommargin 1.7cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\RR}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\norm}[1]{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Rd}{\mathbb{R}^{d}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\set}[2]{\left\{  #1\:\middle|\:#2\right\}  }
+{\left\{ #1\:\mid\:#2\right\} }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Al}{{\cal A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Hy}{{\cal H}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\fl}[1]{\left\lfloor #1\right\rfloor }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{{\cal X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Y}{{\cal Y}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+מבוא למערכות לומדות
+\begin_inset Newline newline
+\end_inset
+
+תרגיל
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\end_layout
+
+\begin_layout Section
+חסמים תחתונים
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\X\to\Y\to\Hy$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נגדיר קב' דוגמאות באופן הבא: נתעניין ב
+\emph on
+קטע רלוונטי
+\emph default
+ - כלומר הקטע שעליו ללומד אין אפשרות לדעת מהו התיוג הנכון )כל תיוג אפשרי(.
+ נתחיל בקטע המכיל את כל הקטע 
+\begin_inset Formula $\left[N-1\right]$
+\end_inset
+
+, ובכל שלב ניתן ללומד את הנק' במרכז הקטע, נקבל פרדיקציה ונעדכן את הקטע הרלוונטי
+ להכיל דוגמאות הסותרות את הפרידקציה.
+\end_layout
+
+\begin_layout Standard
+באופן פורמלי:
+\end_layout
+
+\begin_layout Itemize
+אתחל 
+\begin_inset Formula $L=0,\,R=N,\,mid=\fl{\nicefrac{N}{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+עבור 
+\begin_inset Formula $i=0,\dots,\fl{\log N}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+הגדר 
+\begin_inset Formula $x_{i}=mid$
+\end_inset
+
+ ו-
+\begin_inset Formula $y_{i}=-A\left(x_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+אלגברה לינארית -
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+SVD
+\end_layout
+
+\begin_layout Remarks
+אני משתמש הרבה באינדקס 
+\begin_inset Formula $i$
+\end_inset
+
+ באופן חופשי עבור המטריצות 
+\begin_inset Formula $U,V$
+\end_inset
+
+.
+ אני מודע לכך שהמימדים לא בהכרח מתאימים )כלומר, שייתכן ש-
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ מוגדר ו-
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ לא למשל( אבל אני עושה זאת על מנת לקצר את הכתיבה וברור מההקשר )לדעתי( שהכוונה
+ היא לאינדקס כללי המתאים לכל אחת מהמטריצות באופן נפרד.
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\end_layout
+
+\begin_layout Standard
+נניח 
+\begin_inset Formula $A=U\Sigma V^{T}$
+\end_inset
+
+.
+ לכל 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left\langle u_{i},u_{j}\right\rangle =\left\langle v_{i},v_{j}\right\rangle =0$
+\end_inset
+
+, כי המטריצות 
+\begin_inset Formula $U,V$
+\end_inset
+
+ הן אורתוגונליות.
+ כמוכן, 
+\begin_inset Formula $\norm{v_{i}}=\norm{v_{i}}^{2}=\left\langle v_{i},v_{i}\right\rangle =1$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i$
+\end_inset
+
+, כי 
+\begin_inset Formula $V$
+\end_inset
+
+ מטריצה אורתונורמלית )וכנ"ל לגבי 
+\begin_inset Formula $U$
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Standard
+יהי 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ נחשב:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+Av_{i} & =\left(U\Sigma V^{T}\right)v_{i}\overset{1}{=}\left(U\Sigma\right)\left(V^{T}v_{i}\right)\\
+ & \overset{2}{=}U\Sigma e_{i}\overset{3}{=}U\left(\sigma_{i}e_{i}\right)\overset{4}{=}\sigma_{i}u_{i}
+\end{align*}
+
+\end_inset
+
+כאשר:
+\end_layout
+
+\begin_layout Enumerate
+אסוציאטיביות של כפל מטריצות
+\end_layout
+
+\begin_layout Enumerate
+לפי ההבחנה לעיל.
+ המכפלה 
+\begin_inset Formula $V^{T}v_{i}$
+\end_inset
+
+ היא וקטור בו בכניסה ה-
+\begin_inset Formula $j$
+\end_inset
+
+ מופיעה תוצאת המכפלה הפנימית 
+\begin_inset Formula $\left\langle v_{j},v_{i}\right\rangle =\delta_{i,j}=\begin{cases}
+0, & i\neq j\\
+1, & i=j
+\end{cases}$
+\end_inset
+
+, ולכן התוצאה היא וקטור הבסיס הסטנדרטי המכיל 
+\begin_inset Formula $0$
+\end_inset
+
+ בכל מקום פרט לכניסה ה-
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+לפי הגדרת כפל מטריצה בוקטור, ולפי המבנה של 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ )אלכסונית, כאשר בכניסה ה-
+\begin_inset Formula $i,i$
+\end_inset
+
+ מופיע 
+\begin_inset Formula $\sigma_{i}$
+\end_inset
+
+(
+\end_layout
+
+\begin_layout Enumerate
+לפי הגדרת כפל מטריצה בוקטור, מתקיים 
+\begin_inset Formula $Ue_{i}=u_{i}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\sigma_{i}$
+\end_inset
+
+ הוא סקלר לכן מתחלף עם המטריצה
+\end_layout
+
+\begin_layout Standard
+באופן דומה, נחשב: 
+\begin_inset Formula 
+\begin{align*}
+A^{T}u_{i} & =\left(U\Sigma V^{T}\right)^{T}u_{i}\overset{1}{=}V\Sigma U^{T}u_{i}\\
+ & \overset{2}{=}V\Sigma e_{i}\overset{3}{=}V\sigma_{i}e_{i}\overset{4}{=}\sigma_{i}v_{i}
+\end{align*}
+
+\end_inset
+
+כאשר, כמו בחלק הקודם:
+\end_layout
+
+\begin_layout Enumerate
+בלינארית
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ראינו שמתקיים 
+\begin_inset Formula $\left(BC\right)^{T}=C^{T}B^{T}$
+\end_inset
+
+ לכל זוג מטריצות כלליות עבורן הכפל מוגדר 
+\begin_inset Formula $B,C$
+\end_inset
+
+ )ובאינדוקציה עבור מכפלה של יותר מ-
+\numeric on
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מטריצות(.
+ כמוכן 
+\begin_inset Formula $\left(B^{T}\right)^{T}=B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+והמעברים 
+\begin_inset Formula $2,3,4$
+\end_inset
+
+ זהים לאלה בחישוב הקודם, למעט החלפת 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ ב-
+\begin_inset Formula $u_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\end_layout
+
+\begin_layout Standard
+נניח ש-
+\begin_inset Formula $A=U\Sigma V^{T}$
+\end_inset
+
+ פירוק
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+SVD
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+כך ש-
+\begin_inset Formula $\sigma_{i}<0$
+\end_inset
+
+ עבור 
+\begin_inset Formula $i$
+\end_inset
+
+ כלשהו.
+ נגדיר מטריצות 
+\begin_inset Formula $U',\Sigma',V'$
+\end_inset
+
+ כך שיתקיים 
+\begin_inset Formula $\sigma'_{i}\ge0$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $\sigma'_{i}=\Sigma'_{i,i}$
+\end_inset
+
+, ו-
+\begin_inset Formula $\sigma'_{j}=\sigma_{j}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $j\neq i$
+\end_inset
+
+.
+ נסמן תכונה זו ב-
+\begin_inset Formula $\left(*\right)$
+\end_inset
+
+.
+ נסמן ב-
+\begin_inset Formula $u_{j},v_{j}$
+\end_inset
+
+ את העמודה ה-
+\begin_inset Formula $j$
+\end_inset
+
+ ב-
+\begin_inset Formula $U,V$
+\end_inset
+
+ בהתאמה.
+ נגדיר:
+\begin_inset Formula 
+\[
+u'_{j}=\begin{cases}
+u_{j}, & j\neq i\\
+-u_{j}, & j=i
+\end{cases}\;v'_{j}=\begin{cases}
+v_{j}, & j\neq i\\
+-v_{j}, & j=i
+\end{cases}
+\]
+
+\end_inset
+
+ונטען ש-
+\begin_inset Formula $U',V'$
+\end_inset
+
+ המוגדרות על ידי וקטורי העמודה 
+\begin_inset Formula $u'_{j},v'_{j}$
+\end_inset
+
+ כנ"ל הן אורתונורמליות, ומתקיימת התכונה 
+\begin_inset Formula $\left(*\right)$
+\end_inset
+
+ לעיל.
+\end_layout
+
+\begin_layout Standard
+אכן, עבור 
+\begin_inset Formula $j,k\neq i$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left\langle u'_{j},u'_{k}\right\rangle =\left\langle u_{j},u_{k}\right\rangle =\delta_{jk}$
+\end_inset
+
+ ובאופן דומה 
+\begin_inset Formula $\left\langle v'_{j},v'_{k}\right\rangle =\left\langle v_{j},v_{k}\right\rangle =\delta_{jk}$
+\end_inset
+
+.
+ כמוכן 
+\begin_inset Formula $\left\langle u'_{i},u'_{j}\right\rangle =\left\langle -u_{i},u_{j}\right\rangle =-\left\langle u_{i},u_{j}\right\rangle =-0=0$
+\end_inset
+
+ ובאופן דומה 
+\begin_inset Formula $\left\langle v'_{i},v'_{j}\right\rangle =0$
+\end_inset
+
+.
+ לבסוף, 
+\begin_inset Formula $\left\langle u'_{i},u'_{i}\right\rangle =\left\langle -u_{i},-u_{i}\right\rangle =1$
+\end_inset
+
+ וכן 
+\begin_inset Formula $\norm{v'_{i}}=1$
+\end_inset
+
+.
+ לכן 
+\begin_inset Formula $U,V$
+\end_inset
+
+ אורתונורמליות כנדרש.
+\end_layout
+
+\begin_layout Standard
+נחשב את ה
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\end_layout
+
+\begin_layout Standard
+תהי 
+\begin_inset Formula $A\in\RR^{m\times d}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף א'
+\end_layout
+
+\begin_layout Standard
+נניח ש-
+\begin_inset Formula $A=U\Sigma V^{T}$
+\end_inset
+
+ פירוק
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+SVD
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+של 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ נחשב: 
+\begin_inset Formula 
+\begin{align*}
+AA^{T} & =\left(U\Sigma V^{T}\right)\left(U\Sigma V^{T}\right)^{T}=\left(U\Sigma V^{T}\right)\left(V\Sigma^{T}U^{T}\right)\\
+ & =U\Sigma I\Sigma^{T}U^{T}=U\Sigma\Sigma^{T}U^{T}\\
+A^{T}A & =\left(U\Sigma V^{T}\right)^{T}\left(U\Sigma V^{T}\right)=\left(V\Sigma^{T}U^{T}\right)\left(U\Sigma V^{T}\right)\\
+ & =V\Sigma^{T}I\Sigma V^{T}=V\Sigma^{T}\Sigma V^{T}
+\end{align*}
+
+\end_inset
+
+כאשר בדומה לבשאלה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\numeric off
+, מכיוון ש-
+\begin_inset Formula $U,V$
+\end_inset
+
+ אורתונורמליות אז 
+\begin_inset Formula $U^{T}U=I$
+\end_inset
+
+ ו-
+\begin_inset Formula $V^{T}V=I$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף ב'
+\end_layout
+
+\begin_layout Section
+מטריצות הטלה
+\end_layout
+
+\begin_layout Standard
+יהי 
+\begin_inset Formula $V$
+\end_inset
+
+ תת-מרחב וקטורי 
+\begin_inset Formula $k$
+\end_inset
+
+-מימדי של 
+\begin_inset Formula $\Rd$
+\end_inset
+
+ ויהיו 
+\begin_inset Formula $v_{1},\dots,v_{k}\in\Rd$
+\end_inset
+
+ בסיס אורתונורמלי של 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ נגדיר 
+\begin_inset Formula $P=\sum_{i=1}^{k}v_{i}v_{i}^{T}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\end_layout
+
+\begin_layout Standard
+לכל 
+\begin_inset Formula $i\in\left[k\right]$
+\end_inset
+
+ ו-
+\begin_inset Formula $s,t\in\left[d\right]$
+\end_inset
+
+ מתקיים, לפי הגדרת כפל מטריצות: 
+\begin_inset Formula 
+\[
+\left(v_{i}v_{i}^{T}\right)_{st}=\left(v_{i}\right)_{s}\left(v_{i}\right)_{t}=\left(v_{i}\right)_{t}\left(v_{i}\right)_{s}=\left(v_{i}v_{i}^{T}\right)_{ts}
+\]
+
+\end_inset
+
+כאשר הסימון 
+\begin_inset Formula $\left(u\right)_{s}$
+\end_inset
+
+ מתייחס לכניסה ה-
+\begin_inset Formula $s$
+\end_inset
+
+ בוקטור 
+\begin_inset Formula $u$
+\end_inset
+
+, לכל וקטור ואינדקס )ובאופן דומה למטריצות(.
+ המעבר השני נובע מקומוטטיביות ב-
+\begin_inset Formula $\RR$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+לכן מתקיים: 
+\begin_inset Formula 
+\[
+P_{st}=\sum_{i=1}^{k}\left(v_{i}v_{i}^{T}\right)_{st}=\sum_{i=1}^{k}\left(v_{i}v_{i}^{T}\right)_{ts}=P_{ts}
+\]
+
+\end_inset
+
+כלומר 
+\begin_inset Formula $P$
+\end_inset
+
+ סימטרית כנדרש.
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\end_layout
+
+\begin_layout Standard
+יהי 
+\begin_inset Formula $j\in\left[k\right]$
+\end_inset
+
+.
+ נחשב: 
+\begin_inset Formula 
+\[
+Pv_{j}=\left(\sum_{i=1}^{k}v_{i}v_{i}^{T}\right)v_{j}\overset{1}{=}\sum_{i=1}^{k}v_{i}\left(v_{i}^{T}v_{j}\right)\overset{2}{=}\sum_{i=1}^{k}v_{i}\delta_{ij}=v_{j}
+\]
+
+\end_inset
+
+כאשר:
+\end_layout
+
+\begin_layout Enumerate
+דיסטריביוטיביות ואסוציאטיביות כפל מטריצות
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $v_{1},\dots,v_{k}$
+\end_inset
+
+ הם בסיס אורתונורמלי, לכן 
+\begin_inset Formula $v_{i}^{T}v_{i}=\norm{v_{i}}^{2}=1$
+\end_inset
+
+ ו-
+\begin_inset Formula $v_{i}^{T}v_{j}=\left\langle v_{i},v_{j}\right\rangle =0$
+\end_inset
+
+ עבור 
+\begin_inset Formula $j\neq i$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כלומר 
+\begin_inset Formula $v_{j}$
+\end_inset
+
+ הוא ו"ע של 
+\begin_inset Formula $P$
+\end_inset
+
+ עם ע"ע
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\numeric off
+.
+ זה נכון לכל 
+\begin_inset Formula $j\in\left[k\right]$
+\end_inset
+
+ לכן 
+\begin_inset Formula $v_{1},\dots,v_{k}$
+\end_inset
+
+ הם כולם ו"ע של 
+\begin_inset Formula $P$
+\end_inset
+
+ עם ע"ע
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\numeric off
+.
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\end_layout
+
+\begin_layout Standard
+נחשב ישירות: 
+\begin_inset Formula 
+\begin{align*}
+P^{2} & =\left(\sum_{i=1}^{k}v_{i}v_{i}^{T}\right)\left(\sum_{j=1}^{k}v_{j}v_{j}^{T}\right)=\sum_{i}\sum_{j}v_{i}v_{i}^{T}v_{j}v_{j}^{T}\\
+ & =\sum_{i}\sum_{j}v_{i}\delta_{ij}v_{j}^{T}=\sum_{i}v_{i}v_{i}^{T}=P
+\end{align*}
+
+\end_inset
+
+כאשר המעבר השני נובע מדיסטריביוטיביות ואסוציאטיביות של כפל מטריצות והמעבר
+ השלישי נובע מכך ש-
+\begin_inset Formula $\left\langle v_{i},v_{j}\right\rangle =v_{i}^{T}v_{j}=\delta_{ij}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+מכיוון ש-
+\begin_inset Formula $P$
+\end_inset
+
+ סימטרית אז בוודאי ש-
+\begin_inset Formula $P^{2}=PP^{T}=P^{T}P=P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+5
+\end_layout
+
+\begin_layout Standard
+שוב, מתכונות כפל מטריצות: 
+\begin_inset Formula 
+\[
+\left(I-P\right)P=IP-P^{2}=P-P^{2}=P-P=0
+\]
+
+\end_inset
+
+כי הראנו ש-
+\begin_inset Formula $P^{2}=P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+6
+\end_layout
+
+\begin_layout Standard
+יהי 
+\begin_inset Formula $x\in V$
+\end_inset
+
+.
+ מכיוון ש-
+\begin_inset Formula $v_{1},\dots,v_{k}$
+\end_inset
+
+ בסיס של 
+\begin_inset Formula $V$
+\end_inset
+
+ אפשר לכתוב את 
+\begin_inset Formula $x$
+\end_inset
+
+ כסכום לינארי שלהם, כלומר: 
+\begin_inset Formula $x=\sum_{i=1}^{k}\alpha_{i}v_{i}$
+\end_inset
+
+.
+ לכן: 
+\begin_inset Formula 
+\[
+Px=P\sum_{i=1}^{k}\alpha_{i}v_{i}\overset{1}{=}\sum_{i=1}^{k}\alpha_{i}Pv_{i}\overset{2}{=}\sum_{i=1}^{k}\alpha_{i}v_{i}=x
+\]
+
+\end_inset
+
+כאשר: 
+\end_layout
+
+\begin_layout Enumerate
+דיסטריביוטיביות כפל מטריצות והעובדה ש-
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ סקלר, ולכן מתחלף עם 
+\begin_inset Formula $P$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+הראנו בחלק
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ של השאלה ש-
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ הוא ו"ע של 
+\begin_inset Formula $P$
+\end_inset
+
+ עם ע"ע 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\numeric off
+, כלומר 
+\begin_inset Formula $Pv_{i}=v_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
