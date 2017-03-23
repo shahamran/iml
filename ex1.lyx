@@ -667,18 +667,18 @@ SVD
 
  כלשהו.
  נגדיר מטריצות 
-\begin_inset Formula $U',\Sigma',V'$
+\begin_inset Formula $\Sigma',V'$
 \end_inset
 
  כך שיתקיים 
+\begin_inset Formula $A=U\Sigma'V'$
+\end_inset
+
+ וגם 
 \begin_inset Formula $\sigma'_{i}\ge0$
 \end_inset
 
- כאשר 
-\begin_inset Formula $\sigma'_{i}=\Sigma'_{i,i}$
-\end_inset
-
-, ו-
+ ו-
 \begin_inset Formula $\sigma'_{j}=\sigma_{j}$
 \end_inset
 
@@ -693,7 +693,7 @@ SVD
 
 .
  נסמן ב-
-\begin_inset Formula $u_{j},v_{j}$
+\begin_inset Formula $v_{j}$
 \end_inset
 
  את העמודה ה-
@@ -701,33 +701,34 @@ SVD
 \end_inset
 
  ב-
-\begin_inset Formula $U,V$
+\begin_inset Formula $V$
 \end_inset
 
- בהתאמה.
+.
  נגדיר:
 \begin_inset Formula 
 \[
-u'_{j}=\begin{cases}
-u_{j}, & j\neq i\\
--u_{j}, & j=i
-\end{cases}\;v'_{j}=\begin{cases}
+v'_{j}=\begin{cases}
 v_{j}, & j\neq i\\
 -v_{j}, & j=i
+\end{cases},\,\Sigma_{jk}=\begin{cases}
+-\sigma_{j}, & j=k=i\\
+\sigma_{j}, & j=k\neq i\\
+0, & \text{otherwise}
 \end{cases}
 \]
 
 \end_inset
 
 ונטען ש-
-\begin_inset Formula $U',V'$
+\begin_inset Formula $V'$
 \end_inset
 
- המוגדרות על ידי וקטורי העמודה 
-\begin_inset Formula $u'_{j},v'_{j}$
+ המוגדרת על ידי וקטורי העמודה 
+\begin_inset Formula $v'_{j}$
 \end_inset
 
- כנ"ל הן אורתונורמליות, ומתקיימת התכונה 
+ כנ"ל היא אורתונורמלית, ומתקיימת התכונה 
 \begin_inset Formula $\left(*\right)$
 \end_inset
 
@@ -740,37 +741,25 @@ v_{j}, & j\neq i\\
 \end_inset
 
  מתקיים 
-\begin_inset Formula $\left\langle u'_{j},u'_{k}\right\rangle =\left\langle u_{j},u_{k}\right\rangle =\delta_{jk}$
-\end_inset
-
- ובאופן דומה 
 \begin_inset Formula $\left\langle v'_{j},v'_{k}\right\rangle =\left\langle v_{j},v_{k}\right\rangle =\delta_{jk}$
 \end_inset
 
 .
  כמוכן 
-\begin_inset Formula $\left\langle u'_{i},u'_{j}\right\rangle =\left\langle -u_{i},u_{j}\right\rangle =-\left\langle u_{i},u_{j}\right\rangle =-0=0$
-\end_inset
-
- ובאופן דומה 
-\begin_inset Formula $\left\langle v'_{i},v'_{j}\right\rangle =0$
+\begin_inset Formula $\left\langle v'_{i},v'_{j}\right\rangle =\left\langle -v_{i},v_{j}\right\rangle =-\left\langle v_{i},v_{j}\right\rangle =-0=0$
 \end_inset
 
 .
  לבסוף, 
-\begin_inset Formula $\left\langle u'_{i},u'_{i}\right\rangle =\left\langle -u_{i},-u_{i}\right\rangle =1$
-\end_inset
-
- וכן 
-\begin_inset Formula $\norm{v'_{i}}=1$
+\begin_inset Formula $\left\langle v'_{i},v'_{i}\right\rangle =\left\langle -v_{i},-v_{i}\right\rangle =1$
 \end_inset
 
 .
  לכן 
-\begin_inset Formula $U,V$
+\begin_inset Formula $V$
 \end_inset
 
- אורתונורמליות כנדרש.
+ אורתונורמלית כנדרש.
 \end_layout
 
 \begin_layout Standard
@@ -1227,6 +1216,229 @@ Pv_{j}=\left(\sum_{i=1}^{k}v_{i}v_{i}^{T}\right)v_{j}\overset{1}{=}\sum_{i=1}^{k
 3
 \end_layout
 
+\begin_layout Standard
+מהסעיף הבא, אנחנו יודעים ש-
+\begin_inset Formula $P^{2}=P$
+\end_inset
+
+.
+ נניח ש-
+\begin_inset Formula $0\neq w\in\Rd$
+\end_inset
+
+ הוא ו"ע של 
+\begin_inset Formula $P$
+\end_inset
+
+ עם ע"ע 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+ אזי: 
+\begin_inset Formula 
+\begin{align*}
+Pw & =\lambda w=P^{2}w\\
+ & =P\left(Pw\right)=P\lambda w=\lambda Pw=\lambda^{2}w\\
+\implies & \lambda\left(\lambda-1\right)w=0
+\end{align*}
+
+\end_inset
+
+ומכיוון ש-
+\begin_inset Formula $w\neq0$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\lambda\in\left\{ 0,1\right\} $
+\end_inset
+
+ - כלומר הע"ע האפשריים של 
+\begin_inset Formula $P$
+\end_inset
+
+ הם 
+\begin_inset Formula $0,1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+כמוכן, ניתן להשלים את הקב' 
+\begin_inset Formula $v_{1},\dots,v_{k}$
+\end_inset
+
+ לבסיס אורתונורמלי: 
+\begin_inset Formula $v_{1},\dots,v_{k},v_{k+1},\dots,v_{d}$
+\end_inset
+
+.
+ נגדיר את 
+\begin_inset Formula $W$
+\end_inset
+
+ להיות המטריצה בה העמודה ה-
+\begin_inset Formula $i$
+\end_inset
+
+ היא הוקטור 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+.
+ נטען ש-: 
+\begin_inset Formula 
+\[
+P=WDW^{T}
+\]
+
+\end_inset
+
+כך ש-
+\begin_inset Formula $D_{ij}=\begin{cases}
+1, & i=j\le k\\
+0, & \text{otherwise}
+\end{cases}$
+\end_inset
+
+ הוא פירוק
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+EVD
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+של 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ נראה שהשוויון מתקיים.
+ מספיק להראות ש-
+\begin_inset Formula $WDW^{T}$
+\end_inset
+
+ פועלת על וקטור בסיס כמו 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ ראינו ש-
+\begin_inset Formula $Pv_{i}=v_{i}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i\le k$
+\end_inset
+
+.
+ באותו אופן 
+\begin_inset Formula $Pv_{i}=0$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i>k$
+\end_inset
+
+ )ממש אותו חישוב כמו בסעיף הקודם(.
+ עבור 
+\begin_inset Formula $i$
+\end_inset
+
+ כלשהו, נחשב: 
+\begin_inset Formula 
+\[
+WDW^{T}v_{i}\overset{1}{=}WDe_{i}\overset{2}{=}\begin{cases}
+We_{i}, & i\le k\\
+0, & i>k
+\end{cases}\overset{3}{=}\begin{cases}
+v_{i}, & i\le k\\
+0, & \text{otherwise}
+\end{cases}=Pv_{i}
+\]
+
+\end_inset
+
+כאשר: 
+\end_layout
+
+\begin_layout Enumerate
+לפי הגדרת 
+\begin_inset Formula $W$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left(W^{T}v_{i}\right)_{j}=v_{j}^{T}v_{i}=\left\langle v_{j},v_{i}\right\rangle =\delta_{ij}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $W^{T}v_{i}=e_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+ברור לפי הגדרת 
+\begin_inset Formula $D$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+גם לפי הגדרת 
+\begin_inset Formula $W$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 שאלה
 \family roman
@@ -1382,7 +1594,11 @@ P^{2} & =\left(\sum_{i=1}^{k}v_{i}v_{i}^{T}\right)\left(\sum_{j=1}^{k}v_{j}v_{j}
 \begin_inset Formula $x=\sum_{i=1}^{k}\alpha_{i}v_{i}$
 \end_inset
 
-.
+ עבור 
+\begin_inset Formula $\alpha_{i}\in\RR$
+\end_inset
+
+ סקלרים.
  לכן: 
 \begin_inset Formula 
 \[
@@ -1473,6 +1689,552 @@ Px=P\sum_{i=1}^{k}\alpha_{i}v_{i}\overset{1}{=}\sum_{i=1}^{k}\alpha_{i}Pv_{i}\ov
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+אלגברה לינארית - נורמות והעתקות אפיניות
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\end_layout
+
+\begin_layout Standard
+נזכור כי 
+\begin_inset Formula $\norm x_{1}=\sum_{i}\left|x_{i}\right|$
+\end_inset
+
+.
+ לכן: 
+\begin_inset Formula 
+\begin{align*}
+{\cal B}_{1} & =\set{x\in\RR^{2}}{\norm x_{1}\le1}=\set{x\in\RR^{2}}{\left|x_{1}\right|+\left|x_{2}\right|\le1}\\
+ & =\set{}{}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture} 
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgftransformscale{.5}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%%% HELP LINES - uncomment to design/extend 
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+draw[step=1cm,gray,very thin] (-3,-3) grid (3,3); 
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+node at (0,0) {
+\backslash
+textbf{(0,0)}};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+coordinate (Origin) at (0,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Axes
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->, very thin] (-3,0) -- (3,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->, very thin] (0,-3) -- (0,3);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[thick] (2,0) -- (0,2);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[thick] (0,2) -- (-2,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[thick] (-2,0) -- (0,-2);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[thick] (0,-2) -- (2,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (0.5,0.5) {
+\backslash
+textbf{$
+\backslash
+mathcal{B}_1$}};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\norm x_{\infty}=\max_{i}\left|x_{i}\right|$
+\end_inset
+
+.
+ לכן: 
+\begin_inset Formula 
+\begin{align*}
+{\cal B}_{\infty} & =\set{x\in\RR^{2}}{\norm x_{\infty}\le1}\\
+ & =\set{x\in\RR^{2}}{\max_{i}\left|x_{i}\right|\le1}\\
+ & =\set{x\in\RR^{2}}{-1\le x_{1}\le1\text{ and }-1\le x_{2}\le1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture} 
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgftransformscale{.5}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%%% HELP LINES - uncomment to design/extend 
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+draw[step=1cm,gray,very thin] (-3,-3) grid (3,3); 
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+node at (0,0) {
+\backslash
+textbf{(0,0)}};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+coordinate (Origin) at (0,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Axes
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->, very thin] (-3,0) -- (3,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->, very thin] (0,-3) -- (0,3);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[thick] (2,2) -- (-2,2);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[thick] (-2,2) -- (-2,-2);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[thick] (-2,-2) -- (2,-2);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[thick] (2,-2) -- (2,2);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node at (0.5,0.5) {
+\backslash
+textbf{$
+\backslash
+mathcal{B}_
+\backslash
+infty$}};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\end_layout
+
+\begin_layout Standard
+נחפש 
+\begin_inset Formula $M=\begin{pmatrix}m_{11} & m_{12}\\
+m_{21} & m_{22}
+\end{pmatrix}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $Me_{1}=\begin{pmatrix}1\\
+1
+\end{pmatrix},\,Me_{2}=\begin{pmatrix}-1\\
+1
+\end{pmatrix}$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{align*}
+Me_{1} & =\begin{pmatrix}m_{11}\\
+m_{21}
+\end{pmatrix}=\begin{pmatrix}1\\
+1
+\end{pmatrix}\iff m_{11}=1,\,m_{21}=1\\
+Me_{2} & =\begin{pmatrix}m_{12}\\
+m_{22}
+\end{pmatrix}=\begin{pmatrix}-1\\
+1
+\end{pmatrix}\iff m_{12}=-1,\,m_{21}=1\\
+\implies M & =\begin{pmatrix}1 & -1\\
+1 & 1
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+כעת יהי 
+\begin_inset Formula $x\in{\cal B}_{1}$
+\end_inset
+
+.
+ לכן מתקיים 
+\begin_inset Formula $\left|x_{1}\right|+\left|x_{2}\right|\le1$
+\end_inset
+
+.
+ כמוכן 
+\begin_inset Formula $Mx=\begin{pmatrix}x_{1}-x_{2}\\
+x_{1}+x_{2}
+\end{pmatrix}$
+\end_inset
+
+.
+ מאי שוויון המשולש מתקיים: 
+\begin_inset Formula 
+\begin{align*}
+\left|x_{1}-x_{2}\right| & \le\left|x_{1}\right|+\left|-x_{2}\right|=\left|x_{1}\right|+\left|x_{2}\right|\le1\\
+\left|x_{1}+x_{2}\right| & \le\left|x_{1}\right|+\left|x_{2}\right|\le1
+\end{align*}
+
+\end_inset
+
+ולכן 
+\begin_inset Formula $\max\left\{ \left|x_{1}-x_{2}\right|,\left|x_{1}+x_{2}\right|\right\} \le1$
+\end_inset
+
+ כלומר 
+\begin_inset Formula $Mx\in{\cal B}_{\infty}$
+\end_inset
+
+.
 \end_layout
 
 \end_body
