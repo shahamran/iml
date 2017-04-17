@@ -127,6 +127,17 @@
 \end_inset
 
 
+\begin_inset FormulaMacro
+\newcommand{\prc}[2]{\mathbb{P}\left[#1\middle|#2\right]}
+{\mathbb{P}\left[#1\mid#2\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pr}[1]{\mathbb{P}\left[#1\right]}
+\end_inset
+
+
 \end_layout
 
 \begin_layout Title
@@ -172,16 +183,109 @@ status open
 
 \end_inset
 
+מסווג
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+Bayes
+\end_layout
+
+\begin_layout Standard
+תהי 
+\begin_inset Formula ${\cal D}$
+\end_inset
+
+ התפלגות על 
+\begin_inset Formula ${\cal X}\times\left\{ 0,1\right\} $
+\end_inset
+
+ ותהי 
+\begin_inset Formula $g:{\cal X}\to\left\{ 0,1\right\} $
+\end_inset
+
+.
+ נניח ש-
+\begin_inset Formula $f_{{\cal D}}$
+\end_inset
+
+ כמתואר בשאלה, כלומר 
+\begin_inset Formula $f_{{\cal D}}\left(x\right)=\begin{cases}
+1 & \text{if }\mathbb{P}\left[y=1|x\right]\ge\nicefrac{1}{2}\\
+0 & \text{otherwise}
+\end{cases}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $x\in{\cal X}$
+\end_inset
+
+.
+ צריך להראות ש: 
+\begin_inset Formula 
+\[
+L_{{\cal D}}\left(f_{{\cal D}}\right)\le L_{{\cal D}}\left(g\right)
+\]
+
+\end_inset
+
+מתקיים: 
+\begin_inset Formula 
+\begin{align*}
+L_{{\cal D}}\left(h\right) & =\mathbb{E}_{\left(x,y\right)\sim{\cal D}}\left[l^{0-1}\left(h,\left(x,y\right)\right)\right]=\mathbb{E}_{\left(x,y\right)\sim{\cal D}}\left[1_{h\left(x\right)\neq y}\right]\\
+ & =\mathbb{P}_{\left(x,y\right)\sim{\cal D}}\left[h\left(x\right)\neq y\right]={\cal D}\left(\set{\left(x,y\right)\in\mathcal{X}\times\left\{ 0,1\right\} }{h\left(x\right)\neq y}\right)
+\end{align*}
+
+\end_inset
+
+מחסם האיחוד:
+\begin_inset Formula 
+\[
+\mathbb{P}\left[h\left(x\right)\neq y\right]\le\sum_{\substack{\left(x,y\right)\in{\cal X}\times\left\{ 0,1\right\} \\
+h\left(x\right)\neq y
+}
+}{\cal D}\left(x,y\right)
+\]
+
+\end_inset
+
+ לכן: 
+\begin_inset Formula 
+\begin{align*}
+L_{{\cal D}}\left(f_{{\cal D}}\right) & =\mathbb{P}\left[f_{{\cal D}}\left(x\right)\neq y\right]=\mathbb{P}\left[f_{{\cal D}}\left(x\right)\neq y|y=0\right]\mathbb{P}\left[y=0\right]+\mathbb{P}\left[f_{{\cal D}}\left(x\right)=0|y=1\right]\mathbb{P}\left[y=1\right]\\
+ & =\mathbb{P}\left[f_{{\cal D}}\left(x\right)=1|y=0\right]\mathbb{P}\left[y=0\right]
+\end{align*}
+
+\end_inset
+
 
 \end_layout
 
-\begin_layout Section
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{P}\left[y=1|x\right]=\mathbb{P}\left[y=1\right]
+\]
 
 \end_inset
 
@@ -199,32 +303,948 @@ status open
 \end_inset
 
 
+\lang english
+VC Dimension
 \end_layout
 
-\begin_layout Section
-\begin_inset ERT
+\begin_layout Subsection
+פונקציית הזוגיות
+\end_layout
+
+\begin_layout Standard
+יהי 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ נטען ש-
+\begin_inset Formula $\text{VCdim}\left({\cal H}\right)=n$
+\end_inset
+
+ כאשר 
+\begin_inset Formula ${\cal H}=\left\{ h_{I}:I\subset\left[n\right]\right\} $
+\end_inset
+
+.
+ נשים לב: 
+\begin_inset Formula $\left|{\cal H}\right|=\left|P\left(\left[n\right]\right)\right|=2^{n}$
+\end_inset
+
+.
+ תחילה נראה שקיימת קבוצה 
+\begin_inset Formula $C$
+\end_inset
+
+ מגודל 
+\begin_inset Formula $n$
+\end_inset
+
+ אותה 
+\begin_inset Formula ${\cal H}$
+\end_inset
+
+ מנתצת.
+ נגדיר: 
+\begin_inset Formula $C=\left\{ e_{1},\dots,e_{n}\right\} $
+\end_inset
+
+ כאשר 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ הוא וקטור שכולו
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\numeric off
+ים למעט בכניסה ה-
+\begin_inset Formula $i$
+\end_inset
+
+, בה ערכו 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $x\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+.
+ נראה ש-
+\begin_inset Formula $x\in{\cal H}_{C}$
+\end_inset
+
+.
+ נגדיר 
+\begin_inset Formula $I=\left\{ i\in\left[n\right]:x_{i}=1\right\} $
+\end_inset
+
+ ונטען ש-
+\begin_inset Formula $\left(h_{I}\left(e_{1}\right),\dots,h_{I}\left(e_{n}\right)\right)=x$
+\end_inset
+
+.
+ אכן: 
+\begin_inset Formula 
+\[
+h_{I}\left(e_{i}\right)=\left(\sum_{j\in I}\left(e_{i}\right)_{j}\right)\mod2=\left(\sum_{j\in I}\delta_{ij}\right)\mod2=\begin{cases}
+1, & i\in I\\
+0, & i\notin I
+\end{cases}=\begin{cases}
+1, & x_{i}=1\\
+0, & x_{i}=0
+\end{cases}
+\]
+
+\end_inset
+
+לכל 
+\begin_inset Formula $i$
+\end_inset
+
+, ולכן 
+\begin_inset Formula ${\cal H}_{C}\ni\left(h_{I}\left(e_{1}\right),\dots,h_{I}\left(e_{n}\right)\right)=x$
+\end_inset
+
+.
+ מכאן ש-
+\begin_inset Formula $\left\{ 0,1\right\} ^{n}\subset{\cal H}_{C}$
+\end_inset
+
+ כלומר 
+\begin_inset Formula $\left|{\cal H}_{C}\right|\ge2^{\left|C\right|}=2^{n}$
+\end_inset
+
+.
+ ברור ש-
+\begin_inset Formula $\left|{\cal H}_{C}\right|\le2^{\left|C\right|}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left|{\cal H}_{C}\right|=2^{\left|C\right|}$
+\end_inset
+
+ כלומר 
+\begin_inset Formula ${\cal H}$
+\end_inset
+
+ מנתצת את 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ מכאן: 
+\begin_inset Formula $\text{VCdim}\left({\cal H}\right)\ge n=\log_{2}\left|{\cal H}\right|$
+\end_inset
+
+ אבל ראינו בתרגול
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+)תרגיל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\numeric off
+( ש-
+\begin_inset Formula $\text{VCdim}\left({\cal H}\right)\le\log_{2}\left|{\cal H}\right|$
+\end_inset
+
+ לכל קבוצת היפותזות סופית, לכן 
+\begin_inset Formula $\text{VCdim}\left({\cal H}\right)=n$
+\end_inset
+
+ כנדרש.
+\end_layout
+
+\begin_layout Subsection
+איחוד סופי של קטעים
+\end_layout
+
+\begin_layout Standard
+יהי 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+.
+ נטען ש-
+\begin_inset Formula $\text{VCdim}\left({\cal H}_{k-intervals}\right)=2k$
+\end_inset
+
+.
+ נגדיר 
+\begin_inset Formula $C=\left\{ 1,2,\dots,2k\right\} $
+\end_inset
+
+.
+ נראה ש-
+\begin_inset Formula ${\cal H}_{k-intervals}$
+\end_inset
+
+ מנתצת את 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $x\in\left\{ 0,1\right\} ^{2k}$
+\end_inset
+
+.
+ נגדיר סדרת קטעים 
+\begin_inset Formula $\left\{ \left[a_{i},b_{i}\right]\right\} _{i=1}^{k}$
+\end_inset
+
+ כך שההיפותזה 
+\begin_inset Formula $h$
+\end_inset
+
+ המוגדרת על ידי איחודם מקיימת 
+\begin_inset Formula $\left(h\left(1\right),\dots,h\left(2k\right)\right)=x$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $x=0^{2k}$
+\end_inset
+
+ אז ניקח סדרת קטעים כלשהי על המספרים השליליים - ולכן 
+\begin_inset Formula $h\left(i\right)=0$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i\in\left[2k\right]$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $x\in{\cal H}_{C}$
+\end_inset
+
+.
+ נניח עתה ש-
+\begin_inset Formula $x\neq0^{2k}$
+\end_inset
+
+ ונגדיר: 
+\begin_inset Formula 
+\begin{align*}
+a_{1} & =\min\left\{ i\in\left[2k\right]:x_{i}=1\right\} -\frac{1}{2}\\
+b_{1} & =\min\left\{ i\in\left[2k\right]:i>a_{1}\text{ and }x_{i}=0\right\} -\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+ולכל 
+\begin_inset Formula $1<j\le k$
+\end_inset
+
+ נגדיר
+\begin_inset Foot
 status open
 
 \begin_layout Plain Layout
+אם עבור 
+\begin_inset Formula $j$
+\end_inset
+
+ כלשהו הקבוצה עליה מחפשים מינימום ריקה ניקח ערך כלשהו מימין לקטע 
+\begin_inset Formula $\left[1,2k\right]$
+\end_inset
+
 
 \end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{align*}
+a_{j} & =\min\left\{ i\in\left[2k\right]:i>b_{j-1}\text{ and }x_{i}=1\right\} -\frac{1}{2}\\
+b_{j} & =\min\left\{ i\in\left[2k\right]:i>a_{j}\text{ and }x_{i}=0\right\} -\frac{1}{2}
+\end{align*}
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Section
-\begin_inset ERT
-status open
+\begin_layout Description
+הסבר: כל קטע מכסה רצף שלם של 
+\begin_inset Formula $1$
+\end_inset
 
-\begin_layout Plain Layout
+ים ב-
+\begin_inset Formula $x$
+\end_inset
 
+ - קל לראות שישנם 
+\emph on
+לכל היותר
+\emph default
+ 
+\begin_inset Formula $k$
+\end_inset
+
+ רצפים של 
+\begin_inset Formula $1$
+\end_inset
+
+ים המופרדים ב-
+\begin_inset Formula $0$
+\end_inset
+
+ים )כאשר 
+\begin_inset Formula $k$
+\end_inset
+
+ מתקבל למשל מ-
+\begin_inset Formula $x=\left(1,0,1,0,\dots,1,0\right)$
+\end_inset
+
+ ובמקרה זה הקטע הראשון - כפי שהוגדר לעיל - הוא 
+\begin_inset Formula $\left[\frac{1}{2},\frac{3}{2}\right]$
+\end_inset
+
+ כי 
+\begin_inset Formula $1$
+\end_inset
+
+, ורק הוא, מוכל בו; השני הוא 
+\begin_inset Formula $\left[\frac{5}{2},\frac{7}{2}\right]$
+\end_inset
+
+ כי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ מוכל בו וכו'(.
+ רצף של 
+\begin_inset Formula $1$
+\end_inset
+
+ים ב-
+\begin_inset Formula $x$
+\end_inset
+
+ מתאים לתיוג ב-
+\begin_inset Formula $1$
+\end_inset
+
+ של מספרים עוקבים ב-
+\begin_inset Formula $C$
+\end_inset
+
+ ולכן אפשר לקחת קטע 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אחד
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ שיכסה אותם )ולכן לא צריך 
+\begin_inset Formula $2k$
+\end_inset
+
+ קטעים עבור וקטור שכולו 
+\begin_inset Formula $1$
+\end_inset
+
+ים(.
+ 
 \end_layout
 
+\begin_layout Standard
+אם כך 
+\begin_inset Formula ${\cal H}_{k-intervals}$
+\end_inset
+
+ מנתצת את 
+\begin_inset Formula $C$
+\end_inset
+
+ כי כל תיוג בגודל 
+\begin_inset Formula $2k$
+\end_inset
+
+ אפשרי על 
+\begin_inset Formula $C$
+\end_inset
+
+ ב-
+\begin_inset Formula ${\cal H}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+עתה, עבור קבוצה 
+\begin_inset Formula $C=\left\{ x_{1},\dots,x_{2k+1}\right\} $
+\end_inset
+
+, נטען ש-
+\begin_inset Formula $\left\{ 0,1\right\} ^{2k+1}\ni y=\left(1,0,1,0,\dots,1,0,1\right)\notin{\cal H}_{C}$
+\end_inset
+
+.
+ נניח בה"כ ש-
+\begin_inset Formula $x_{i}<x_{i+1}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $1\le i\le2k$
+\end_inset
+
+.
+ נניח בשלילה שקיימת היפותזה 
+\begin_inset Formula $h\in{\cal H}_{k-intervals}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $y=\left(h\left(x_{1}\right),\dots,h\left(x_{2k+1}\right)\right)$
+\end_inset
+
+ - כלומר קיימת סדרת קטעים כך שלכל 
+\begin_inset Formula $i$
+\end_inset
+
+ עבורו 
+\begin_inset Formula $y_{i}=1$
+\end_inset
+
+ קיים קטע בסדרה המכיל את 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ נשים לב שב-
+\begin_inset Formula $y$
+\end_inset
+
+ יש 
+\begin_inset Formula $k+1$
 \end_inset
 
 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+קורדינטות בהן 
+\begin_inset Formula $y_{i}=1$
+\end_inset
+
+ לכן יש 
+\begin_inset Formula $k+1$
+\end_inset
+
+ איברים ב-
+\begin_inset Formula $C$
+\end_inset
+
+ אותם 
+\begin_inset Formula $h$
+\end_inset
+
+ מתייגת 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ כמוכן, לכל זוג 
+\begin_inset Formula $1\le i<j\le2k+1$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $y_{i}=y_{j}=1$
+\end_inset
+
+ קיים 
+\begin_inset Formula $i<l<j$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $y_{l}=0$
+\end_inset
+
+, לכן אין קטע המכיל גם את 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ וגם את 
+\begin_inset Formula $x_{j}$
+\end_inset
+
+ - כי הוא היה מכיל את 
+\begin_inset Formula $x_{l}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $h\left(x_{l}\right)=1$
+\end_inset
+
+ בסתירה לכך ש-
+\begin_inset Formula $y=\left(h\left(x_{1}\right),\dots,h\left(x_{2k+1}\right)\right)$
+\end_inset
+
+.
+ לכן ישנם 
+\begin_inset Formula $k+1$
+\end_inset
+
+ קטעים המכילים 
+\emph on
+זרים
+\emph default
+ המכילים את 
+\begin_inset Formula $k+1$
+\end_inset
+
+ הערכים המתויגים
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\numeric off
+, בסתירה לכך ש-
+\begin_inset Formula $h$
+\end_inset
+
+ מוגדרת על ידי איחוד של 
+\begin_inset Formula $k$
+\end_inset
+
+ קטעים.
+ כלומר אין קבוצה מגודל 
+\begin_inset Formula $2k+1$
+\end_inset
+
+ המנותצת על ידי 
+\begin_inset Formula ${\cal H}$
+\end_inset
+
+ ולכן
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $\text{VCdim}\left({\cal H}_{k-intervals}\right)=2k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+כעת נניח ש-
+\begin_inset Formula $k$
+\end_inset
+
+ אינו חסום, כלומר 
+\begin_inset Formula ${\cal H}$
+\end_inset
+
+ היא קבוצת ההיפותזות המוגדרת על ידי איחוד סופי כלשהו של קטעים ממשיים.
+ תהי 
+\begin_inset Formula $C=\left\{ x_{1},\dots,x_{n}\right\} \subset\mathbb{R}$
+\end_inset
+
+ קבוצה כלשהי.
+ יהי 
+\begin_inset Formula $y\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+.
+ לכל 
+\begin_inset Formula $i\in\left[n\right]$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $y_{i}=1$
+\end_inset
+
+ נגדיר את הקטע 
+\begin_inset Formula $\left[x_{i},x_{i}\right]$
+\end_inset
+
+ כלומר קטע המכיל רק את 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ נקבל אוסף סופי של קטעים 
+\begin_inset Formula $\left\{ \left[x_{i},x_{i}\right]:y_{i}=1\right\} $
+\end_inset
+
+.
+ נתבונן בהיפותזה 
+\begin_inset Formula $h$
+\end_inset
+
+ המוגדרת על ידי איחוד הקטעים הנ"ל.
+ נשים לב שלכל 
+\begin_inset Formula $i$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $y_{i}=0$
+\end_inset
+
+ לא קיים קטע בסדרה הנ"ל המכיל את 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $h\left(x_{i}\right)=0$
+\end_inset
+
+.
+ מאידך, לפי הגדרה, לכל 
+\begin_inset Formula $i$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $y_{i}=1$
+\end_inset
+
+ קיים קטע המכיל 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $h\left(x_{i}\right)=1$
+\end_inset
+
+.
+ לכן 
+\begin_inset Formula $\left(h\left(x_{1}\right),\dots,h\left(x_{n}\right)\right)=y\in{\cal H}_{C}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula ${\cal H}$
+\end_inset
+
+ מנתצת את 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ קיבלנו ש-
+\begin_inset Formula ${\cal H}$
+\end_inset
+
+ מנתצת כל קבוצה סופית לכן 
+\begin_inset Formula $\text{VCdim}\left({\cal H}\right)=\infty$
+\end_inset
+
+ במקרה זה.
+ 
+\end_layout
+
+\begin_layout Subsection
+חצאי מרחב לא הומוגניים
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sgn}{\text{sgn}}
+\end_inset
+
+נראה ש-
+\begin_inset Formula $HS_{d}\simeq HHS_{d+1}$
+\end_inset
+
+ כאשר: 
+\begin_inset Formula 
+\[
+HHS_{d+1}=\left\{ h_{\mathbf{w}}:h_{\mathbf{w}}\left(\mathbf{x}\right)=\sgn\left(\left\langle \mathbf{w},\mathbf{x}\right\rangle \right),\mathbf{w}\in\Rd\right\} 
+\]
+
+\end_inset
+
+)קבוצת חצאי המרחב ההומוגניים ב-
+\begin_inset Formula $d+1$
+\end_inset
+
+ מימדים(
+\end_layout
+
+\begin_layout Standard
+תהי 
+\begin_inset Formula $h_{\mathbf{w},b}\in HS_{d}$
+\end_inset
+
+, כלומר קיימים 
+\begin_inset Formula $\mathbf{w}\in\Rd,b\in\RR$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $h_{\mathbf{w},b}\left(\mathbf{x}\right)=\sgn\left(\left\langle \mathbf{w},\mathbf{x}\right\rangle +b\right)$
+\end_inset
+
+.
+ נגדיר: 
+\begin_inset Formula 
+\[
+\mathbf{w}'=\left(\mathbf{w},b\right)
+\]
+
+\end_inset
+
+כלומר השרשור של 
+\begin_inset Formula $b$
+\end_inset
+
+ ל-
+\begin_inset Formula $\mathbf{w}$
+\end_inset
+
+.
+ לכן 
+\begin_inset Formula $h_{\mathbf{w}'}\in HHS_{d+1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+למידות
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+PAC
+\end_layout
+
+\begin_layout Section
+פונקציות במספר משתנים
+\end_layout
+
+\begin_layout Section
+חלק תכנותי
 \end_layout
 
 \end_body
