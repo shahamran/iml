@@ -1152,62 +1152,156 @@ b_{j} & =\min\left\{ i\in\left[2k\right]:i>a_{j}\text{ and }x_{i}=0\right\} -\fr
 \newcommand{\sgn}{\text{sgn}}
 \end_inset
 
-נראה ש-
-\begin_inset Formula $HS_{d}\simeq HHS_{d+1}$
-\end_inset
 
- כאשר: 
-\begin_inset Formula 
-\[
-HHS_{d+1}=\left\{ h_{\mathbf{w}}:h_{\mathbf{w}}\left(\mathbf{x}\right)=\sgn\left(\left\langle \mathbf{w},\mathbf{x}\right\rangle \right),\mathbf{w}\in\Rd\right\} 
-\]
-
-\end_inset
-
-)קבוצת חצאי המרחב ההומוגניים ב-
-\begin_inset Formula $d+1$
-\end_inset
-
- מימדים(
 \end_layout
 
 \begin_layout Standard
-תהי 
-\begin_inset Formula $h_{\mathbf{w},b}\in HS_{d}$
-\end_inset
-
-, כלומר קיימים 
-\begin_inset Formula $\mathbf{w}\in\Rd,b\in\RR$
-\end_inset
-
- כך ש-
-\begin_inset Formula $h_{\mathbf{w},b}\left(\mathbf{x}\right)=\sgn\left(\left\langle \mathbf{w},\mathbf{x}\right\rangle +b\right)$
+נגדיר 
+\begin_inset Formula $C=\left\{ e_{1},\dots,e_{d},0\right\} $
 \end_inset
 
 .
- נגדיר: 
+ יהי 
+\begin_inset Formula $y=\left(y_{0},\dots,y_{d}\right)^{T}\in\left\{ \pm1\right\} ^{d+1}$
+\end_inset
+
+, נבחר 
+\begin_inset Formula $\mathbf{w}=\left(y_{0},\dots,y_{d-1}\right)^{T}$
+\end_inset
+
+ ו-
+\begin_inset Formula $b=\frac{1}{2}y_{d}$
+\end_inset
+
+.
+ מתקיים: 
 \begin_inset Formula 
-\[
-\mathbf{w}'=\left(\mathbf{w},b\right)
-\]
+\begin{align*}
+h_{\mathbf{w},b}\left(e_{i}\right) & =\sgn\left(\left\langle \mathbf{w},e_{i}\right\rangle +b\right)=\sgn\left(y_{i-1}+b\right)\overset{\left|b\right|\le\frac{1}{2}}{=}y_{i-1}\\
+h_{\mathbf{w},b}\left(0\right) & =\sgn\left(\left\langle \mathbf{w},0\right\rangle +b\right)=\sgn\left(b\right)=y_{d}\\
+\implies\left(h_{\mathbf{w},b}\left(e_{1}\right),\dots,h_{\mathbf{w},b}\left(e_{d}\right),h_{\mathbf{w},b}\left(0\right)\right) & =\left(y_{0},\dots,y_{d-1},y_{d}\right)=y
+\end{align*}
 
 \end_inset
 
-כלומר השרשור של 
-\begin_inset Formula $b$
+כלומר 
+\begin_inset Formula $HS_{d}$
 \end_inset
 
- ל-
-\begin_inset Formula $\mathbf{w}$
+ מנתצת את 
+\begin_inset Formula $C$
 \end_inset
 
-.
- לכן 
-\begin_inset Formula $h_{\mathbf{w}'}\in HHS_{d+1}$
+, לכן 
+\begin_inset Formula $\text{VCdim}\left(HS_{d}\right)\ge d+1$
 \end_inset
 
 .
  
+\end_layout
+
+\begin_layout Standard
+נניח בשלילה שקבוצה 
+\begin_inset Formula $C=\left\{ x_{1},\dots,x_{d+2}\right\} $
+\end_inset
+
+ מנותצת על ידי 
+\begin_inset Formula $HS_{d}$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $y\in\left\{ \pm1\right\} ^{d+2}$
+\end_inset
+
+.
+ אזי קיימים 
+\begin_inset Formula $\mathbf{w}\in\Rd$
+\end_inset
+
+ ו-
+\begin_inset Formula $b\in\RR$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $h:=h_{\mathbf{w},b}$
+\end_inset
+
+ מקיימת: 
+\begin_inset Formula $\left(h\left(x_{1}\right),\dots,h\left(x_{d+2}\right)\right)^{T}=y$
+\end_inset
+
+.
+ נגדיר: 
+\begin_inset Formula $\mathbf{w}'=\left(w_{1},\dots,w_{d},b\right)^{T}\in\RR^{d+1}$
+\end_inset
+
+ ולכל 
+\begin_inset Formula $i\in\left[d+2\right]$
+\end_inset
+
+ נגדיר 
+\begin_inset Formula $\mathbf{x}'_{i}=\left(x_{1},\dots,x_{d},1\right)^{T}\in\RR^{d+1}$
+\end_inset
+
+.
+ מתקיים: 
+\begin_inset Formula 
+\begin{align*}
+\left\langle \mathbf{w}',\mathbf{x}'_{i}\right\rangle  & =\left(w_{1},\dots,w_{d},b\right)\begin{pmatrix}x_{1}\\
+\vdots\\
+x_{d}\\
+1
+\end{pmatrix}=\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle +b\\
+\implies\sgn\left(\left\langle \mathbf{w'},\mathbf{x}'_{i}\right\rangle \right) & =\sgn\left(\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle +b\right)=h_{\mathbf{w},b}\left(x_{i}\right)=y_{i}
+\end{align*}
+
+\end_inset
+
+לכל 
+\begin_inset Formula $i\in\left[d+2\right]$
+\end_inset
+
+.
+ מכאן קיימת היפותזה 
+\begin_inset Formula $h':=h'_{\mathbf{w'}}\in HHS_{d+1}$
+\end_inset
+
+ )קבוצת חצאי המרחב ההומוגניים ב-
+\begin_inset Formula $d+1$
+\end_inset
+
+ מימדים( כך ש-
+\begin_inset Formula $h'\left(\mathbf{x}'_{i}\right)=y_{i}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ זה נכון לכל תיוג 
+\begin_inset Formula $y$
+\end_inset
+
+, לכן 
+\begin_inset Formula $HHS_{d+1}$
+\end_inset
+
+ מנתצת קבוצה בגודל 
+\begin_inset Formula $d+2$
+\end_inset
+
+, וזו סתירה לכך ש-
+\begin_inset Formula $\text{VCdim}\left(HHS_{d+1}\right)=d+1$
+\end_inset
+
+.
+ לכן 
+\begin_inset Formula $\text{VCdim}\left(HS_{d}\right)\le d+1$
+\end_inset
+
+ ולכן מתקיים שוויון.
 \end_layout
 
 \begin_layout Section
