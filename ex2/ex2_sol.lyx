@@ -1271,7 +1271,7 @@ status open
 \end_inset
 
 .
- מתקיים
+ מתקיים:
 \begin_inset Foot
 status open
 
@@ -1307,7 +1307,7 @@ c
 
 \end_inset
 
-: 
+ 
 \begin_inset Formula 
 \begin{align*}
 \left\langle \mathbf{w}',\mathbf{x}'_{i}\right\rangle  & =\left(\mathbf{w}^{T},b\right)\begin{pmatrix}\mathbf{x}_{i}\\
@@ -1393,8 +1393,215 @@ c
 PAC
 \end_layout
 
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+תהי 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ מחלקת היפותזות סיווג בינארי למידה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+agnostic PAC
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ביחס ל-
+\begin_inset Formula $Z=\mathcal{X}\times\left\{ \pm1\right\} $
+\end_inset
+
+ ופונ' הפסד 
+\begin_inset Formula $\ell:\mathcal{H}\times Z\to\RR_{+}$
+\end_inset
+
+.
+ כלומר, קיימת פונ' 
+\begin_inset Formula $m_{\mathcal{H}}:\left(0,1\right)^{2}\to\mathbb{N}$
+\end_inset
+
+ ואלגוריתם 
+\begin_inset Formula $A$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $\varepsilon,\delta\in\left(0,1\right)$
+\end_inset
+
+ ולכל התפלגות 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+ על 
+\begin_inset Formula $Z$
+\end_inset
+
+ , כאשר מריצים את 
+\begin_inset Formula $A$
+\end_inset
+
+ על 
+\begin_inset Formula $m\ge m_{\mathcal{H}}\left(\varepsilon,\delta\right)$
+\end_inset
+
+ דוגמאות הנדגמות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+i.i.d
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מ-
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+ מתקיים ש:
+\begin_inset Formula 
+\[
+\Pr_{S\sim\mathcal{D}^{m}}\left[L_{\mathcal{D}}\left(A\left(S\right)\right)\le\min_{h\in\mathcal{H}}L_{\mathcal{D}}\left(h\right)+\varepsilon\right]\ge1-\delta
+\]
+
+\end_inset
+
+ 
+\end_layout
+
 \begin_layout Section
 פונקציות במספר משתנים
+\end_layout
+
+\begin_layout Standard
+יהי 
+\begin_inset Formula $x\in\RR^{n}$
+\end_inset
+
+ ותהי 
+\begin_inset Formula $U\in\RR^{n\times n}$
+\end_inset
+
+ מטריצה אורתוגנלית.
+ 
+\begin_inset Formula 
+\[
+J_{\sigma}\left(f\right)=\begin{pmatrix}\frac{\partial f_{1}\left(\sigma\right)}{\partial\sigma_{1}} & \cdots & \frac{\partial f_{1}\left(\sigma\right)}{\partial\sigma_{n}}\\
+\vdots & \ddots & \vdots\\
+\frac{\partial f_{n}\left(\sigma\right)}{\partial\sigma_{1}} & \cdots & \frac{\partial f_{n}\left(\sigma\right)}{\partial\sigma_{n}}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
