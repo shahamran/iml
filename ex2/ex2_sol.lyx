@@ -1157,7 +1157,7 @@ b_{j} & =\min\left\{ i\in\left[2k\right]:i>a_{j}\text{ and }x_{i}=0\right\} -\fr
 
 \begin_layout Standard
 נגדיר 
-\begin_inset Formula $C=\left\{ e_{1},\dots,e_{d},0\right\} $
+\begin_inset Formula $C=\left\{ \mathbf{e}_{1},\dots,\mathbf{e}_{d},\mathbf{0}\right\} $
 \end_inset
 
 .
@@ -1177,9 +1177,9 @@ b_{j} & =\min\left\{ i\in\left[2k\right]:i>a_{j}\text{ and }x_{i}=0\right\} -\fr
  מתקיים: 
 \begin_inset Formula 
 \begin{align*}
-h_{\mathbf{w},b}\left(e_{i}\right) & =\sgn\left(\left\langle \mathbf{w},e_{i}\right\rangle +b\right)=\sgn\left(y_{i-1}+b\right)\overset{\left|b\right|\le\frac{1}{2}}{=}y_{i-1}\\
-h_{\mathbf{w},b}\left(0\right) & =\sgn\left(\left\langle \mathbf{w},0\right\rangle +b\right)=\sgn\left(b\right)=y_{d}\\
-\implies\left(h_{\mathbf{w},b}\left(e_{1}\right),\dots,h_{\mathbf{w},b}\left(e_{d}\right),h_{\mathbf{w},b}\left(0\right)\right) & =\left(y_{0},\dots,y_{d-1},y_{d}\right)=y
+h_{\mathbf{w},b}\left(\mathbf{e}_{i}\right) & =\sgn\left(\left\langle \mathbf{w},\mathbf{e}_{i}\right\rangle +b\right)=\sgn\left(y_{i-1}+b\right)\overset{\left|b\right|\le\frac{1}{2}}{=}y_{i-1}\\
+h_{\mathbf{w},b}\left(\mathbf{0}\right) & =\sgn\left(\left\langle \mathbf{w},\mathbf{0}\right\rangle +b\right)=\sgn\left(b\right)=y_{d}\\
+\implies\left(h_{\mathbf{w},b}\left(\mathbf{e}_{1}\right),\dots,h_{\mathbf{w},b}\left(\mathbf{e}_{d}\right),h_{\mathbf{w},b}\left(0\right)\right) & =\left(y_{0},\dots,y_{d-1},y_{d}\right)=y
 \end{align*}
 
 \end_inset
@@ -1202,7 +1202,7 @@ h_{\mathbf{w},b}\left(0\right) & =\sgn\left(\left\langle \mathbf{w},0\right\rang
 
 \begin_layout Standard
 נניח בשלילה שקבוצה 
-\begin_inset Formula $C=\left\{ x_{1},\dots,x_{d+2}\right\} $
+\begin_inset Formula $C=\left\{ \mathbf{x}_{1},\dots,\mathbf{x}_{d+2}\right\} $
 \end_inset
 
  מנותצת על ידי 
@@ -1228,7 +1228,7 @@ h_{\mathbf{w},b}\left(0\right) & =\sgn\left(\left\langle \mathbf{w},0\right\rang
 \end_inset
 
  מקיימת: 
-\begin_inset Formula $\left(h\left(x_{1}\right),\dots,h\left(x_{d+2}\right)\right)^{T}=y$
+\begin_inset Formula $\left(h\left(\mathbf{x}_{1}\right),\dots,h\left(\mathbf{x}_{d+2}\right)\right)^{T}=y$
 \end_inset
 
 .
@@ -1241,16 +1241,76 @@ h_{\mathbf{w},b}\left(0\right) & =\sgn\left(\left\langle \mathbf{w},0\right\rang
 \end_inset
 
  נגדיר 
-\begin_inset Formula $\mathbf{x}'_{i}=\left(x_{1},\dots,x_{d},1\right)^{T}\in\RR^{d+1}$
+\begin_inset Formula $\mathbf{x}'_{i}=\left(\mathbf{x}_{i}^{1},\dots,\mathbf{x}_{i}^{d},1\right)^{T}\in\RR^{d+1}$
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+כאשר 
+\begin_inset Formula $\mathbf{x}_{i}^{j}$
+\end_inset
+
+ הוא הקורדינטה ה-
+\begin_inset Formula $j$
+\end_inset
+
+ בוקטור 
+\begin_inset Formula $\mathbf{x}_{i}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $j\in\left[d\right]$
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 .
- מתקיים: 
+ מתקיים
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+לכל וקטור 
+\begin_inset Formula $\mathbf{a}=\left(a_{1},\dots,a_{d}\right)^{T}\in\Rd$
+\end_inset
+
+ וסקלר 
+\begin_inset Formula $c$
+\end_inset
+
+ נסמן ב-
+\begin_inset Formula $\left(\mathbf{a}^{T},c\right)$
+\end_inset
+
+ את הוקטור 
+\begin_inset Formula $\left(a_{1},\dots,a_{d},c\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $\begin{pmatrix}\mathbf{a}\\
+c
+\end{pmatrix}=\begin{pmatrix}a_{1}\\
+\vdots\\
+a_{d}\\
+c
+\end{pmatrix}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+: 
 \begin_inset Formula 
 \begin{align*}
-\left\langle \mathbf{w}',\mathbf{x}'_{i}\right\rangle  & =\left(w_{1},\dots,w_{d},b\right)\begin{pmatrix}x_{1}\\
-\vdots\\
-x_{d}\\
+\left\langle \mathbf{w}',\mathbf{x}'_{i}\right\rangle  & =\left(\mathbf{w}^{T},b\right)\begin{pmatrix}\mathbf{x}_{i}\\
 1
 \end{pmatrix}=\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle +b\\
 \implies\sgn\left(\left\langle \mathbf{w'},\mathbf{x}'_{i}\right\rangle \right) & =\sgn\left(\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle +b\right)=h_{\mathbf{w},b}\left(x_{i}\right)=y_{i}
