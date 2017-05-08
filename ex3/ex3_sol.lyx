@@ -1,0 +1,605 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass heb-article
+\begin_preamble
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata,positioning}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language hebrew
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.7cm
+\topmargin 1.7cm
+\rightmargin 1.7cm
+\bottommargin 1.7cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\RR}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\norm}[1]{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Rd}{\mathbb{R}^{d}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\set}[2]{\left\{  #1\:\middle|\:#2\right\}  }
+{\left\{ #1\:\mid\:#2\right\} }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Al}{{\cal A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Hy}{{\cal H}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\fl}[1]{\left\lfloor #1\right\rfloor }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{{\cal X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Y}{{\cal Y}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\prc}[2]{\mathbb{P}\left[#1\middle|#2\right]}
+{\mathbb{P}\left[#1\mid#2\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pr}[1]{\mathbb{P}\left[#1\right]}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+מבוא למערכות לומדות
+\begin_inset Newline newline
+\end_inset
+
+תרגיל
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\end_layout
+
+\begin_layout Section
+קמירות
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+הטענה נכונה.
+ יהיו 
+\begin_inset Formula $C_{1},C_{2}\subset\RR^{n}$
+\end_inset
+
+ קבוצות קמורות ו-
+\begin_inset Formula $\alpha,\beta\in\RR$
+\end_inset
+
+.
+ יהיו 
+\begin_inset Formula ${x,y\in\alpha C_{1}+\beta C_{2}=\left\{ \alpha c_{1}+\beta c_{2}:c_{1}\in C_{1},c_{2}\in C_{2}\right\} }$
+\end_inset
+
+ ו-
+\begin_inset Formula $\gamma\in\left[0,1\right]$
+\end_inset
+
+.
+ צריך להראות ש-
+\begin_inset Formula $\gamma x+\left(1-\gamma\right)y\in\alpha C_{1}+\beta C_{2}$
+\end_inset
+
+.
+ קיימים 
+\begin_inset Formula $c_{1},c'_{1}\in C_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $c_{2},c'_{2}\in C_{2}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $x=\alpha c_{1}+\beta c_{2}$
+\end_inset
+
+ ו-
+\begin_inset Formula $y=\alpha c'_{1}+\beta c'_{2}$
+\end_inset
+
+.
+ לכן: 
+\begin_inset Formula 
+\begin{align*}
+\gamma x+\left(1-\gamma\right)y & =\gamma\left(\alpha c_{1}+\beta c_{2}\right)+\left(1-\gamma\right)\left(\alpha c'_{1}+\beta c'_{2}\right)\\
+ & =\gamma\alpha c_{1}+\gamma\beta c_{2}+\left(1-\gamma\right)\alpha c'_{1}+\left(1-\gamma\right)\beta c'_{2}\\
+ & =\alpha\left(\gamma c_{1}+\left(1-\gamma\right)c'_{1}\right)+\beta\left(\gamma c_{2}+\left(1-\gamma\right)c'_{2}\right)
+\end{align*}
+
+\end_inset
+
+ולכן, לפי ההנחה ש-
+\begin_inset Formula $C_{1},C_{2}$
+\end_inset
+
+ קבוצות קמורות, מתקיים ש-
+\begin_inset Formula $\gamma c_{i}+\left(1-\gamma\right)c'_{i}\in C_{i}$
+\end_inset
+
+ ל-
+\begin_inset Formula $i=1,2$
+\end_inset
+
+.
+ לכן קיימים 
+\begin_inset Formula $c''_{1}\in C_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $c''_{2}\in C_{2}$
+\end_inset
+
+ כך ש-: 
+\begin_inset Formula 
+\[
+\gamma x+\left(1-\gamma\right)y=\alpha c''_{1}+\beta c''_{2}
+\]
+
+\end_inset
+
+ולכן 
+\begin_inset Formula $\gamma x+\left(1-\gamma\right)y\in\alpha C_{1}+\beta C_{2}$
+\end_inset
+
+ ולכן לפי הגדרה הקבוצה הנ"ל קמורה, כנדרש.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+הטענה נכונה.
+ יהיו 
+\begin_inset Formula $x,x'\in\RR_{+}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\alpha\in\left[0,1\right]$
+\end_inset
+
+.
+ צ"ל ש-
+\begin_inset Formula $f\circ g\left(\alpha x+\left(1-\alpha\right)x'\right)\le\alpha f\circ g\left(x\right)+\left(1-\alpha\right)f\circ g\left(x'\right)$
+\end_inset
+
+.
+ מקמירות 
+\begin_inset Formula $g$
+\end_inset
+
+ מתקיים: 
+\begin_inset Formula 
+\begin{align*}
+g\left(\alpha x+\left(1-\alpha\right)x'\right) & \le\alpha g\left(x\right)+\left(1-\alpha\right)g\left(x'\right)
+\end{align*}
+
+\end_inset
+
+לכן, מקמירות 
+\begin_inset Formula $f$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{align*}
+f\circ g\left(\alpha x+\left(1-\alpha\right)x'\right) & =f\left(g\left(\alpha x+\left(1-\alpha\right)x'\right)\right)\\
+ & f\left(\alpha g\left(x\right)+\left(1-\alpha\right)g\left(x'\right)\right)\le\alpha f\left(g\left(x\right)\right)+\left(1-\alpha\right)f\left(g\left(x'\right)\right)\\
+ & =\alpha f\circ g\left(x\right)+\left(1-\alpha\right)f\circ g\left(x\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+הטענה אינה נכונה.
+ תהי 
+\begin_inset Formula $g\left(x\right)=\frac{1}{x}$
+\end_inset
+
+ ו-
+\begin_inset Formula $f\left(x\right)=\frac{1}{x^{2}}$
+\end_inset
+
+.
+ ברור ששתיהן קמורות )קל לראות שהאפי-גרף שלהן הוא קבוצה קמורה(.
+ מאידך, הרכבתן היא 
+\begin_inset Formula $f\left(g\left(x\right)\right)=\frac{1}{g\left(x\right)^{2}}=\frac{1}{\left(\frac{1}{x}\right)^{2}}=\frac{1}{\frac{1}{x^{2}}}=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+הטענה אינה נכונה.
+ ניקח 
+\begin_inset Formula $f\left(x\right)=x^{2}$
+\end_inset
+
+ - ראינו בכיתה שזו פונקציה קמורה )וגם קל לראות(.
+ אם ניקח 
+\begin_inset Formula $c=-1\in\RR$
+\end_inset
+
+ אזי 
+\begin_inset Formula $c\cdot f\left(x\right)=-x^{2}$
+\end_inset
+
+ וברור שהיא אינה קמורה )למשל כי האפי-גרף שלה הוא לא קבוצה קמורה(.
+ באופן קונקרטי, אם ניקח 
+\begin_inset Formula $x=-1$
+\end_inset
+
+, 
+\begin_inset Formula $x'=1$
+\end_inset
+
+ ו-
+\begin_inset Formula $\alpha=\frac{1}{2}$
+\end_inset
+
+ נקבל: 
+\begin_inset Formula 
+\begin{align*}
+c\cdot f\left(\alpha x+\left(1-\alpha\right)x'\right) & =-\left(\frac{1}{2}\cdot\left(-1\right)+\frac{1}{2}\cdot1\right)^{2}=0>-1\\
+ & =-1\cdot\frac{1}{2}\cdot\left(-1\right)^{2}+\left(-1\right)\cdot\frac{1}{2}\cdot\left(1\right)^{2}=\alpha cf\left(x\right)+\left(1-\alpha\right)cf\left(x'\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+הטענה אינה נכונה.
+ 
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+הטענה אינה נכונה.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נניח בשלילה שקיים 
+\begin_inset Formula $\rho>0$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $f$
+\end_inset
+
+ היא 
+\begin_inset Formula $\rho$
+\end_inset
+
+-ליפשיצית, כלומר 
+\begin_inset Formula $\left|f\left(x\right)-f\left(x'\right)\right|\le\rho\left|x-x'\right|$
+\end_inset
+
+ לכל 
+\begin_inset Formula $x,x'\in\RR$
+\end_inset
+
+.
+ נבחר 
+\begin_inset Formula $x=2\rho$
+\end_inset
+
+ ו-
+\begin_inset Formula $x'=\rho$
+\end_inset
+
+ ונקבל: 
+\begin_inset Formula 
+\[
+\left|f\left(x\right)-f\left(x'\right)\right|=\left|4\rho^{2}-\rho^{2}\right|=\left|3\rho^{2}\right|\overset{1}{=}3\rho^{2}\overset{2}{>}\rho^{2}=\rho\left(2\rho-\rho\right)\overset{3}{=}\rho\left|2\rho-\rho\right|=\rho\left|x-x'\right|
+\]
+
+\end_inset
+
+כאשר: 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\rho^{2}>0$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $3\rho^{2}>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $3>1$
+\end_inset
+
+ ו-
+\begin_inset Formula $\rho^{2}>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\rho>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+וזו סתירה ל-
+\begin_inset Formula $\rho$
+\end_inset
+
+-ליפשיציות של 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+למידות
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+PAC
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+פונקציות במספר משתנים
+\end_layout
+
+\begin_layout Section
+חלק תכנותי
+\end_layout
+
+\end_body
+\end_document
