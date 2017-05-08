@@ -170,7 +170,7 @@
 \uwave default
 \noun default
 \color inherit
-2
+3
 \end_layout
 
 \begin_layout Section
@@ -193,7 +193,7 @@ status open
 \begin_layout Standard
 הטענה נכונה.
  יהיו 
-\begin_inset Formula $C_{1},C_{2}\subset\RR^{n}$
+\begin_inset Formula $C_{1},C_{2}\subseteq\RR^{n}$
 \end_inset
 
  קבוצות קמורות ו-
@@ -201,8 +201,16 @@ status open
 \end_inset
 
 .
- יהיו 
-\begin_inset Formula ${x,y\in\alpha C_{1}+\beta C_{2}=\left\{ \alpha c_{1}+\beta c_{2}:c_{1}\in C_{1},c_{2}\in C_{2}\right\} }$
+ נסמן: 
+\begin_inset Formula 
+\[
+\alpha C_{1}+\beta C_{2}=\left\{ \alpha c_{1}+\beta c_{2}:c_{1}\in C_{1},c_{2}\in C_{2}\right\} 
+\]
+
+\end_inset
+
+יהיו 
+\begin_inset Formula ${x,y\in\alpha C_{1}+\beta C_{2}}$
 \end_inset
 
  ו-
@@ -215,7 +223,11 @@ status open
 \end_inset
 
 .
- קיימים 
+ מבחירת 
+\begin_inset Formula $x,y$
+\end_inset
+
+, קיימים 
 \begin_inset Formula $c_{1},c'_{1}\in C_{1}$
 \end_inset
 
@@ -271,11 +283,11 @@ status open
 
 \end_inset
 
-ולכן 
+לכן 
 \begin_inset Formula $\gamma x+\left(1-\gamma\right)y\in\alpha C_{1}+\beta C_{2}$
 \end_inset
 
- ולכן לפי הגדרה הקבוצה הנ"ל קמורה, כנדרש.
+ ומכאן לפי הגדרה הקבוצה הנ"ל קמורה, כנדרש.
 \end_layout
 
 \begin_layout Subsection
@@ -292,54 +304,9 @@ status open
 \end_layout
 
 \begin_layout Standard
-הטענה נכונה.
- יהיו 
-\begin_inset Formula $x,x'\in\RR_{+}$
-\end_inset
-
- ו-
-\begin_inset Formula $\alpha\in\left[0,1\right]$
-\end_inset
-
-.
- צ"ל ש-
-\begin_inset Formula $f\circ g\left(\alpha x+\left(1-\alpha\right)x'\right)\le\alpha f\circ g\left(x\right)+\left(1-\alpha\right)f\circ g\left(x'\right)$
-\end_inset
-
-.
- מקמירות 
-\begin_inset Formula $g$
-\end_inset
-
- מתקיים: 
-\begin_inset Formula 
-\begin{align*}
-g\left(\alpha x+\left(1-\alpha\right)x'\right) & \le\alpha g\left(x\right)+\left(1-\alpha\right)g\left(x'\right)
-\end{align*}
-
-\end_inset
-
-לכן, מקמירות 
-\begin_inset Formula $f$
-\end_inset
-
-: 
-\begin_inset Formula 
-\begin{align*}
-f\circ g\left(\alpha x+\left(1-\alpha\right)x'\right) & =f\left(g\left(\alpha x+\left(1-\alpha\right)x'\right)\right)\\
- & f\left(\alpha g\left(x\right)+\left(1-\alpha\right)g\left(x'\right)\right)\le\alpha f\left(g\left(x\right)\right)+\left(1-\alpha\right)f\left(g\left(x'\right)\right)\\
- & =\alpha f\circ g\left(x\right)+\left(1-\alpha\right)f\circ g\left(x\right)
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 הטענה אינה נכונה.
  תהי 
-\begin_inset Formula $g\left(x\right)=\frac{1}{x}$
+\begin_inset Formula $g\left(x\right)=x^{2}$
 \end_inset
 
  ו-
@@ -423,7 +390,37 @@ status open
 
 \begin_layout Standard
 הטענה אינה נכונה.
- 
+ ניקח למשל 
+\begin_inset Formula $f\left(x\right)=\begin{cases}
+x, & x<0\\
+2x, & x\ge0
+\end{cases}$
+\end_inset
+
+ ו-
+\begin_inset Formula $g\left(x\right)=\begin{cases}
+-2x, & x<0\\
+-x, & x\ge0
+\end{cases}$
+\end_inset
+
+.
+ מתקיים:
+\begin_inset Formula 
+\[
+h\left(x\right)=\min\left\{ f,g\right\} \left(x\right)=\begin{cases}
+x, & x<0\\
+-x, & x\ge0
+\end{cases}
+\]
+
+\end_inset
+
+וברור ש-
+\begin_inset Formula $h$
+\end_inset
+
+ אינה קמורה.
 \end_layout
 
 \begin_layout Subsection
@@ -441,6 +438,70 @@ status open
 
 \begin_layout Standard
 הטענה אינה נכונה.
+ ניקח למשל את 
+\begin_inset Formula $f\equiv0$
+\end_inset
+
+ ו- 
+\begin_inset Formula $g\left(x\right)=x^{2}$
+\end_inset
+
+.
+ אזי 
+\begin_inset Formula $\left(f-g\right)\left(x\right)=0-x^{2}=-x^{2}$
+\end_inset
+
+ וראינו בסעיף
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+שזו אינה פונ' קמורה.
 \end_layout
 
 \begin_layout Subsection
@@ -539,7 +600,7 @@ status open
 \end_layout
 
 \begin_layout Section
-למידות
+קמירות ולמידות
 \family roman
 \series bold
 \shape up
@@ -567,38 +628,24 @@ status open
 PAC
 \end_layout
 
-\begin_layout Subsection
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
+\begin_layout Section
+רשתות נוירונים אינן בעיות קמורות
 \end_layout
 
-\end_inset
-
-
+\begin_layout Section
+שכבת קונבולוציה
 \end_layout
 
-\begin_layout Subsection
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
+\begin_layout Section
+סאב-גרדיינט של 
+\begin_inset Formula $L_{\mathcal{D}}$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-פונקציות במספר משתנים
-\end_layout
-
-\begin_layout Section
-חלק תכנותי
+חלק תכנותי - רשתות נוירונים
 \end_layout
 
 \end_body
