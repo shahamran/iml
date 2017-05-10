@@ -210,7 +210,7 @@ status open
 \end_inset
 
 יהיו 
-\begin_inset Formula ${x,y\in\alpha C_{1}+\beta C_{2}}$
+\begin_inset Formula $x,y\in\alpha C_{1}+\beta C_{2}$
 \end_inset
 
  ו-
@@ -310,16 +310,58 @@ status open
 \end_inset
 
  ו-
-\begin_inset Formula $f\left(x\right)=\frac{1}{x^{2}}$
+\begin_inset Formula $f\left(x\right)=\begin{cases}
+1-x, & 0\le x\le1\\
+0, & x>1
+\end{cases}$
 \end_inset
 
 .
- ברור ששתיהן קמורות )קל לראות שהאפי-גרף שלהן הוא קבוצה קמורה(.
- מאידך, הרכבתן היא 
-\begin_inset Formula $f\left(g\left(x\right)\right)=\frac{1}{g\left(x\right)^{2}}=\frac{1}{\left(\frac{1}{x}\right)^{2}}=\frac{1}{\frac{1}{x^{2}}}=$
+ ראינו בכיתה ש-
+\begin_inset Formula $g$
 \end_inset
 
+ קמורה וכן ברור ש-
+\begin_inset Formula $f$
+\end_inset
 
+ קמורה.
+ מאידך, הרכבתן היא 
+\begin_inset Formula $f\left(g\left(x\right)\right)=\begin{cases}
+1-x^{2}, & 0\le x\le1\\
+0, & x>1
+\end{cases}$
+\end_inset
+
+.
+ נראה שזו אינה פונקציה קמורה.
+ ניקח 
+\begin_inset Formula $x=0$
+\end_inset
+
+, 
+\begin_inset Formula $x'=1$
+\end_inset
+
+ ו-
+\begin_inset Formula $\alpha=\frac{1}{2}$
+\end_inset
+
+ נקבל: 
+\begin_inset Formula 
+\begin{align*}
+\alpha x+\left(1-\alpha\right)x' & =\frac{1}{2}\cdot0+\frac{1}{2}\cdot1=\frac{1}{2}\\
+\implies f\left(g\left(\alpha x+\left(1-\alpha\right)x'\right)\right) & =f\left(g\left(\frac{1}{2}\right)\right)=1-\left(\frac{1}{2}\right)^{2}=\frac{3}{4}>\frac{1}{2}\\
+ & =\frac{1}{2}\cdot\left(1-0^{2}\right)+\frac{1}{2}\cdot\left(1-1^{2}\right)=\alpha f\left(g\left(x\right)\right)+\left(1-\alpha\right)f\left(g\left(x'\right)\right)
+\end{align*}
+
+\end_inset
+
+ולכן 
+\begin_inset Formula $f\circ g$
+\end_inset
+
+ אינה קמורה.
 \end_layout
 
 \begin_layout Subsection
@@ -337,11 +379,11 @@ status open
 
 \begin_layout Standard
 הטענה אינה נכונה.
- ניקח 
+ ניקח את הפונ' הקמורה 
 \begin_inset Formula $f\left(x\right)=x^{2}$
 \end_inset
 
- - ראינו בכיתה שזו פונקציה קמורה )וגם קל לראות(.
+.
  אם ניקח 
 \begin_inset Formula $c=-1\in\RR$
 \end_inset
@@ -350,9 +392,9 @@ status open
 \begin_inset Formula $c\cdot f\left(x\right)=-x^{2}$
 \end_inset
 
- וברור שהיא אינה קמורה )למשל כי האפי-גרף שלה הוא לא קבוצה קמורה(.
- באופן קונקרטי, אם ניקח 
-\begin_inset Formula $x=-1$
+.
+ זו אינה פונקציה קמורה: ניקח 
+\begin_inset Formula $x=0$
 \end_inset
 
 , 
@@ -363,16 +405,20 @@ status open
 \begin_inset Formula $\alpha=\frac{1}{2}$
 \end_inset
 
- נקבל: 
+ ונקבל: 
 \begin_inset Formula 
 \begin{align*}
-c\cdot f\left(\alpha x+\left(1-\alpha\right)x'\right) & =-\left(\frac{1}{2}\cdot\left(-1\right)+\frac{1}{2}\cdot1\right)^{2}=0>-1\\
- & =-1\cdot\frac{1}{2}\cdot\left(-1\right)^{2}+\left(-1\right)\cdot\frac{1}{2}\cdot\left(1\right)^{2}=\alpha cf\left(x\right)+\left(1-\alpha\right)cf\left(x'\right)
+c\cdot f\left(\alpha x+\left(1-\alpha\right)x'\right) & =-\left(0+\frac{1}{2}\cdot1\right)^{2}=-\frac{1}{4}>-\frac{1}{2}\\
+ & =-\frac{1}{2}\cdot0^{2}-\frac{1}{2}\cdot1^{2}=\alpha cf\left(x\right)+\left(1-\alpha\right)cf\left(x'\right)
 \end{align*}
 
 \end_inset
 
+כלומר הפונקצייה 
+\begin_inset Formula $-x^{2}$
+\end_inset
 
+ לא קמורה.
 \end_layout
 
 \begin_layout Subsection
@@ -420,7 +466,7 @@ x, & x<0\\
 \begin_inset Formula $h$
 \end_inset
 
- אינה קמורה.
+ אינה קמורה )מהסתכלות באפי-גרף, למשל(.
 \end_layout
 
 \begin_layout Subsection
@@ -451,57 +497,7 @@ status open
 \begin_inset Formula $\left(f-g\right)\left(x\right)=0-x^{2}=-x^{2}$
 \end_inset
 
- וראינו בסעיף
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\numeric on
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-3
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\numeric off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-שזו אינה פונ' קמורה.
+ וראינו שזו אינה פונ' קמורה.
 \end_layout
 
 \begin_layout Subsection
@@ -639,6 +635,57 @@ PAC
 \begin_layout Section
 סאב-גרדיינט של 
 \begin_inset Formula $L_{\mathcal{D}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+יהיו 
+\begin_inset Formula $z\in\mathcal{Z}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{w}\in\Rd$
+\end_inset
+
+ ו-
+\begin_inset Formula $\mathbf{v}_{z}\in\partial l\left(\mathbf{w},z\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{align*}
+L_{\mathcal{D}}\left(\mathbf{w}\right) & =\mathbb{E}_{z\sim\mathcal{D}}\left[l\left(\mathbf{w},z\right)\right]
+\end{align*}
+
+\end_inset
+
+כמוכן, מהגדרת 
+\begin_inset Formula $\mathbf{v}_{z}$
+\end_inset
+
+ מתקיים: 
+\begin_inset Formula 
+\[
+l\left(\mathbf{y},z\right)\ge l\left(\mathbf{w},z\right)+\mathbf{v}_{z}^{T}\left(\mathbf{y}-\mathbf{w}\right)=l\left(\mathbf{w},z\right)+\left\langle \mathbf{v}_{z},\mathbf{y}\right\rangle -\left\langle \mathbf{v}_{z},\mathbf{w}\right\rangle 
+\]
+
+\end_inset
+
+לכל 
+\begin_inset Formula $\mathbf{y}$
+\end_inset
+
+.
+ צריך להראות שמתקיים: 
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}_{z\sim{\cal D}}\left[l\left(\mathbf{y},z\right)\right]=L_{\mathcal{D}}\left(\mathbf{y}\right) & \ge L_{\mathcal{D}}\left(\mathbf{w}\right)+\left\langle \mathbb{E}_{z\sim{\cal D}}\left[\mathbf{v}_{z}\right],\mathbf{y}\right\rangle -\left\langle \mathbb{E}_{z\sim{\cal D}}\left[\mathbf{v}_{z}\right],\mathbf{w}\right\rangle \\
+ & =\mathbb{E}_{z\sim{\cal D}}\left[l\left(\mathbf{w},z\right)\right]+\left\langle \mathbb{E}_{z\sim{\cal D}}\left[\mathbf{v}_{z}\right],\mathbf{y}\right\rangle -\left\langle \mathbb{E}_{z\sim{\cal D}}\left[\mathbf{v}_{z}\right],\mathbf{w}\right\rangle 
+\end{align*}
+
 \end_inset
 
 
