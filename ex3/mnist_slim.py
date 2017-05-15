@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # An MNIST interactive demo
 # Yoni Wexler. April 20, 2017
 
@@ -10,6 +10,8 @@ import shutil
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2
+
+# import pdb
 
 
 def build_network(images):
@@ -47,7 +49,8 @@ def train_net(basedir):
         tf.cast(tf.equal(tf.argmax(predictions, axis=1), tf.argmax(y, axis=1)),
                 tf.float32))
     # Define the optimizer:
-    train_step = tf.train.GradientDescentOptimizer(learning_rate=0.1).minimize(compute_loss)
+    train_step = tf.train.GradientDescentOptimizer(
+        learning_rate=0.1).minimize(compute_loss)
 
     # Show progress with TensorBoard:
     tf.summary.scalar('Loss', compute_loss)
@@ -64,9 +67,10 @@ def train_net(basedir):
 
         losses = []
         accuracies = []
-        print("%10s | %10s | %5s%% | %5s%%" % ('Samples', 'Loss', 'Train', 'Test'))
+        print("%10s | %10s | %5s%% | %5s%%" % ('Samples', 'Loss',
+                                               'Train', 'Test'))
         for i in range(1, 500):
-            batchx, batchy = mnist.train.next_batch(32)            
+            batchx, batchy = mnist.train.next_batch(32)
             _, loss, acc, summ = sess.run([train_step, compute_loss,
                                            compute_accuracy, summaries],
                                           feed_dict={x: batchx, y: batchy})
@@ -75,12 +79,15 @@ def train_net(basedir):
             train_writer.add_summary(summ, i)
 
             if i % 20 == 0:
-                tloss, tacc, summ = sess.run([compute_loss, compute_accuracy, summaries],
+                tloss, tacc, summ = sess.run([compute_loss, compute_accuracy,
+                                              summaries],
                                              feed_dict={x: mnist.test.images,
                                                         y: mnist.test.labels})
-                print("%10d | %10.6f | %5.2f%% | %5.2f%%" % (i*len(batchy), np.mean(losses),
-                                                            100.0 * np.mean(accuracies),
-                                                            100.0 * tacc))
+                print("%10d | %10.6f | %5.2f%% | %5.2f%%" %
+                      (i * len(batchy),
+                       np.mean(losses),
+                       100.0 * np.mean(accuracies),
+                       100.0 * tacc))
                 losses = []
                 accuracies = []
                 test_writer.add_summary(summ, i)
@@ -98,7 +105,6 @@ def train_or_load_model(basedir):
         latest_checkpoint = tf.train.latest_checkpoint(basedir)
         print('Now re-run to play with the model')
         exit()
-        
 
     sess = tf.Session()
 
@@ -164,7 +170,8 @@ def interactive_demo(model):
 
             # Make the image more contrasty:
             crop *= 2.0
-            crop = np.maximum(0, np.minimum(255, crop - 255 * 0.5)).astype('uint8')
+            crop = np.maximum(
+                0, np.minimum(255, crop - 255 * 0.5)).astype('uint8')
             # image[minr:maxr, minc:maxc] = crop
             if np.mean(crop) > 100:            # Make black background
                 crop = 255 - crop
@@ -172,9 +179,9 @@ def interactive_demo(model):
             scale = 22.0 / np.max(crop.shape)
             crop = cv2.resize(crop, (0, 0), fx=scale, fy=scale)
             w, h = crop.shape
-            xstart = 14 - w / 2
+            xstart = int(14 - w / 2)
             xend = xstart + w
-            ystart = 14 - h / 2
+            ystart = int(14 - h / 2)
             yend = ystart + h
             win = np.zeros((28, 28))
             win[xstart:xend, ystart:yend] = crop
@@ -182,7 +189,8 @@ def interactive_demo(model):
             pred = np.exp(pred - np.max(pred))
             pred /= np.sum(pred)
             if np.any(pred > 0.7):
-                #ax.imshow(win, cmap='gray', extent=(minc, minc + 28, minr, minr - 28))
+                # ax.imshow(win, cmap='gray',
+                #           extent=(minc, minc + 28, minr, minr - 28))
                 ax.text(minc, maxr, str(np.argmax(pred)), color=(1.0, .2, .2),
                         fontsize=0.3 * (maxr - minr))
                 ax.add_patch(rect)
@@ -199,8 +207,8 @@ def interactive_demo(model):
     timer = fig.canvas.new_timer(interval=100)   # 10 fps
     timer.add_callback(on_timer)
     cam = cv2.VideoCapture(0)
-    cam.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 640)
-    cam.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 480)
+    cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+    cam.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
     timer.start()
     plt.show()
 
@@ -233,7 +241,8 @@ def examine_model(model):
     mistakes = np.where(~acc)[0]
     print('Found %d mistakes' % len(mistakes))
     mistakes = mistakes[:100]   # Keep max 100
-    show_images_and_labels(mnist.test.images[mistakes], test_predictions[mistakes])
+    show_images_and_labels(mnist.test.images[mistakes],
+                           test_predictions[mistakes])
 
 
 if __name__ == "__main__":
@@ -244,4 +253,4 @@ if __name__ == "__main__":
 
     examine_model(model)
 
-    interactive_demo(model)
+    # interactive_demo(model)
