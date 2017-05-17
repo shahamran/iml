@@ -11,6 +11,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 
+# my imports
+import time
+
 # import pdb
 
 
@@ -249,7 +252,11 @@ if __name__ == "__main__":
 
     basedir = 'mnist_models'
 
+    # measure training time
+    start = time.time()
     model = train_or_load_model(basedir)
+    end = time.time()
+    print(f'Training the model took: {end-start} seconds')
 
     examine_model(model)
 
