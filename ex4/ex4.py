@@ -123,6 +123,8 @@ def perform_kfold(X, Y, k):
 if __name__ == "__main__":
     # read the data and divide to train, validation, test
     X, Y = load_data()
+
+
     train_idx, validation_idx, test_idx = split_train_test(X, Y)
     X_train, Y_train = X[train_idx], Y[train_idx]
     X_valid, Y_valid = X[validation_idx], Y[validation_idx]
@@ -143,6 +145,16 @@ if __name__ == "__main__":
     Y_cv = np.concatenate((Y_train, Y_valid))
     h_cv, _ = perform_kfold(X_cv, Y_cv, k=K)
 
+    plt.figure()
+    X_sorted = np.sort(X)
+    plt.scatter(X, Y, s=.5, label='data points')
+    plt.title('All data')
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.plot(X_sorted, h_star(X_sorted), label='fitted with validation')
+    plt.plot(X_sorted, h_cv(X_sorted), label='fitted with cross-validation')
+    plt.legend()
+
     # check if the hypothesis from the kfold cv
     # is the same as h_star
     nice_print(f'h_star equals h_cv: {np.all(np.equal(h_cv, h_star))}')
@@ -150,6 +162,11 @@ if __name__ == "__main__":
     nice_print(str(h_star))
 
     # plot losses
-    plt.plot(DEGREES, loss)
-    plt.plot(DEGREES, valid_loss)
+    plt.figure()
+    plt.title('Errors')
+    plt.plot(DEGREES, loss, label='training')
+    plt.plot(DEGREES, valid_loss, label='validation')
+    plt.xlabel('polynomial degree (d)')
+    plt.ylabel('mean error (MSE)')
+    plt.legend()
     plt.show()
