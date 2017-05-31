@@ -202,6 +202,125 @@
 Soft-SVM
 \end_layout
 
+\begin_layout Standard
+נראה את שקילות ההגדרות: 
+\begin_inset Formula 
+\begin{align*}
+\left(1\right) & \min_{\mathbf{w}}\frac{\lambda}{2}\norm{\mathbf{w}}^{2}+\frac{1}{m}\sum_{i=1}^{m}\ell^{hinge}\left(y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle \right)\\
+\left(2\right) & \min_{\mathbf{w},\left\{ \xi_{i}\right\} }\frac{\lambda}{2}\norm{\mathbf{w}}^{2}+\frac{1}{m}\sum_{i=1}^{m}\xi_{i}\text{ such that }\forall i,y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle \ge1-\xi_{i}\text{ and }\xi_{i}\ge0
+\end{align*}
+
+\end_inset
+
+כלומר נראה שפתרון ל-
+\begin_inset Formula $\left(1\right)$
+\end_inset
+
+ הוא פתרון חוקי ואופטימלי ל-
+\begin_inset Formula $\left(2\right)$
+\end_inset
+
+, ולהיפך.
+ נניח ש-
+\begin_inset Formula $\mathbf{w}$
+\end_inset
+
+ הוא פתרון ל-
+\begin_inset Formula $\left(1\right)$
+\end_inset
+
+.
+ נזכור כי 
+\begin_inset Formula $\ell^{hinge}\left(y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle \right)=\max\left\{ 0,1-y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle \right\} $
+\end_inset
+
+.
+ יהיו 
+\begin_inset Formula $\left\{ \xi_{i}\right\} $
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $i$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle \ge1-\xi_{i}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\xi_{i}\ge0$
+\end_inset
+
+.
+ אם כך: 
+\begin_inset Formula 
+\begin{align*}
+ & y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle \ge1-\xi_{i}\\
+\iff & \xi_{i}\ge1-y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle 
+\end{align*}
+
+\end_inset
+
+כמוכן, 
+\begin_inset Formula $\xi_{i}\ge0$
+\end_inset
+
+ לכן: 
+\begin_inset Formula $\xi_{i}\ge\max\left\{ 0,1-y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle \right\} =\ell^{hinge}\left(y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle \right)$
+\end_inset
+
+.
+ זה נכון לכל 
+\begin_inset Formula $i$
+\end_inset
+
+ וכל הביטויים הנדונים הם אי-שליליים.
+ לכן: 
+\begin_inset Formula 
+\[
+\frac{1}{m}\sum_{i=1}^{m}\xi_{i}\ge\frac{1}{m}\sum_{i=1}^{m}\ell^{hinge}\left(y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle \right)
+\]
+
+\end_inset
+
+אם כך, נקבע 
+\begin_inset Formula $\xi'_{i}=\ell^{hinge}\left(y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle \right)$
+\end_inset
+
+ ונקבל ש-
+\begin_inset Formula $\mathbf{w},\left\{ \xi'_{i}\right\} $
+\end_inset
+
+ הוא פתרון חוקי ואופטימלי ל-
+\begin_inset Formula $\left(2\right)$
+\end_inset
+
+, כנדרש.
+\end_layout
+
+\begin_layout Standard
+בכיוון השני, נניח ש-
+\begin_inset Formula $\mathbf{w},\left\{ \xi_{i}\right\} $
+\end_inset
+
+ פתרון ל-
+\begin_inset Formula $\left(2\right)$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+להשלים
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 גרעינים )
 \lang english

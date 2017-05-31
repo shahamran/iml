@@ -151,10 +151,10 @@ def plot_losses(train_loss, valid_loss):
     """
     plt.figure('Errors Figure')
     plt.title('Errors')
-    plt.plot(DEGREES, train_loss, label='training')
-    plt.plot(DEGREES, valid_loss, label='validation')
+    plt.semilogy(DEGREES, train_loss, label='training')
+    plt.semilogy(DEGREES, valid_loss, label='validation')
     plt.xlabel('polynomial degree (d)')
-    plt.ylabel('mean error (MSE)')
+    plt.ylabel('mean error (MSE) - log scale')
     plt.legend()
 
 
