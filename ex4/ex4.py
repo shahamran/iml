@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Fit various polynomials to a a dataset
+Fit various polynomials to a a dataset with train-validation-test split
+and cross-validation.
 """
 
 # imports
@@ -14,38 +15,6 @@ FILE_LABELS = 'Y_poly.npy'
 D = 15
 DEGREES = list(range(1, D+1))
 K = 5
-
-
-class PolyClassifier:
-    def psi(self, X):
-        m = X.shape[0]
-        d = self.d
-        X_new = np.zeros((m, d+1))
-        for i in range(d+1):
-            X_new[:, i] = np.power(X, i)
-        return X_new
-
-    def fit(self, X, Y, d):
-        self.d = d
-        X_new = self.psi(X)
-        # get the optimal polynomial coefficients
-        self.w = least_squares(X_new, Y)
-
-    def predict(self, X, Y=None):
-        predictions = np.dot(self.psi(X), self.w)
-        if Y is not None:
-            return predictions, compute_loss(predictions, Y)
-        else:
-            return predictions
-
-    def __str__(self, *a, **kw):
-        return str(self.w)
-
-    def __call__(self, X):
-        return self.predict(X)
-
-    def __getitem__(self, i):
-        return self.w[i]
 
 
 def nice_print(msg):
@@ -73,15 +42,8 @@ def split_train_test(X, Y):
     return np.array_split(np.arange(m), 3)
 
 
-def least_squares(X, Y):
-    A = np.transpose(X).dot(X)
-    b = np.transpose(X).dot(Y)
-    return np.linalg.pinv(A).dot(b)
-
-
 def fit_polynomial(X, Y, d):
-    poly = PolyClassifier()
-    poly.fit(X, Y, d)
+    poly = np.poly1d(np.polyfit(X, Y, d))
     return poly, compute_loss(poly(X), Y)
 
 
@@ -120,6 +82,32 @@ def perform_kfold(X, Y, k):
     return fit_polynomial(X, Y, d_cv)
 
 
+def plot_fitted_data(X, Y, h_star, h_cv):
+    plt.figure('Data Figure')
+    X_sorted = np.sort(X)
+    plt.scatter(X, Y, s=.5, label='data points')
+    plt.title('All data')
+    plt.text(0.62, 0.4, 'h_star:', fontsize=6)
+    plt.text(0.7, 0.4, str(h_star), fontsize=6)
+    plt.text(0.62, 0, 'h_cv:', fontsize=6)
+    plt.text(0.7, 0, str(h_cv), fontsize=6)
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.plot(X_sorted, h_star(X_sorted), c='orange', label='fitted with validation')
+    plt.plot(X_sorted, h_cv(X_sorted), label='fitted with cross-validation')
+    plt.legend()
+
+
+def plot_losses(train_loss, valid_loss):
+    plt.figure('Errors Figure')
+    plt.title('Errors')
+    plt.plot(DEGREES, train_loss, label='training')
+    plt.plot(DEGREES, valid_loss, label='validation')
+    plt.xlabel('polynomial degree (d)')
+    plt.ylabel('mean error (MSE)')
+    plt.legend()
+
+
 if __name__ == "__main__":
     # read the data and divide to train, validation, test
     X, Y = load_data()
@@ -143,30 +131,12 @@ if __name__ == "__main__":
     nice_print(f'h_star loss is: {test_loss}')
     X_cv = np.concatenate((X_train, X_valid))
     Y_cv = np.concatenate((Y_train, Y_valid))
-    h_cv, _ = perform_kfold(X_cv, Y_cv, k=K)
+    h_cv, _ = perform_kfold(X=X_cv, Y=Y_cv, k=K)
 
-    plt.figure()
-    X_sorted = np.sort(X)
-    plt.scatter(X, Y, s=.5, label='data points')
-    plt.title('All data')
-    plt.xlabel('X')
-    plt.ylabel('Y')
-    plt.plot(X_sorted, h_star(X_sorted), label='fitted with validation')
-    plt.plot(X_sorted, h_cv(X_sorted), label='fitted with cross-validation')
-    plt.legend()
-
-    # check if the hypothesis from the kfold cv
-    # is the same as h_star
-    nice_print(f'h_star equals h_cv: {np.all(np.equal(h_cv, h_star))}')
-    nice_print(str(h_cv))
-    nice_print(str(h_star))
+    # plot the data with the fitted polynomials to check if they're similar
+    plot_fitted_data(X, Y, h_star, h_cv)
 
     # plot losses
-    plt.figure()
-    plt.title('Errors')
-    plt.plot(DEGREES, loss, label='training')
-    plt.plot(DEGREES, valid_loss, label='validation')
-    plt.xlabel('polynomial degree (d)')
-    plt.ylabel('mean error (MSE)')
-    plt.legend()
+    plot_losses(loss, valid_loss)
+
     plt.show()
