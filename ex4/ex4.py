@@ -22,7 +22,8 @@ def compute_loss(predictions, labels):
     returns the squared loss of the given predictions.
     :param predictions: vector of predictions of size `m'
     :param labels: vector of correct output of size `m'
-    :return: vector of size `m' where each coordinate has the value `(prediction - label)^2'
+    :return: vector of size `m' where each coordinate has the value
+             `(prediction - label)^2'
     """
     return np.mean(np.power(predictions - labels, 2))
 
@@ -51,7 +52,8 @@ def fit_polynomial(X, Y, d):
     :param X: X values of the data
     :param Y: Y values of the data
     :param d: degree of polynomial to fit
-    :return: a polynomial (callable) and the loss of this polynomial on the given data
+    :return: a polynomial (callable) and the loss of this polynomial
+             on the given data
     """
     poly = np.poly1d(np.polyfit(X, Y, d))
     return poly, compute_loss(poly(X), Y)
@@ -63,8 +65,8 @@ def perform_validation(X, Y, H):
     :param X: validation X values
     :param Y: validation Y values
     :param H: a set (iterable) of hypotheses from which we choose the model
-    :return: a model `h' from `H' which minimizes the loss over the validation set; and the loss
-             of each model over this data set
+    :return: a model `h' from `H' which minimizes the loss over the
+             validation set; and the loss of each model over this data set
     """
     loss = [np.inf] * len(H)
     for i, h in enumerate(H):
@@ -75,8 +77,8 @@ def perform_validation(X, Y, H):
 
 def concat(arr):
     """
-    concatenates the given array of arrays if possible (if `arr' is not empty), otherwise
-    doesn't do anything
+    concatenates the given array of arrays if possible (if `arr' is not empty),
+    otherwise doesn't do anything
     :param arr: an array of arrays to concatenate
     :return: a concatenated array if len(arr)>0, an empty array otherwise
     """
@@ -92,7 +94,8 @@ def perform_kfold(X, Y, k):
     :param X: X values
     :param Y: Y values
     :param k: number of folds
-    :return: a polynomial with the best cross-validation score and its loss on the whole data set (X,Y)
+    :return: a polynomial with the best cross-validation score and its loss
+             on the whole data set (X,Y)
     """
     folds = np.array_split(np.arange(Y.shape[0]), k)
     h = [None] * k
@@ -106,7 +109,8 @@ def perform_kfold(X, Y, k):
             test_idx = folds[i]
             X_train, Y_train = X[train_idx], Y[train_idx]
             X_test, Y_test = X[test_idx], Y[test_idx]
-            # fit a polynomial to the training set and compute the loss on the test set
+            # fit a polynomial to the training set and compute the loss on
+            # the test set
             h[i], _ = fit_polynomial(X_train, Y_train, d)
             loss[i] = compute_loss(h[i](X_test), Y_test)
         # average the "test" losses on all folds
@@ -122,7 +126,7 @@ def plot_fitted_data(X, Y, h_star, h_cv):
     :param X: X points
     :param Y: Y points
     :param h_star: a polynomial (callable) which minimizes the validation loss
-    :param h_cv: a polynomial (callable) which minimzes the cross-validation loss
+    :param h_cv: a polynomial (callable) which minimzes the CV loss
     """
     plt.figure('Data Figure')
     X_sorted = np.sort(X)
