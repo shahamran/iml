@@ -13,8 +13,9 @@ OPEN_MODE = 'r'
 FILE_DATA = 'X_poly.npy'
 FILE_LABELS = 'Y_poly.npy'
 D = 15
-DEGREES = list(range(1, D+1))
+DEGREES = np.arange(1, D+1)
 K = 5
+RAND_SEED = 25
 
 
 def compute_loss(predictions, labels):
@@ -38,12 +39,18 @@ def load_data():
     return X, Y
 
 
-def split_train_test(m):
+def split_train_test(m, shuffle=True):
     """
     :param m: the number of data rows to split
     :return: an array of 3 equal sized arrays of disjoint indices
     """
-    return np.array_split(np.arange(m), 3)
+    np.random.seed(RAND_SEED)
+    shuffled = np.random.permutation(m)
+    if shuffle is True:
+        output = shuffled
+    else:
+        output = np.arange(m)
+    return np.array_split(output, 3)
 
 
 def fit_polynomial(X, Y, d):
@@ -98,9 +105,11 @@ def perform_kfold(X, Y, k):
              on the whole data set (X,Y)
     """
     folds = np.array_split(np.arange(Y.shape[0]), k)
-    h = [None] * k
+    loss = [np.inf] * k
     error = [np.inf] * D
+    # iterate the parameters space (d)
     for j, d in enumerate(DEGREES):
+        # train & test for each fold
         for i in range(k):
             # split to train & test sets
             train_1 = concat(folds[:i])
@@ -111,12 +120,14 @@ def perform_kfold(X, Y, k):
             X_test, Y_test = X[test_idx], Y[test_idx]
             # fit a polynomial to the training set and compute the loss on
             # the test set
-            h[i], _ = fit_polynomial(X_train, Y_train, d)
-            loss[i] = compute_loss(h[i](X_test), Y_test)
+            poly, _ = fit_polynomial(X_train, Y_train, d)
+            loss[i] = compute_loss(poly(X_test), Y_test)
         # average the "test" losses on all folds
         error[j] = np.mean(loss)
+    # get the polynomial degree which minimizes the error
     d_index = np.argmin(error)
     d_cv = DEGREES[d_index]
+    # fit a polynomial with the 'best' degree on the whole data set
     return fit_polynomial(X, Y, d_cv)
 
 
@@ -151,10 +162,11 @@ def plot_losses(train_loss, valid_loss):
     """
     plt.figure('Errors Figure')
     plt.title('Errors')
-    plt.semilogy(DEGREES, train_loss, label='training')
-    plt.semilogy(DEGREES, valid_loss, label='validation')
+    plt.plot(DEGREES, train_loss, label='training')
+    plt.plot(DEGREES, valid_loss, label='validation')
     plt.xlabel('polynomial degree (d)')
-    plt.ylabel('mean error (MSE) - log scale')
+    plt.ylabel('mean error (MSE)')
+    plt.xticks(DEGREES)
     plt.legend()
 
 
