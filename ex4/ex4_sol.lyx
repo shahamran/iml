@@ -138,6 +138,11 @@
 \end_inset
 
 
+\begin_inset FormulaMacro
+\newcommand{\E}[1]{\underset{#1}{\mathbb{E}}}
+\end_inset
+
+
 \end_layout
 
 \begin_layout Title
@@ -170,7 +175,7 @@
 \uwave default
 \noun default
 \color inherit
-3
+4
 \end_layout
 
 \begin_layout Section
@@ -212,16 +217,7 @@ Soft-SVM
 
 \end_inset
 
-כלומר נראה שפתרון ל-
-\begin_inset Formula $\left(1\right)$
-\end_inset
-
- הוא פתרון חוקי ואופטימלי ל-
-\begin_inset Formula $\left(2\right)$
-\end_inset
-
-, ולהיפך.
- נניח ש-
+נניח ש-
 \begin_inset Formula $\mathbf{w}$
 \end_inset
 
@@ -249,6 +245,14 @@ Soft-SVM
 
  וגם 
 \begin_inset Formula $\xi_{i}\ge0$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $\mathbf{w},\left\{ \xi_{i}\right\} $
+\end_inset
+
+ הוא פתרון כלשהו ל-
+\begin_inset Formula $\left(2\right)$
 \end_inset
 
 .
@@ -283,61 +287,46 @@ Soft-SVM
 
 \end_inset
 
-אם כך, נקבע 
+אם כך, 
+\begin_inset Formula $\left\{ \xi_{i}\right\} $
+\end_inset
+
+ הטובים ביותר שאפשר לבחור )ולפיכך מהווים פתרון אופטימלי ל-
+\begin_inset Formula $\left(2\right)$
+\end_inset
+
+( הם 
 \begin_inset Formula $\xi'_{i}=\ell^{hinge}\left(y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle \right)$
 \end_inset
 
- ונקבל ש-
-\begin_inset Formula $\mathbf{w},\left\{ \xi'_{i}\right\} $
+, כלומר 
+\begin_inset Formula $\left(1\right)$
 \end_inset
 
- הוא פתרון חוקי ואופטימלי ל-
+ ו-
 \begin_inset Formula $\left(2\right)$
 \end_inset
 
-, כנדרש.
-\end_layout
-
-\begin_layout Standard
-בכיוון השני, נניח ש-
-\begin_inset Formula $\mathbf{w},\left\{ \xi_{i}\right\} $
-\end_inset
-
- פתרון ל-
-\begin_inset Formula $\left(2\right)$
-\end_inset
-
-.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-להשלים
-\end_layout
-
-\end_inset
-
-
+ נותנים את אותו פתרון.
 \end_layout
 
 \begin_layout Section
-גרעינים )
+גרעין חוקי )
 \lang english
-Kernels
+Valid Kernel
 \lang hebrew
 (
 \end_layout
 
 \begin_layout Standard
-נגדיר את המיפוי 
+נגדיר מיפוי 
 \begin_inset Formula $\psi:\left\{ M,\dots,N\right\} \to\left\{ 0,1\right\} ^{N}$
 \end_inset
 
  באופן הבא: 
 \begin_inset Formula 
 \[
-x\mapsto\left(\overbrace{11\cdots1}^{x}\overbrace{0\cdots0}^{N-x}\right)
+x\mapsto(\overbrace{11\cdots1}^{x}\overbrace{0\cdots0}^{N-x})
 \]
 
 \end_inset
@@ -348,7 +337,7 @@ x\mapsto\left(\overbrace{11\cdots1}^{x}\overbrace{0\cdots0}^{N-x}\right)
 
 .
  נראה שלכל 
-\begin_inset Formula $x,x'\in\left\{ M.\dots,N\right\} $
+\begin_inset Formula $x,x'\in\left\{ M,\dots,N\right\} $
 \end_inset
 
  מתקיים 
@@ -374,7 +363,7 @@ x\mapsto\left(\overbrace{11\cdots1}^{x}\overbrace{0\cdots0}^{N-x}\right)
  מתקיים: 
 \begin_inset Formula 
 \begin{align*}
-\psi\left(x\right) & =\left(\overbrace{11\cdots1}^{x}\overbrace{0\cdots0}^{N-x}\right)\\
+\psi\left(x\right) & =(\overbrace{11\cdots1}^{x}\overbrace{0\cdots0}^{N-x})\\
 \implies\forall i\in\left[N\right]\,\left(\psi\left(x\right)\right)_{i} & \overset{*}{=}\begin{cases}
 1, & i\le x\left(\le x'\right)\\
 0, & \text{otherwise}
@@ -426,8 +415,590 @@ x\mapsto\left(\overbrace{11\cdots1}^{x}\overbrace{0\cdots0}^{N-x}\right)
 (
 \end_layout
 
+\begin_layout Standard
+לכן 
+\begin_inset Formula $\psi$
+\end_inset
+
+ מקיימת: 
+\begin_inset Formula $K\left(x,x'\right)=\left\langle \psi\left(x\right),\psi\left(x'\right)\right\rangle $
+\end_inset
+
+ לכל 
+\begin_inset Formula $x,x'\in\left\{ M,\dots,N\right\} $
+\end_inset
+
+; כלומר 
+\begin_inset Formula $K$
+\end_inset
+
+ היא פונקציית
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+kernel
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+חוקית.
+\end_layout
+
 \begin_layout Section
 בחירת מודל
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+לכל היפותזה 
+\begin_inset Formula $h\in\mathcal{H}_{k}$
+\end_inset
+
+ מתקיים: 
+\begin_inset Formula 
+\[
+L_{\mathcal{D}}\left(h\right)=\E{S_{all}\sim\mathcal{D}^{m}}\left[L_{S_{all}}\left(h\right)\right]
+\]
+
+\end_inset
+
+לכן מאי-שוויון הופדינג מתקיים שלכל 
+\begin_inset Formula $\delta'\in\left(0,1\right)$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{align*}
+\pr{\left|L_{S_{all}}\left(h\right)-L_{\mathcal{D}}\left(h\right)\right|\le\sqrt{\frac{\ln\left(\nicefrac{2}{\delta'}\right)}{2m}}} & \ge1-\delta'\\
+\implies\pr{\left|L_{S_{all}}\left(h\right)-L_{\mathcal{D}}\left(h\right)\right|\ge\sqrt{\frac{\ln\left(\nicefrac{2}{\delta'}\right)}{2m}}} & \le\delta'\\
+\overset{\delta'=\frac{\delta}{\left|\mathcal{H}_{k}\right|}}{\implies}\pr{\left|L_{S_{all}}\left(h\right)-L_{\mathcal{D}}\left(h\right)\right|\ge\sqrt{\frac{\ln\left(\nicefrac{2\cdot\left|\mathcal{H}_{k}\right|}{\delta}\right)}{2m}}} & \le\frac{\delta}{\left|\mathcal{H}_{k}\right|}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+אם כך, מחסם האיחוד מתקיים: 
+\begin_inset Formula 
+\[
+\pr{\exists h\in\mathcal{H}_{k}:\left|L_{S_{all}}\left(h\right)-L_{\mathcal{D}}\left(h\right)\right|\ge\sqrt{\frac{\ln\left(\nicefrac{2\left|\mathcal{H}_{k}\right|}{\delta}\right)}{2m}}}\le\left|\mathcal{H}_{k}\right|\frac{\delta}{\left|\mathcal{H}_{k}\right|}=\delta
+\]
+
+\end_inset
+
+נקבל שאם 
+\begin_inset Formula $h^{*}\in\text{ERM}_{\mathcal{H}_{k}}\left(S_{all}\right)$
+\end_inset
+
+, בסיכוי לפחות 
+\begin_inset Formula $1-\delta$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מתקיים שלכל 
+\begin_inset Formula $h\in\mathcal{H}_{k}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{align*}
+L_{\mathcal{D}}\left(h^{*}\right) & \le L_{S_{all}}\left(h^{*}\right)+\sqrt{\frac{\ln\left(\nicefrac{2\left|\mathcal{H}_{k}\right|}{\delta}\right)}{2m}}\le L_{S_{all}}\left(h\right)+\sqrt{\frac{\ln\left(\nicefrac{2\left|\mathcal{H}_{k}\right|}{\delta}\right)}{2m}}\\
+ & \le L_{\mathcal{D}}\left(h\right)+\sqrt{\frac{\ln\left(\nicefrac{2\left|\mathcal{H}_{k}\right|}{\delta}\right)}{2m}}+\sqrt{\frac{\ln\left(\nicefrac{2\left|\mathcal{H}_{k}\right|}{\delta}\right)}{2m}}=L_{\mathcal{D}}\left(h\right)+2\sqrt{\frac{\ln\left(\nicefrac{2\left|\mathcal{H}_{k}\right|}{\delta}\right)}{2m}}\\
+ & =L_{\mathcal{D}}\left(h\right)+\sqrt{\frac{2\ln\left(\nicefrac{2\left|\mathcal{H}_{k}\right|}{\delta}\right)}{m}}
+\end{align*}
+
+\end_inset
+
+ובפרט, הנ"ל מתקיים גם עבור 
+\begin_inset Formula $h\in\arg\min_{h\in{\cal H}_{k}}L_{\mathcal{D}}\left(h\right)$
+\end_inset
+
+.
+ לכן: 
+\begin_inset Formula 
+\[
+L_{\mathcal{D}}\left(h^{*}\right)\le\min_{h\in\mathcal{H}_{k}}L_{\mathcal{D}}\left(h\right)+\sqrt{\frac{2\ln\left(\nicefrac{2\left|\mathcal{H}_{k}\right|}{\delta}\right)}{m}}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נניח ש-
+\begin_inset Formula $\mathcal{H}_{j}\ni\arg\min_{h\in\mathcal{H}_{k}}L_{\mathcal{D}}\left(h\right)\notin\mathcal{H}_{j-1}$
+\end_inset
+
+ )כלומר, ההיפותזה הממזערת את שגיאת ההכללה "מגיעה" מהמחלקה 
+\begin_inset Formula $\mathcal{H}_{j}$
+\end_inset
+
+(.
+ נשים לב ש-:
+\begin_inset Formula $\left|S\right|=\left(1-\alpha\right)m,\left|V\right|=\alpha m,\left|\mathcal{H}\right|=k$
+\end_inset
+
+.
+ מהסעיף הקודם, עבור 
+\begin_inset Formula $h^{*}\in\text{ERM}_{\mathcal{H}}\left(V\right)$
+\end_inset
+
+ מתקיים בסיכוי לפחות 
+\begin_inset Formula $1-\frac{\delta}{2}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{align*}
+\left(1\right): & L_{\mathcal{D}}\left(h^{*}\right)\le\min_{h\in{\cal H}}L_{\mathcal{D}}\left(h\right)+\sqrt{\frac{2}{\alpha m}\ln\left(\frac{4k}{\delta}\right)}
+\end{align*}
+
+\end_inset
+
+ומכיוון ש-
+\begin_inset Formula $h_{i}\in\text{ERM}_{\mathcal{H}_{i}}\left(S\right)$
+\end_inset
+
+, בסיכוי לפחות 
+\begin_inset Formula $1-\frac{\delta}{2}$
+\end_inset
+
+ מתקיים גם: 
+\begin_inset Formula 
+\begin{align*}
+\left(2\right): & L_{\mathcal{D}}\left(h_{i}\right)\le\min_{h\in\mathcal{H}_{i}}L_{\mathcal{D}}\left(h\right)+\sqrt{\frac{2}{\left(1-\alpha\right)m}\ln\left(\frac{4\left|\mathcal{H}_{i}\right|}{\delta}\right)}
+\end{align*}
+
+\end_inset
+
+לכל 
+\begin_inset Formula $i\in\left[k\right]$
+\end_inset
+
+.
+ לכן, בסיכוי לפחות 
+\begin_inset Formula $1-\delta$
+\end_inset
+
+ מתקיים: 
+\begin_inset Formula 
+\begin{align*}
+L_{\mathcal{D}}\left(h^{*}\right) & \overset{\left(1\right)}{\le}\min_{h\in{\cal H}}L_{\mathcal{D}}\left(h\right)+\sqrt{\frac{2}{\alpha m}\ln\left(\frac{4k}{\delta}\right)}\le L_{\mathcal{D}}\left(h_{j}\right)+\sqrt{\frac{2}{\alpha m}\ln\left(\frac{4k}{\delta}\right)}\\
+ & \overset{\left(2\right)}{\le}\min_{h\in\mathcal{H}_{j}}L_{\mathcal{D}}\left(h\right)+\sqrt{\frac{2}{\alpha m}\ln\left(\frac{4k}{\delta}\right)}+\sqrt{\frac{2}{\left(1-\alpha\right)m}\ln\left(\frac{4\left|\mathcal{H}_{j}\right|}{\delta}\right)}\\
+ & =\min_{h\in\mathcal{H}_{k}}L_{\mathcal{D}}\left(h\right)+\sqrt{\frac{2}{\alpha m}\ln\left(\frac{4k}{\delta}\right)}+\sqrt{\frac{2}{\left(1-\alpha\right)m}\ln\left(\frac{4\left|\mathcal{H}_{j}\right|}{\delta}\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\epsilon_{est}^{MS} & =L_{\mathcal{D}}\left(h^{*}\right)-\min_{h\in\mathcal{H}_{k}}L_{\mathcal{D}}\left(h\right)\overset{2}{=}\sqrt{\frac{2}{\alpha m}\ln\left(\frac{4k}{\delta}\right)}+\sqrt{\frac{2}{\left(1-\alpha\right)m}\ln\left(\frac{4\left|\mathcal{H}_{j}\right|}{\delta}\right)}\\
+\epsilon_{est}^{S} & \overset{1}{=}\sqrt{\frac{2\ln\left(\nicefrac{2\left|\mathcal{H}_{k}\right|}{\delta}\right)}{m}}\\
+\implies\frac{\epsilon_{est}^{MS}}{\epsilon_{est}^{S}} & =\frac{\sqrt{\frac{2}{\alpha m}\ln\left(\frac{4k}{\delta}\right)}+\sqrt{\frac{2}{\left(1-\alpha\right)m}\ln\left(\frac{4\left|\mathcal{H}_{j}\right|}{\delta}\right)}}{\sqrt{\frac{2\ln\left(\nicefrac{2\left|\mathcal{H}_{k}\right|}{\delta}\right)}{m}}}=\sqrt{\frac{\ln\left(\frac{4k}{\delta}\right)}{\alpha\ln\left(\frac{2\left|\mathcal{H}_{k}\right|}{\delta}\right)}}+\sqrt{\frac{\ln\left(\frac{4\left|\mathcal{H}_{j}\right|}{\delta}\right)}{\left(1-\alpha\right)\ln\left(\frac{2\left|\mathcal{H}_{k}\right|}{\delta}\right)}}
+\end{align*}
+
+\end_inset
+
+כאשר השוויון המסומן ב-
+\numeric on
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+נובע מסעיף
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ וכנ"ל לגבי 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\numeric off
+.
+ שאר המעברים הם אלגבריים.
+ נשים לב ש-
+\begin_inset Formula $\mathcal{H}_{j}\subset\mathcal{H}_{k}$
+\end_inset
+
+ לכן שני הביטויים שהתקבלו )בשורש( חסומים, כלומר שגיאת ה-
+\lang english
+estimation
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בתהליך ה-
+\begin_inset Formula $MS$
+\end_inset
+
+ לא יכולה להיות הרבה יותר גרועה מזו בשיטה הרגילה.
+ אפשר גם לראות שאם הופכים את היחס 
+\begin_inset Formula $\left(\frac{\epsilon_{est}^{S}}{\epsilon_{est}^{MS}}\right)$
+\end_inset
+
+ מקבלים ביטוי שגדל באופן פרופורציוני ליחס בין הגודל של 
+\begin_inset Formula $\mathcal{H}_{k}$
+\end_inset
+
+ לגודל של 
+\begin_inset Formula $\mathcal{H}_{j}$
+\end_inset
+
+.
+ כלומר, ככל שניקח 
+\begin_inset Formula $\mathcal{H}_{k}$
+\end_inset
+
+ גדולה מ-
+\begin_inset Formula $\mathcal{H}_{j}$
+\end_inset
+
+, נקבל ביטוי גדול יותר ל-
+\begin_inset Formula $\frac{\epsilon^{S}}{\epsilon^{MS}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+באופן מפורש, אם ניקח את 
+\begin_inset Formula $j=k$
+\end_inset
+
+, כלומר ההיפותזה ה"טובה ביותר" מגיעה מ-
+\begin_inset Formula $\mathcal{H}_{k}$
+\end_inset
+
+, נקבל שהחסם בסעיף
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הדוק יותר מבסעיף
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+- כלומר שיטה זו "טובה יותר".
+\end_layout
+
+\begin_layout Standard
+בכיוון השני, ניקח את המחלקה 
+\begin_inset Formula $\mathcal{H}_{i}$
+\end_inset
+
+ להיות בגודל 
+\begin_inset Formula $2^{2^{t\cdot i}}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i\in\left[k\right]$
+\end_inset
+
+ וקבוע 
+\begin_inset Formula $t\ge1$
+\end_inset
+
+.
+ נבחן את החסמים שהתקבלו בסעיפים הקודמים: 
+\begin_inset Formula 
+\begin{align*}
+\left(S\right): & L_{\mathcal{D}}\left(h^{*}\right)\le\min_{h\in\mathcal{H}_{k}}L_{\mathcal{D}}\left(h\right)+\sqrt{\frac{2\ln\left(2\cdot2^{2^{tk}}/\delta\right)}{m}}=\min_{h\in\mathcal{H}_{k}}L_{\mathcal{D}}\left(h\right)+\sqrt{\frac{2\ln\left(2^{1+2^{tk}}/\delta\right)}{m}}\\
+\left(MS\right): & L_{D}\left(h^{*}\right)\le\min_{h\in\mathcal{H}_{k}}L_{\mathcal{D}}\left(h\right)+\sqrt{\frac{2}{\alpha m}\ln\left(\frac{4k}{\delta}\right)}+\sqrt{\frac{2}{\left(1-\alpha\right)m}\ln\left(\frac{2^{2+2^{tj}}}{\delta}\right)}\\
+\implies & \frac{\epsilon_{est}^{S}}{\epsilon_{est}^{MS}}=\frac{\sqrt{\frac{2\ln\left(2^{1+2^{tk}}/\delta\right)}{m}}}{\sqrt{\frac{2}{\alpha m}\ln\left(\frac{4k}{\delta}\right)}+\sqrt{\frac{2}{\left(1-\alpha\right)m}\ln\left(\frac{2^{2+2^{tj}}}{\delta}\right)}}\xrightarrow[t\to\infty]{}\infty
+\end{align*}
+
+\end_inset
+
+כלומר במקרה זה 
+\begin_inset Formula $MS$
+\end_inset
+
+ טוב בהרבה מהשיטה הרגילה.
 \end_layout
 
 \begin_layout Section
@@ -459,12 +1030,12 @@ x\mapsto\left(\overbrace{11\cdots1}^{x}\overbrace{0\cdots0}^{N-x}\right)
 Validation
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 שגיאת ההיפותזה 
 \begin_inset Formula $h^{*}$
 \end_inset
 
- שהתקבלה בתהליך על נתוני ה-
+ שהתקבלה על נתוני ה-
 \lang english
 test
 \family roman
@@ -491,15 +1062,7 @@ test
 \uwave default
 \noun default
 \color inherit
-היא: 
-\begin_inset Formula $0.02$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-ביצוע
+בתהליך
 \family roman
 \series medium
 \shape up
@@ -523,8 +1086,21 @@ test
 \uwave default
 \noun default
 \color inherit
+הולידציה היא: 
+\begin_inset Formula $\approx0.00226$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+שגיאת ההיפותזה 
+\begin_inset Formula $h_{cv}$
+\end_inset
+
+ שהתקבלה על נתוני ה-
 \lang english
-k-fold cross validation
+test
 \family roman
 \series medium
 \shape up
@@ -549,11 +1125,117 @@ k-fold cross validation
 \uwave default
 \noun default
 \color inherit
-מחזיר היפותזה דומה ל-
-\begin_inset Formula $h^{*}$
+בתהליך הקרוס-ולידציה היא: 
+\begin_inset Formula $\approx0.00225$
 \end_inset
 
-, אבל לא זהה )הפרשים קטנים במקדים(.
+ )כמעט זהה(
+\end_layout
+
+\begin_layout Itemize
+תהליך ה-
+\lang english
+5-fold cross-validation
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+החזיר פולינום מדרגה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+)זהה לולידציה רגילה( עם מקדמים דומים מאוד, כפי שאפשר לראות באיור
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
 \end_layout
 
 \begin_layout Standard
@@ -566,7 +1248,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Data_Figure.png
+	filename Data_Figure.svg
+	width 90text%
 
 \end_inset
 
@@ -641,49 +1324,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Data_Figure-closeup.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-קלוז-אפ: המרחק בין 
-\begin_inset Formula $h^{*}$
-\end_inset
-
- ל-
-\begin_inset Formula $h_{cv}$
-\end_inset
-
- זניח
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename Errors_Figure.png
+	filename Errors_Figure.svg
+	width 90text%
 
 \end_inset
 
@@ -798,7 +1440,7 @@ underfitting
 \uwave default
 \noun default
 \color inherit
-ולכן שגיאת הולידציה גדולה.
+ולכן גם שגיאת האימון וגם הולידציה גדולות.
 \end_layout
 
 \end_inset
