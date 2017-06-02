@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
+
 """
-Fit various polynomials to a a dataset with train-validation-test split
-and cross-validation.
+Fit polynomials of different degrees to a a dataset with train-validation-test
+split and cross-validation and compare the results.
 """
 
 # imports
@@ -9,13 +10,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # constants
-OPEN_MODE = 'r'
+READ_ONLY = 'r'
 FILE_DATA = 'X_poly.npy'
 FILE_LABELS = 'Y_poly.npy'
-D = 15
+D = 15  # max degree of the polynomials to fit
 DEGREES = np.arange(1, D+1)
-K = 5
-RAND_SEED = 25
+K = 5   # no. of folds for CV
+RAND_SEED = 25  # for consistent random behavior
 
 
 def compute_loss(predictions, labels):
@@ -34,8 +35,8 @@ def load_data():
     reads the data files
     :return: X,Y - data values as read from the files
     """
-    X = np.load(FILE_DATA, mmap_mode=OPEN_MODE)
-    Y = np.load(FILE_LABELS, mmap_mode=OPEN_MODE)
+    X = np.load(FILE_DATA, mmap_mode=READ_ONLY)
+    Y = np.load(FILE_LABELS, mmap_mode=READ_ONLY)
     return X, Y
 
 
@@ -143,10 +144,8 @@ def plot_fitted_data(X, Y, h_star, h_cv):
     X_sorted = np.sort(X)
     plt.scatter(X, Y, s=.5, c='navy', label='data points')
     plt.title('All data')
-    plt.text(0.62, 0.4, 'h_star:', fontsize=6)
-    plt.text(0.7, 0.4, str(h_star), fontsize=6)
-    plt.text(0.62, 0, 'h_cv:', fontsize=6)
-    plt.text(0.7, 0, str(h_cv), fontsize=6)
+    plt.text(0.8, 0.4, f'h_star:\n{h_star}')
+    plt.text(0.8, 0, f'h_cv:\n{h_cv}')
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.plot(X_sorted, h_star(X_sorted), label='fitted with validation')
@@ -162,7 +161,7 @@ def plot_losses(train_loss, valid_loss):
     """
     plt.figure('Errors Figure')
     plt.title('Errors')
-    plt.plot(DEGREES, train_loss, label='training')
+    plt.plot(DEGREES, train_loss, label='train')
     plt.plot(DEGREES, valid_loss, label='validation')
     plt.xlabel('polynomial degree (d)')
     plt.ylabel('mean error (MSE)')
