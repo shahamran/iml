@@ -9,6 +9,7 @@
 \usepackage{pgf}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata,positioning}
+\usepackage{placeins}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -1001,6 +1002,22 @@ estimation
  טוב בהרבה מהשיטה הרגילה.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+FloatBarrier
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 חלק תכנותי -
 \family roman
@@ -1028,6 +1045,86 @@ estimation
 \color inherit
 \lang english
 Validation
+\end_layout
+
+\begin_layout Remarks
+נא להריץ את הקובץ
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ex4.py
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ באמצעות פייתון 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+)נבדק ועובד באקווריום(
 \end_layout
 
 \begin_layout Itemize
@@ -1210,7 +1307,8 @@ test
 \uwave default
 \noun default
 \color inherit
-)זהה לולידציה רגילה( עם מקדמים דומים מאוד, כפי שאפשר לראות באיור
+)דרגה זהה לדרגה שהתקבלה בולידציה רגילה( עם מקדמים דומים מאוד, כפי שאפשר
+ לראות באיור
 \family roman
 \series medium
 \shape up
