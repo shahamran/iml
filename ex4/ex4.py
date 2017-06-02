@@ -144,8 +144,8 @@ def plot_fitted_data(X, Y, h_star, h_cv):
     X_sorted = np.sort(X)
     plt.scatter(X, Y, s=.5, c='navy', label='data points')
     plt.title('All data')
-    plt.text(0.8, 0.4, f'h_star:\n{h_star}')
-    plt.text(0.8, 0, f'h_cv:\n{h_cv}')
+    plt.text(0.8, 0.4, 'h_star:\n' + str(h_star))
+    plt.text(0.8, 0, 'h_cv:\n' + str(h_cv))
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.plot(X_sorted, h_star(X_sorted), label='fitted with validation')
@@ -188,12 +188,12 @@ if __name__ == "__main__":
     h_star, valid_loss = perform_validation(
         X_valid, Y_valid, hypotheses)
     h_star_loss = compute_loss(h_star(X_test), Y_test)
-    print(f'h_star loss on the test set is: {h_star_loss}')
+    print('h_star loss on the test set is: %f' % h_star_loss)
     X_cv = np.concatenate((X_train, X_valid))
     Y_cv = np.concatenate((Y_train, Y_valid))
     h_cv, _ = perform_kfold(X=X_cv, Y=Y_cv, k=K)
     h_cv_loss = compute_loss(h_cv(X_test), Y_test)
-    print(f'h_cv loss on the test set is: {h_cv_loss}')
+    print('h_cv loss on the test set is: %f' % h_cv_loss)
 
     # plot the data with the fitted polynomials to check if they're similar
     plot_fitted_data(X, Y, h_star, h_cv)
