@@ -8,6 +8,7 @@
 \begin_preamble
 \usepackage{pgf}
 \usepackage{tikz}
+\usepackage{forest}
 \usetikzlibrary{arrows,automata,positioning}
 \usepackage{placeins}
 \end_preamble
@@ -287,11 +288,1221 @@ ransha
 ID3
 \end_layout
 
+\begin_layout Standard
+נניח ש-
+\begin_inset Formula $\mathcal{X}=\left\{ 0,1\right\} ^{3},\mathcal{Y}=\left\{ 0,1\right\} $
+\end_inset
+
+ ומדגם האימון נתון על ידי: 
+\begin_inset Formula 
+\begin{align*}
+\begin{pmatrix}\begin{pmatrix}1,1,1\end{pmatrix},1\end{pmatrix}\\
+\begin{pmatrix}\begin{pmatrix}1,0,0\end{pmatrix},1\end{pmatrix}\\
+\begin{pmatrix}\begin{pmatrix}1,1,0\end{pmatrix},0\end{pmatrix}\\
+\begin{pmatrix}\begin{pmatrix}0,0,1\end{pmatrix},0\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+אנטרופיה: 
+\begin_inset Formula $H\left(S\right)=\sum_{i=1}^{c}-p_{i}\log p_{i},\ p_{i}=\text{fraction of samples labeled "i"}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+רווח אינפורמציה: 
+\begin_inset Formula $Gain\left(S;A\right)=H\left(S\right)-\sum_{v\in values\left(A\right)}\frac{\left|S_{v}\right|}{\left|S\right|}H\left(S_{v}\right)$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $values\left(A\right)$
+\end_inset
+
+ היא קבוצת כל הערכים האפשריים לפיצ'ר 
+\begin_inset Formula $A$
+\end_inset
+
+ ו-
+\begin_inset Formula $S_{v}$
+\end_inset
+
+ היא תת-קבוצה של 
+\begin_inset Formula $S$
+\end_inset
+
+ עבור לפיצ'ר 
+\begin_inset Formula $A$
+\end_inset
+
+ יש את הערך 
+\begin_inset Formula $v$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נחשב את ה-
+\lang english
+information gain
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+לכל אחד מהפיצ'רים.
+ 
+\begin_inset Formula $S=\frac{1}{2}$
+\end_inset
+
+ כי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מתוך
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הדוגמאות מתויגות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\numeric off
+.
+ מתקיים: 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula 
+\begin{align*}
+Gain\left(S;x_{1}\right) & =H\left(\frac{1}{2}\right)-\left(\frac{\left|S_{1}\right|}{\left|S\right|}H\left(S_{1}\right)+\frac{\left|S_{0}\right|}{\left|S\right|}H\left(S_{0}\right)\right)\\
+ & =H\left(\frac{1}{2}\right)-\left(\frac{3}{4}H\left(\frac{2}{3}\right)+\frac{1}{4}H\left(0\right)\right)\approx0.22
+\end{align*}
+
+\end_inset
+
+כאשר 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ היא קבוצת הדוגמאות עבור 
+\begin_inset Formula $x_{1}=1$
+\end_inset
+
+, ויש
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+כאלה; ובאופן דומה 
+\begin_inset Formula $\left|S_{0}\right|=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula 
+\[
+Gain\left(S;x_{2}\right)=H\left(\frac{1}{2}\right)-\left(\frac{2}{4}H\left(\frac{1}{2}\right)+\frac{2}{4}H\left(\frac{1}{2}\right)\right)=H\left(\frac{1}{2}\right)-H\left(\frac{1}{2}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+זהה לחישוב ב-
+\begin_inset Formula $2$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $Gain\left(S;x_{3}\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ולכן
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ID3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+יקח את 
+\begin_inset Formula $x_{1}=0?$
+\end_inset
+
+ להיות השורש של עץ ההכרעה.
+ אם כך,
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ הדוגמאות הראשונות יגיעו לתת עץ אחד.
+ נזכור כי גובה העץ חסום ב-
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\numeric off
+, כלומר נותרה לנו שאילתה אחת על אחת מהקורדינטות 
+\begin_inset Formula $x_{2},x_{3}$
+\end_inset
+
+ ואחריה עלינו להגיע לעלה - כלומר לקבל החלטה )
+\numeric on
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ או 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\numeric off
+(.
+ מכיוון שבאחד מתתי העץ של הקדקוד 
+\begin_inset Formula $x_{1}=0?$
+\end_inset
+
+ יש
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+דוגמאות, לא משנה איזה שאלה נבחר יהיו לפחות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+דוגמאות שיקבלו את אותה פרדיקציה, ובמקרה שלנו אחת מהן תהיה לא נכונה.
+ אם נשאל 
+\begin_inset Formula $x_{2}=0?$
+\end_inset
+
+ נקבל שהדוגמה 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+לתקן
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left(1,1,1\right)$
+\end_inset
+
+ תתוייג 
+\begin_inset Formula $1$
+\end_inset
+
+ נכונה, אולם הדוגמה 
+\begin_inset Formula $\left(1,1,0\right)$
+\end_inset
+
+ תתויג גם היא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בטעות.
+ אם נשאל 
+\begin_inset Formula $x_{3}=0?$
+\end_inset
+
+ נקבל ש- 
+\begin_inset Formula $\left(1,1,0\right)$
+\end_inset
+
+ תתוייג
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+נכונה וש-
+\begin_inset Formula $\left(1,0,0\right)$
+\end_inset
+
+ תתוייג
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ בטעות.
+\end_layout
+
+\begin_layout Standard
+אם כך, על מדגם מגודל 
+\begin_inset Formula $4$
+\end_inset
+
+ אנחנו טועים לפחות בתיוג אחד, כלומר טעות האימון היא לכל הפחות 
+\begin_inset Formula $\nicefrac{1}{4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נתבונן בעץ ההכרעה הבא: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{forest} 
+\end_layout
+
+\begin_layout Plain Layout
+
+for tree={rectangle, draw, l sep=30pt, s sep=40pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+[{$x_2 = 0?$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  [{$x_1 = 0?$}, edge label={node[midway,left] {yes}}
+\end_layout
+
+\begin_layout Plain Layout
+
+    [0, edge label={node[midway,left] {yes}},  circle]
+\end_layout
+
+\begin_layout Plain Layout
+
+    [1, edge label={node[midway,right]{no}}, circle]
+\end_layout
+
+\begin_layout Plain Layout
+
+  ]
+\end_layout
+
+\begin_layout Plain Layout
+
+  [{$x_3 = 0?$}, edge label={node[midway,right] {no}}
+\end_layout
+
+\begin_layout Plain Layout
+
+    [0, edge label = {node[midway,left]  {yes}},  circle]
+\end_layout
+
+\begin_layout Plain Layout
+
+    [1, edge label = {node[midway,right] {no}}, circle]
+\end_layout
+
+\begin_layout Plain Layout
+
+  ]  
+\end_layout
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{forest}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ברור שהוא מעומק
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ וכן שהוא משיג שגיאת אימון 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+על המדגם, ונסיק שאלגוריתם
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ID3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ אינו אופטימלי )במובן 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $ERM$
+\end_inset
+
+(.
+\end_layout
+
 \begin_layout Section
 \begin_inset Formula $k$
 \end_inset
 
  שכנים קרובים
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ערך 
+\begin_inset Formula $k$
+\end_inset
+
+ הממזער את שגיאת האימון הוא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\numeric off
+.
+ ברור ששגיאת האימון במקרה זה היא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\numeric off
+, כי כל נקודה היא השכן הקרוב ביותר שלה )מרחק
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בכל נורמה(.
+ שגיאת האימון היא אי-שלילית, ולכן זו שגיאת אימון מינימלית על המדגם הנתון.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
