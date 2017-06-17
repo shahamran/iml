@@ -1479,6 +1479,315 @@ status open
 
 \end_layout
 
+\begin_layout Remarks
+ננתח את השגיאה עבור ערכי 
+\begin_inset Formula $k$
+\end_inset
+
+ אי זוגיים כדי להימנע ממצב של "תיקו" )ובהתאם לכתוב בפורום(
+\end_layout
+
+\begin_layout Itemize
+נשים לב ש-
+\begin_inset Formula $k=1$
+\end_inset
+
+ הוא בחירה גרועה עבור השגיאה ב
+\lang english
+leave-one-out cross-validation
+\lang hebrew
+.
+ נתבונן במקבץ העליון )השיקולים למקבץ התחתון סימטריים(: הדוגמה 
+\begin_inset Formula $\left(2,6\right)$
+\end_inset
+
+ תתוייג
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+כאשר משמיטים אותה, מאמנים את האלגוריתם בלעדיה ובודקים את התיוג שלה
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $+$
+\end_inset
+
+ באופן שגוי כי השכן הקרוב ביותר שלה הוא 
+\begin_inset Formula $\left(\left(2,7\right),+\right)$
+\end_inset
+
+.
+ באופן דומה, 
+\begin_inset Formula $\left(2,7\right)$
+\end_inset
+
+ תתוייג 
+\begin_inset Formula $-$
+\end_inset
+
+ כי 
+\begin_inset Formula $\left(\left(2,6\right),-\right),\left(\left(3,7\right),-\right)$
+\end_inset
+
+ הם שכניה הקרובים ביותר )ובוחרים אחד מהם(.
+ בצורה זו, כל הדוגמאות במקבץ העליון למעט השתיים הקיצוניות )
+\begin_inset Formula $\left(1,5\right),\left(5,9\right)$
+\end_inset
+
+( יתויגו לא נכונה, כלומר האלגוריתם ישגה על 
+\begin_inset Formula $\frac{10}{14}\approx71.4\%$
+\end_inset
+
+ מהמדגם.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $k=3$
+\end_inset
+
+ - במקרה זה הדוגמאות שיתויגו לא נכונה הן:
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+שוב, כאשר מסתכלים על המקבץ העליון בלבד ומסיקים מסימטריה על המקבץ התחתון
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\left(2,7\right),\left(3,7\right),\left(3,8\right)$
+\end_inset
+
+.
+ בנק' אלה 
+\begin_inset Formula $2$
+\end_inset
+
+ מתוך 
+\begin_inset Formula $3$
+\end_inset
+
+ השכנים הקרובים מתוייגים בתיוג ההפוך לזה הנכון, ולכן האלגוריתם שוגה עליהן.
+ אם כך, השגיאה עבור 
+\begin_inset Formula $k$
+\end_inset
+
+ זה היא: 
+\begin_inset Formula $\frac{6}{14}\approx42\%$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $k=5$
+\end_inset
+
+ - קל לראות שהדוגמאות היחידות שמתויגות לא נכונה הן בתת המקבץ הקטן יותר:
+ 
+\begin_inset Formula $\left(2,7\right),\left(3,8\right)$
+\end_inset
+
+, כי רב שכניהן הם 
+\begin_inset Formula $-$
+\end_inset
+
+, וכן שהיות והן 
+\begin_inset Formula $2$
+\end_inset
+
+ נק' במקבץ זה, הן לא משפיעות על התיוג של ה
+\begin_inset Formula $-$
+\end_inset
+
+ים בסביבתן )כי לוקחים
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+5
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ שכנים, אז לפחות 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+במקבץ יהיו בתיוג הנכון(.
+ השגיאה במקרה זה היא רק על נק' אלה בכל אחד מהמקבצים, כלומר 
+\begin_inset Formula $\frac{4}{14}\approx28.5\%$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+בכל מקבץ גדול יש
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+7
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+נק', ולכן ערכי 
+\begin_inset Formula $k$
+\end_inset
+
+ גדולים יותר לא יתנו שגיאה נמוכה יותר מאשר 
+\begin_inset Formula $k=5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+לכן 
+\begin_inset Formula $k=5$
+\end_inset
+
+ הוא הערך הממזער את השגיאה הנ"ל, והשגיאה שלו היא 
+\begin_inset Formula $\nicefrac{4}{14}$
+\end_inset
+
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+כאשר מחשבים שגיאה לפי 
+\begin_inset Formula $\frac{1}{m}\sum_{i=1}^{m}\ell^{0-1}\left(h_{i},\left(\mathbf{x}_{i},y_{i}\right)\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $h_{i}$
+\end_inset
+
+ היא אימון האלגוריתם בלי הדוגמה ה-
+\begin_inset Formula $i$
+\end_inset
+
+ )
+\begin_inset Formula $m=14$
+\end_inset
+
+(
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 \begin_inset ERT
 status open
