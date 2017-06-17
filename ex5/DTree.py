@@ -1,76 +1,74 @@
-import anytree
-
 class Node:
     DELIM = '  '
     NEW_LINE = '\n'
 
-    def __init__(self, name, parent=None):
+    def __init__(self, data, parent=None):
+        self.name = data
+        self.feature_value = None
         self._children = []
-        self._name = name
+        self._feature = None
         self._parent = parent
         self._height = 0
-        self._nodes = 0
+        self._nodes = 1
+        self._depth = 0
 
     @property
-    def name(self):
-        return self._name
+    def depth(self):
+        return self._depth
 
-    @name.getter
-    def name(self, name):
-        self._name = name
+    @depth.setter
+    def depth(self, value):
+        self._depth = value
+        for child in self._children:
+            child.depth = value + 1
 
     @property
-    def parent(self):
-        return self.parent
+    def height(self):
+        return self._height
 
-    @parent.setter
-    def parent(self, parent):
-        self._parent = parent
-        self._parent.add_child(self)
+    @height.setter
+    def height(self, value):
+        self._height = value
+        if self._parent is not None:
+            self._parent.height = max(self._parent.height, value + 1)
 
-    def add_child(self, child):
+    def add_child(self, child, feature_value):
+        if self._feature is None:
+            self._feature = self.name
+            self.name = 'x_%d=?' % self.name
         self._children.append(child)
-        child.parent = self
+        child.feature_value = feature_value
+        child._parent = self
+        child.depth = self.depth + 1
         self._nodes += child._nodes
-        self._height = max(self._height, self._height + child._height)
+        self.height = max(self.height, child.height + 1)
 
     def add_children(self, children):
-        if not hasattr(children, '__iter__'):
-            self.add_child(children)
-        for child in children:
-            self.add_child(child)
+        for (child, feature_value) in children:
+            self.add_child(child, feature_value)
+
+    def __getitem__(self, sample):
+        if self._feature is None:
+            return self.name
+        elif len(sample) > self._feature:
+            feature_value = sample[self._feature]
+            for child in self._children:
+                if child.feature_value == feature_value:
+                    return child[sample]
 
     def __str__(self):
-        output = str(self._name)
+        output = Node.DELIM*self._depth + str(self.name)
         if len(self._children) > 0:
             for child in self._children:
-                output += Node.NEW_LINE + Node.DELIM + str(child)
+                output += Node.NEW_LINE + str(child)
         return output
-
-
-
-class Node(anytree.Node):
-    def __init__(self, name, parent=None):
-        super().__init__(name, parent)
-        self.children = []
-
-    def add_children(self, children):
-        if not hasattr(children, '__iter__'):
-            children = [children]
-        for child in children:
-            child.parent = self
-            self.children.append(child)
-
-    def __str__(self):
-        return str(anytree.RenderTree(self))
 
 
 def create_tree(label, j=None):
     if j is not None:
         trees = label
-        tag = 'x_%d=?' % j
-        root = Node(tag)
+        root = Node(j)
         root.add_children(trees)
     else:
-        root = Node(str(label))
+        root = Node(label)
     return root

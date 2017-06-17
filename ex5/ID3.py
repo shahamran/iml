@@ -42,11 +42,12 @@ class ID3:
         if A is None or len(A) == 0 or depth == 0:
             return DTree.create_tree(max_c)
         j = np.argmax([self.Gain(S, i) for i in A])
-        new_A = np.delete(A, j)
+        index_j = np.argwhere(A == j)
+        new_A = np.delete(A, index_j)
         T = [None] * len(self.feature_values)
         for i, v in enumerate(self.feature_values):
             j_indices = S.loc[:, j] == v
-            T[i] = self.ID3(S.loc[j_indices, :], new_A, depth-1)
+            T[i] = (self.ID3(S.loc[j_indices, :], new_A, depth-1), v)
         return DTree.create_tree(T, j)
 
     def train(self, S, depth=None):
@@ -55,6 +56,19 @@ class ID3:
             depth = len(features)
         self.root = self.ID3(S, features, depth)
         return self
+
+    def predict(self, S):
+        m = S.shape
+        # if we're dealing with one sample predict and return
+        if len(m) == 1:
+            return self.root[S]
+        # otherwise, m is the number of samples
+        m = m[0]
+        predictions = [None] * m
+        # get a prediction for each sample
+        for i in range(m):
+            predictions[i] = self.root[S.iloc[i]]
+        return predictions
 
     def __str__(self):
         return str(self.root)
