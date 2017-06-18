@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 from ID3 import ID3
+import matplotlib.pyplot as plt
 from anytree.iterators import PreOrderIter
 from anytree.dotexport import RenderTreeGraph
 import pptree
@@ -29,15 +30,20 @@ features = train_data.columns[:-1]
 d = len(features)
 
 T = ID3(feature_values=FEATURE_VALUES, label_values=np.arange(len(labels)))
-T.train(train_data, 13)
-pptree.print_tree(T.root, '_children')
-print('Nodes: ', T.root._nodes)
-print('Height: ', T.root._height)
 
-# for depth in range(d+1):
-#     T.train(train_data, depth)
-#     print('Height = ' + str(depth))
-#     print()
-#     pptree.print_tree(T.root, '_children')
-#     print()
-
+m_train = train_data.shape[0]
+m_valid = validation_data.shape[0]
+train_error = [None] * (d+1)
+valid_error = train_error.copy()
+for depth in range(d+1):
+    T.train(train_data, depth)
+    train_error[depth] = sum(T.predict(train_data) !=
+                             train_data.label) / m_train
+    valid_error[depth] = sum(T.predict(validation_data) !=
+                             validation_data.label) / m_valid
+plt.plot(range(d+1), train_error, label='training')
+plt.plot(range(d+1), valid_error, label='validation')
+plt.xlabel('maximal height of the tree (d)')
+plt.ylabel('error')
+plt.legend()
+plt.show()
