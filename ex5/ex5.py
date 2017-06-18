@@ -35,12 +35,17 @@ m_train = train_data.shape[0]
 m_valid = validation_data.shape[0]
 train_error = [None] * (d+1)
 valid_error = train_error.copy()
-for depth in range(d+1):
+for depth in range(d+1 - 10): # TODO: CHANGE
     T.train(train_data, depth)
     train_error[depth] = sum(T.predict(train_data) !=
                              train_data.label) / m_train
     valid_error[depth] = sum(T.predict(validation_data) !=
                              validation_data.label) / m_valid
+    print('\n' + 'max height = %d' % depth)
+    print('nodes = %d' % T.root._nodes)
+    print('height = %d' % T.root._height)
+    print('root = %s' % T.root.name)
+pptree.print_tree(T.root, '_children')
 plt.plot(range(d+1), train_error, label='training')
 plt.plot(range(d+1), valid_error, label='validation')
 plt.xlabel('maximal height of the tree (d)')
