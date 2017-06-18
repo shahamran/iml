@@ -1,11 +1,10 @@
 import numpy as np
-from anytree import NodeMixin, RenderTree
-from anytree.dotexport import RenderTreeGraph
-import pptree
+import anytree
 
 
-class Node(NodeMixin):
+class Node(anytree.NodeMixin):
     id = 0
+
     def __init__(self, value, feature=None, parent=None):
         self._id = Node.id
         Node.id += 1
@@ -36,10 +35,17 @@ def argmax(f, iterable):
 
 class ID3Classifier:
 
-    def __init__(self, label_values, feature_values):
-        self.tree = None
+    def __init__(self, label_values, feature_values, tree=None):
+        self.tree = tree
         self.label_values = label_values
         self.feature_values = feature_values
+
+    def __str__(self):
+        return str(anytree.RenderTree(self.tree))
+
+    def copy(self):
+        return ID3Classifier(self.label_values, self.feature_values,
+                             self.tree)
 
     def entropy(self, S):
         if S is None or S.shape[0] == 0:
@@ -53,7 +59,7 @@ class ID3Classifier:
             result -= p * np.log(p) if p > 0 else 0
         return result
 
-    def Gain(self, S, i):
+    def gain(self, S, i):
         H = self.entropy
         m = S.shape[0]
         c = 0
@@ -82,7 +88,7 @@ class ID3Classifier:
 
         # take the feature that maximizes the gain and remove it from the
         # feature set
-        j = argmax(lambda i: self.Gain(S, i), features)
+        j = argmax(lambda i: self.gain(S, i), features)
         new_features = features - {j}
         temp = dict()
         # for every possible feature value, create a sub-tree
@@ -121,8 +127,11 @@ class ID3Classifier:
                 predictions[i] = self._predict_one(S.iloc[i])
             return predictions
 
+    def prune(self, f):
+        pass
+
     def show(self):
-        pptree.print_tree(self.tree)
+        print(self)
 
     def save_to_file(self, filename):
 
@@ -138,20 +147,12 @@ class ID3Classifier:
             return attr
 
         def nodenamefunc(node):
-            if node.is_leaf:
-                name = node.name
-                #name = num_to_label[node.name]
-            else:
-                name = node.name
+            name = node.name
             if node.is_root:
                 name += '\n' + 'Height(%d)' % node.height
             name += '\n' + 'id(%d)' % node._id
             return name
 
-        RenderTreeGraph(self.tree,
-                        nodeattrfunc=nodeattrfunc,
-                        edgeattrfunc=edgeattrfunc,
-                        nodenamefunc=nodenamefunc).to_picture(filename)
-
-    def __str__(self):
-        return str(RenderTree(self.tree))
+        anytree.dotexport.RenderTreeGraph(
+            self.tree, nodeattrfunc=nodeattrfunc, edgeattrfunc=edgeattrfunc,
+            nodenamefunc=nodenamefunc).to_picture(filename)
