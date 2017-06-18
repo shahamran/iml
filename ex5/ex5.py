@@ -2,7 +2,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from os import path
+import os
 import ID3
 
 # constants
@@ -11,9 +11,11 @@ VALIDATION_FILE = 'validation.txt'
 CSV_PARAMS = {'delim_whitespace': True, 'header': None}
 FEATURE_VALUES = ['y', 'n', 'u']
 TREES_DIR = 'trees'
+if not os.path.exists(TREES_DIR):
+    os.mkdir(TREES_DIR)
 
 def TREE_FILE(question, name):
-    return path.join(TREES_DIR, 'q%d_%s.svg' % (question, name))
+    return os.path.join(TREES_DIR, 'q%d_%s.svg' % (question, name))
 
 # read and tidy up the data
 train_data = pd.read_csv(TRAIN_FILE, **CSV_PARAMS)

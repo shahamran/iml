@@ -132,7 +132,7 @@ class ID3Classifier:
         def nodeattrfunc(node):
             attr = 'shape='
             if node.is_leaf:
-                attr += 'circle'
+                attr += 'ellipse'
             else:
                 attr += 'rectangle'
             return attr
