@@ -1,5 +1,6 @@
 import numpy as np
 import anytree
+from anytree.dotexport import RenderTreeGraph
 
 
 class Node(anytree.NodeMixin):
@@ -153,6 +154,7 @@ class ID3Classifier:
             name += '\n' + 'id(%d)' % node._id
             return name
 
-        anytree.dotexport.RenderTreeGraph(
-            self.tree, nodeattrfunc=nodeattrfunc, edgeattrfunc=edgeattrfunc,
-            nodenamefunc=nodenamefunc).to_picture(filename)
+        RenderTreeGraph(self.tree,
+                        nodeattrfunc=nodeattrfunc,
+                        edgeattrfunc=edgeattrfunc,
+                        nodenamefunc=nodenamefunc).to_picture(filename)

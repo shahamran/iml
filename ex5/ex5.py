@@ -32,7 +32,7 @@ d_values = np.array(range(d+1))
 
 # initialize the ID3 class
 T = ID3.ID3Classifier(labels, FEATURE_VALUES)
-trees = [None] * d
+trees = [None] * (d+1)
 
 m_train = train_data.shape[0]
 m_valid = validation_data.shape[0]
