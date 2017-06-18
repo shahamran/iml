@@ -1,5 +1,131 @@
 import numpy as np
-import DTree
+from anytree import NodeMixin
+import pptree
+
+class Node(NodeMixin):
+    def __init__(self, value, feature=None, parent=None):
+        if feature is None:
+            self.value = value
+            self.name = value
+            self._i = None
+        else:
+            self._i = feature
+            trees = value
+            for a in trees:
+                trees[a].parent = self
+                trees[a].value = a
+            self.name = 'x_%d=?' % feature
+        self.parent = parent
+
+def argmax(f, iterable):
+    best_value = -np.inf
+    best_index = 0
+    for x in iterable:
+        current_value = f(x)
+        if current_value > best_value:
+            best_value = current_value
+            best_index = x
+    return best_index
+
+def create_node(value, feature=None):
+    if feature is None:
+        return {'_i': None, 'value': value}
+    else:
+        return dict(_i=feature, **value)
+
+
+def entropy(label_values, S):
+    if S is None or S.shape[0] == 0:
+        return 0
+    m = S.shape[0]
+    result = 0
+    for c in label_values:
+        # compute the probability for label `c`
+        p = sum(S.label == c) / m
+        # if p=0 then entropy is 0
+        result -= p * np.log(p) if p > 0 else 0
+    return result
+
+def Gain(feature_values, label_values, S, i, H=entropy):
+    m = S.shape[0]
+    c = 0
+    for v in feature_values:
+        # Sv_indices is the indices of samples in which the feature `i`
+        # gets the value `v`
+        Sv_indices = S.loc[:, i] == v
+        Sv = S.loc[Sv_indices, :]
+        c += Sv.shape[0] / m * H(label_values, Sv)
+    return H(label_values, S) - c
+
+def Helper(S, feature_values, label_values, features, max_height):
+    sample_size = S.shape[0]
+    best_label, best_label_score = 0, 0
+    # check if all labels get the same value. if not, compute the label
+    # which has the maximal number of examples
+    for label_value in label_values:
+        sub_sample_size = sum(S.label == label_value)
+        if sub_sample_size == sample_size:
+            return Node(label_value)
+        if sub_sample_size > best_label_score:
+            best_label_score = sub_sample_size
+            best_label = label_value
+    if features is None or len(features) == 0 or max_height == 0:
+        return Node(best_label)
+
+    # take the feature that maximizes the gain and remove it from the
+    # feature set
+    j = argmax(lambda i: Gain(feature_values, label_values, S, i), features)
+    new_features = features - {j}
+    temp = dict()
+    # for every possible feature value, create a sub-tree
+    for feature_value in feature_values:
+        j_indices = S.loc[:, j] == feature_value
+        temp[feature_value] = Helper(S.loc[j_indices, :],
+                                     feature_values,
+                                     label_values,
+                                     new_features, max_height-1)
+    return Node(temp, j)
+
+def train(S, max_height=None):
+    features = set(S.columns[:-1])
+    if max_height is None:
+        max_height = len(features)
+    feature_values = np.unique(S.loc[:, 0])
+    label_values = np.unique(S.label)
+    return Helper(S, feature_values, label_values, features, max_height)
+
+def predict_one(tree, s):
+    temp = tree
+    while temp._i is not None:
+        for child in temp.children:
+            if child.value == s[temp._i]:
+                temp = child
+                break
+    return temp.name
+
+def predict(tree, S):
+    m = S.shape
+    if len(m) == 1:
+        return predict_one(tree, S)
+    else:
+        m = m[0]
+        predictions = [None] * m
+        for i in range(m):
+            predictions[i] = predict_one(tree, S.iloc[i])
+        return predictions
+
+def show(tree):
+    pptree.print_tree(tree)
+
+
+
+
+
+
+
+
+
+
 
 
 class ID3:
