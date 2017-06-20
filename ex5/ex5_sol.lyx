@@ -321,56 +321,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-אנטרופיה: 
-\begin_inset Formula $H\left(S\right)=\sum_{i=1}^{c}-p_{i}\log p_{i},\ p_{i}=\text{fraction of samples labeled "i"}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-רווח אינפורמציה: 
-\begin_inset Formula $Gain\left(S;A\right)=H\left(S\right)-\sum_{v\in values\left(A\right)}\frac{\left|S_{v}\right|}{\left|S\right|}H\left(S_{v}\right)$
-\end_inset
-
- כאשר 
-\begin_inset Formula $values\left(A\right)$
-\end_inset
-
- היא קבוצת כל הערכים האפשריים לפיצ'ר 
-\begin_inset Formula $A$
-\end_inset
-
- ו-
-\begin_inset Formula $S_{v}$
-\end_inset
-
- היא תת-קבוצה של 
-\begin_inset Formula $S$
-\end_inset
-
- עבור לפיצ'ר 
-\begin_inset Formula $A$
-\end_inset
-
- יש את הערך 
-\begin_inset Formula $v$
-\end_inset
-
-.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 נחשב את ה-
 \lang english
 information gain
@@ -399,137 +349,38 @@ information gain
 \noun default
 \color inherit
 לכל אחד מהפיצ'רים.
- 
-\begin_inset Formula $S=\frac{1}{2}$
+ במקרה הנ"ל, 
+\begin_inset Formula $\mathcal{Y}=\left\{ 0,1\right\} $
 \end_inset
 
- כי
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\numeric on
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-2
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\numeric off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-מתוך
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\numeric on
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-4
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\numeric off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-הדוגמאות מתויגות
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\numeric on
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-1
-\numeric off
+ ולכן אפשר לרשום את 
+\begin_inset Formula $H$
+\end_inset
+
+ )מהגדרת 
+\lang english
+information gain
+\lang hebrew
+( באופן הבא: 
+\begin_inset Formula 
+\[
+H\left(S\right)=-p_{0}\log p_{0}-p_{1}\log p_{1}=-p\log p-\left(1-p\right)\log\left(1-p\right)
+\]
+
+\end_inset
+
+כאשר 
+\begin_inset Formula $p$
+\end_inset
+
+ הוא אחוז הדוגמאות המתויגות 
+\begin_inset Formula $1$
+\end_inset
+
+ ב-
+\begin_inset Formula $S$
+\end_inset
+
 .
  מתקיים: 
 \end_layout
@@ -537,8 +388,8 @@ information gain
 \begin_layout Enumerate
 \begin_inset Formula 
 \begin{align*}
-Gain\left(S;x_{1}\right) & =H\left(\frac{1}{2}\right)-\left(\frac{\left|S_{1}\right|}{\left|S\right|}H\left(S_{1}\right)+\frac{\left|S_{0}\right|}{\left|S\right|}H\left(S_{0}\right)\right)\\
- & =H\left(\frac{1}{2}\right)-\left(\frac{3}{4}H\left(\frac{2}{3}\right)+\frac{1}{4}H\left(0\right)\right)\approx0.22
+Gain\left(S;x_{1}\right) & =H\left(S\right)-\left(\frac{\left|S_{1}\right|}{\left|S\right|}H\left(S_{1}\right)+\frac{\left|S_{0}\right|}{\left|S\right|}H\left(S_{0}\right)\right)\\
+ & =\underbrace{H\left(S\right)}_{p=\frac{1}{2}}-\left(\frac{3}{4}\underbrace{H\left(S_{1}\right)}_{p=\frac{2}{3}}+\frac{1}{4}\underbrace{H\left(S_{0}\right)}_{p=0}\right)\approx0.22
 \end{align*}
 
 \end_inset
@@ -547,7 +398,7 @@ Gain\left(S;x_{1}\right) & =H\left(\frac{1}{2}\right)-\left(\frac{\left|S_{1}\ri
 \begin_inset Formula $S_{1}$
 \end_inset
 
- היא קבוצת הדוגמאות עבור 
+ היא קבוצת הדוגמאות עבורה 
 \begin_inset Formula $x_{1}=1$
 \end_inset
 
@@ -606,9 +457,25 @@ Gain\left(S;x_{1}\right) & =H\left(\frac{1}{2}\right)-\left(\frac{\left|S_{1}\ri
 \end_inset
 
 .
+ החישוב הנ"ל מתבסס על: 
+\begin_inset Formula 
+\begin{align*}
+H\left(S\right) & =-p\log p-\left(1-p\right)\log\left(1-p\right)=-\log\frac{1}{2}\approx0.69\\
+H\left(S_{1}\right) & =-\frac{2}{3}\log\frac{2}{3}-\frac{1}{3}\log\frac{1}{3}\approx0.63\\
+H\left(S_{0}\right) & =-0\log0-1\log1=0
+\end{align*}
+
+\end_inset
+
+)כי 
+\begin_inset Formula $\lim_{x\to0}x\log x=0$
+\end_inset
+
+(
 \end_layout
 
 \begin_layout Enumerate
+באופן דומה )אם כי בכתיב קצר יותר(:
 \begin_inset Formula 
 \[
 Gain\left(S;x_{2}\right)=H\left(\frac{1}{2}\right)-\left(\frac{2}{4}H\left(\frac{1}{2}\right)+\frac{2}{4}H\left(\frac{1}{2}\right)\right)=H\left(\frac{1}{2}\right)-H\left(\frac{1}{2}\right)=0
@@ -886,78 +753,14 @@ ID3
 \end_inset
 
  נקבל שהדוגמה 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-לתקן
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula $\left(1,1,1\right)$
 \end_inset
 
- תתוייג 
-\begin_inset Formula $1$
-\end_inset
-
- נכונה, אולם הדוגמה 
+ והדוגמה 
 \begin_inset Formula $\left(1,1,0\right)$
 \end_inset
 
- תתויג גם היא
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\numeric on
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-1
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\numeric off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-בטעות.
+ יתויגו באותו תיוג, ומכיוון שתיוגם האמיתי שונה, האלגוריתם יטעה על אחת מהן.
  אם נשאל 
 \begin_inset Formula $x_{3}=0?$
 \end_inset
@@ -966,99 +769,23 @@ status open
 \begin_inset Formula $\left(1,1,0\right)$
 \end_inset
 
- תתוייג
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\numeric on
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-0
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\numeric off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-נכונה וש-
+ ו-
 \begin_inset Formula $\left(1,0,0\right)$
 \end_inset
 
- תתוייג
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
  
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\numeric on
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-0
 \family roman
 \series medium
 \shape up
 \size normal
 \emph off
-\numeric off
 \bar no
 \strikeout off
 \uuline off
 \uwave off
 \noun off
 \color none
- בטעות.
+יתויגו באותו תיוג, וגם כאן האלגוריתם יטעה על אחת.
 \end_layout
 
 \begin_layout Standard
@@ -1462,7 +1189,7 @@ status open
 \uwave default
 \noun default
 \color inherit
-בכל נורמה(.
+בכל נורמה, ובפרט באוקלידית(.
  שגיאת האימון היא אי-שלילית, ולכן זו שגיאת אימון מינימלית על המדגם הנתון.
 \end_layout
 
@@ -1751,7 +1478,11 @@ status open
 \end_layout
 
 \begin_layout Standard
-לכן 
+
+\series bold
+לכן
+\series default
+ 
 \begin_inset Formula $k=5$
 \end_inset
 
@@ -1801,6 +1532,113 @@ status open
 
 \end_layout
 
+\begin_layout Standard
+מקבצי הנקודות בעלות תיוג זהה מכילים מס' קטן של נקודות.
+ כך למשל, עבור המקבץ העליון ביותר )המכיל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ שני 
+\begin_inset Formula $+$
+\end_inset
+
+ים( כל ערך 
+\begin_inset Formula $k$
+\end_inset
+
+ הגדול מ-
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+יגרום ל"ניחוש" הדוגמאות באזור זה, כי תמיד יילקחו בחשבון גם
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\numeric off
+ 
+\begin_inset Formula $-$
+\end_inset
+
+ים.
+ כלומר נאבד לחלוטין את המידע לגבי הימצאות מקבץ 
+\begin_inset Formula $+$
+\end_inset
+
+ים למעלה )ומינוסים למטה(.
+\end_layout
+
+\begin_layout Standard
+ערכי 
+\begin_inset Formula $k$
+\end_inset
+
+ נמוכים
+\end_layout
+
 \begin_layout Subsection
 \begin_inset ERT
 status open
@@ -1814,8 +1652,1770 @@ status open
 
 \end_layout
 
+\begin_layout Standard
+הנה הניסיון הטוב ביותר שלי )הוא לא כ"כ טוב(:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename knn-1.jpg
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 חלק תכנותי
+\end_layout
+
+\begin_layout Remarks
+נא להריץ את הפקודה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+pip install -r requirements.txt
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+על מנת לוודא שכל החבילות מותקנות ובגרסה המתאימה.
+ זה נבדק באקווריום, אבל אני לא בטוח שלא התקנתי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ב-
+\lang english
+user
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+שלי חבילות שאינן כלולות כברירת מחדל )
+\lang english
+pandas, anytree, etc.
+\lang hebrew
+(.
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remarks
+בחרתי לממש את ה-
+\lang english
+Information gain
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+העצים שהתקבלו מופיעים בנספח 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sec:apdx-trees"
+
+\end_inset
+
+.
+ גרף השגיאות מתואר להלן: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename q2graph.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+שגיאת האימון מול שגיאת הולידציה - שגיאות האימון קטנה מהר ל-
+\numeric on
+0
+\numeric off
+, כלומר האלגוריתם מתייג נכונה את כל דוגמאות האימון, אך מבצע
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+overfitting
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+לדוגמאות הולידציה עם עצים מגובה 
+\begin_inset Formula $2<$
+\end_inset
+
+.
+ מהגרף הזה אפשר להסיק שהגובה שימזער את שגיאת ההכללה הוא 
+\begin_inset Formula $1$
+\end_inset
+
+ או 
+\begin_inset Formula $2$
+\end_inset
+
+, שכן במקרים אלה שגיאת הולידציה היא הנמוכה ביותר.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+העץ שהתקבל על ידי גיזום העץ המקסימלי מהסעיף הקודם הוא הבא: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename trees/q3_pruned.svg
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename q3errors.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+העץ שהתקבל מהרצת האלגוריתם הגנרי לגיזום )
+\lang english
+pruning
+\lang hebrew
+(, וערכי שגיאת ההכללה )כפי שמתואר בהוראות התרגיל - ההפרש בין שגיאת הולידציה
+ לאימון(
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+אפשר לראות שהוא קטן משמעותית מהעץ הממזער את טעות האימון.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+להלן גרף השגיאות הממוצעות בתהליך הקרוס-ולידציה: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename q4graph.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+הגרף דומה לגרף שגיאת הולידציה מסעיף
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\numeric off
+, אם כי נראה שגם עצים מגובה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מקבלים במקרה זה שגיאה נמוכה יחסית.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נראה שארכיטקטורת העץ הגזום הוא הבחירה הטובה ביותר, על סמך תהליך ה-
+\lang english
+cross-validation
+\lang hebrew
+.
+ עם זאת, בהיעדר דוגמאות "מבחן", קשה לתת הערכה טובה לשגיאת העץ הטוב ביותר
+ )שגיאת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+estimation
+\lang hebrew
+(.
+ זאת מכיוון שבתהליך זה כל דוגמה מהמדגם הנתון שימשה לצורך אימון האלגוריתם
+ ובחינתו, ולכן בחינה נוספת של ביצועי האלגוריתם על אותו המדגם תסבול במידה
+ כזו או אחרת )שאני לא בטוח שלמדנו לשלוט בה( מ-
+\lang english
+overfitting
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Standard
+כמוכן, גם בתהליך זה קיבלנו שגובה העץ המומלץ הוא נמוך )
+\numeric on
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+או
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\numeric off
+, על אף שבמקרה זה אפשר לקחת גם את
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ בחשבון(, בהתאם לאינטואיציה מאחורי 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+MDL
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+לפיה היפותזה פשוטה )בעלת תיאור קצר; במקרה שלנו, עץ נמוך( היא טובה יותר.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+עצים
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:apdx-trees"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename trees/q2_0.svg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+העץ שהתקבל מהרצת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ID3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עם גובה מקסימלי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename trees/q2_1.svg
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+העץ שהתקבל מהרצת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ID3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עם גובה מקסימלי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename trees/q2_2.svg
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+העץ שהתקבל מהרצת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ID3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עם גובה מקסימלי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename trees/q2_3.svg
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+העץ שהתקבל מהרצת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ID3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עם גובה מקסימלי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename trees/q2_4.svg
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+העץ שהתקבל מהרצת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ID3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עם גובה מקסימלי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename trees/q2_5.svg
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+העץ שהתקבל מהרצת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ID3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עם גובה מקסימלי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename trees/q2_6.svg
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+העץ שהתקבל מהרצת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ID3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עם גובה מקסימלי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+6
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename trees/q2_7.svg
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+העץ שהתקבל מהרצת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ID3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עם גובה מקסימלי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+7
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename trees/q2_8.svg
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+העצים שהתקבלו מהרצת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ID3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עם גובה מקסימלי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+8-16
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+- כולם יצאו זהים )ונתנו שגיאת אימון
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\numeric off
+(
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:max-height-trees"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
