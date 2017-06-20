@@ -1,6 +1,7 @@
 import numpy as np
 import anytree
 from anytree.dotexport import RenderTreeGraph
+import copy
 
 
 class Node(anytree.NodeMixin):
@@ -9,6 +10,7 @@ class Node(anytree.NodeMixin):
     def __init__(self, value, feature=None, parent=None):
         self._id = Node.id
         Node.id += 1
+        self.value = None
         if feature is None:
             self.value = value
             self.name = value
@@ -22,6 +24,19 @@ class Node(anytree.NodeMixin):
             self.name = 'x_%d=?' % feature
         self.parent = parent
 
+    def __str__(self):
+        return '%s (%d)' % (self.name, self._id)
+
+    def replace(this, that, this_parent=None):
+        # switch this node with that node, assigning this_parent to
+        # this.parent
+        that.parent = this.parent
+        this.parent = this_parent
+        this.value, that.value = that.value, this.value
+
+    def copy(self):
+        return copy.deepcopy(self)
+
 
 def argmax(f, iterable):
     best_value = -np.inf
@@ -32,6 +47,9 @@ def argmax(f, iterable):
             best_value = current_value
             best_index = x
     return best_index
+
+def argmin(f, iterable):
+    return argmax(lambda x: -f(x), iterable)
 
 
 class ID3Classifier:
@@ -45,8 +63,7 @@ class ID3Classifier:
         return str(anytree.RenderTree(self.tree))
 
     def copy(self):
-        return ID3Classifier(self.label_values, self.feature_values,
-                             self.tree)
+        return copy.deepcopy(self)
 
     def entropy(self, S):
         if S is None or S.shape[0] == 0:
@@ -128,8 +145,50 @@ class ID3Classifier:
                 predictions[i] = self._predict_one(S.iloc[i])
             return predictions
 
-    def prune(self, f):
-        pass
+    def prune(self, error_bound):
+        clf = self.copy()
+
+        def compute_error(clf, original, alternative):
+            # just compute the error if  no switch is needed
+            if original == alternative:
+                return error_bound(clf)
+            # switch the original node with the alternative in clf
+            old_parents = (original.parent, alternative.parent)
+            Node.replace(original, alternative)
+
+            if old_parents[0] is None:
+                clf.tree = alternative
+            # compute the error with the resulting tree
+
+            output = error_bound(clf)
+            # return to the original tree
+            Node.replace(alternative, original, old_parents[-1])
+            if old_parents[0] is None:
+                clf.tree = original
+
+            return output
+
+        # go over all nodes in a bottom-up manner
+        for node in anytree.PostOrderIter(clf.tree):
+            # add all alternatives to a list
+            alternatives = []
+            for label in clf.label_values:
+                alternatives.append(Node(label))
+            for child in node.children:
+                alternatives.append(child)
+            alternatives.append(node)
+
+            # find the alternative which minimizes the bound on the error
+            best_alternative = argmin(lambda x: compute_error(clf, node, x),
+                                      alternatives)
+            if best_alternative != node:
+                Node.replace(node, best_alternative)
+                node = best_alternative
+                if best_alternative.is_root:
+                    clf.tree = best_alternative
+        return clf
+
+
 
     def show(self):
         print(self)

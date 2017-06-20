@@ -17,6 +17,11 @@ if not os.path.exists(TREES_DIR):
 def TREE_FILE(question, name):
     return os.path.join(TREES_DIR, 'q%d_%s.svg' % (question, name))
 
+def LOSS(predictions, true_labels):
+    m = len(predictions)
+    assert(len(predictions) == len(true_labels))
+    return sum(predictions != true_labels) / m
+
 # read and tidy up the data
 train_data = pd.read_csv(TRAIN_FILE, **CSV_PARAMS)
 validation_data = pd.read_csv(VALIDATION_FILE, **CSV_PARAMS)
@@ -42,10 +47,8 @@ valid_error = train_error.copy()
 for max_height in d_values:
     train_predictions = T.fit(train_data, max_height).predict(train_data)
     valid_predictions = T.predict(validation_data)
-    train_error[max_height] = sum(train_predictions !=
-                                  train_data.label) / m_train
-    valid_error[max_height] = sum(valid_predictions !=
-                                  validation_data.label) / m_valid
+    train_error[max_height] = LOSS(train_predictions, train_data.label)
+    valid_error[max_height] = LOSS(valid_predictions, validation_data.label)
     T.save_to_file(TREE_FILE(question=2, name=str(max_height)))
     trees[max_height] = T.copy()
 
@@ -57,8 +60,28 @@ plt.ylabel('error')
 plt.legend()
 
 
-# TODO: question 3
+# question 3
+def error_bound(tree):
+    predictions = tree.predict(validation_data)
+    true_labels = validation_data.label
+    return LOSS(predictions, true_labels)
 
+def generalization_error(tree):
+    return np.abs(LOSS(tree.predict(train_data), train_data.label) -
+                  LOSS(tree.predict(validation_data), validation_data.label))
+
+pruned_tree = trees[-1].prune(error_bound)
+pruned_tree.save_to_file(TREE_FILE(question=3, name='pruned'))
+
+# print the resulting errors
+print('question 3')
+print('----------')
+print('generalization error of the un-pruned tree:')
+print(generalization_error(trees[-1]))
+
+print('generalization error of the pruned tree:')
+print(generalization_error(pruned_tree))
+print()
 
 # TODO: question 4
 folds = 8
