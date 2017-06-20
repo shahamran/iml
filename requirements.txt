@@ -1,3 +1,4 @@
+anytree==2.2.1
 appdirs==1.4.3
 cycler==0.10.0
 decorator==4.0.11

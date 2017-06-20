@@ -13,6 +13,8 @@ FEATURE_VALUES = ['y', 'n', 'u']
 TREES_DIR = 'trees'
 if not os.path.exists(TREES_DIR):
     os.mkdir(TREES_DIR)
+# for the random stuff to be consistent in submission
+np.random.seed(25)
 
 def TREE_FILE(question, name):
     return os.path.join(TREES_DIR, 'q%d_%s.svg' % (question, name))
@@ -61,16 +63,18 @@ plt.legend()
 
 
 # question 3
-def error_bound(tree):
-    predictions = tree.predict(validation_data)
-    true_labels = validation_data.label
-    return LOSS(predictions, true_labels)
+def error_bound(test_data):
+    def bound(tree):
+        predictions = tree.predict(test_data)
+        true_labels = test_data.label
+        return LOSS(predictions, true_labels)
+    return bound
 
 def generalization_error(tree):
     return np.abs(LOSS(tree.predict(train_data), train_data.label) -
                   LOSS(tree.predict(validation_data), validation_data.label))
 
-pruned_tree = trees[-1].prune(error_bound)
+pruned_tree = trees[-1].prune(error_bound(validation_data))
 pruned_tree.save_to_file(TREE_FILE(question=3, name='pruned'))
 
 # print the resulting errors
@@ -84,42 +88,54 @@ print(generalization_error(pruned_tree))
 print()
 
 # TODO: question 4
+
+def perform_kfold(clf, S, k):
+
+    def concat(arr):
+        """
+        concatenates the given array of arrays if possible (if `arr' is not empty),
+        otherwise doesn't do anything
+        :param arr: an array of arrays to concatenate
+        :return: a concatenated array if len(arr)>0, an empty array otherwise
+        """
+        if len(arr) > 0:
+            return np.concatenate(arr)
+        else:
+            return np.array([])
+
+
+    folds = np.array_split(np.arange(S.shape[0]), k)
+    loss = [np.inf] * k
+    error = np.ones((k, d+2)) * np.inf
+    trees = [None] * (d+1)
+    for i in range(k):
+        # split to train & test sets
+        train_1 = concat(folds[:i])
+        train_2 = concat(folds[i + 1:])
+        train_idx = concat((train_1, train_2))
+        test_idx = folds[i]
+        train_data = S.loc[train_idx, :].reset_index(drop=True)
+        test_data = S.loc[test_idx, :].reset_index(drop=True)
+        true_labels = test_data.label
+        for j in range(d+1):
+            trees[j] = clf.fit(train_data, max_height=j).copy()
+            predictions = trees[j].predict(test_data)
+            error[i, j] = LOSS(predictions, true_labels)
+        pruned = trees[-1].prune(error_bound(test_data))
+        predictions = pruned.predict(test_data)
+        error[i, -1] = LOSS(predictions, true_labels)
+    return error.mean(axis=0)
+
+# perform 8-fold cross-validation
 folds = 8
 # unify train & validation and shuffle the array
 unified = pd.concat([train_data, validation_data], ignore_index=True)
-unified = unified.iloc[np.random.permutation(len(unified))].reset_index()
-
-def perform_kfold(S, k):
-    """
-    performs k-fold cross-validation over the given data set
-    :param S: data set
-    :param k: number of folds
-    :return:
-    """
-    folds = np.array_split(np.arange(Y.shape[0]), k)
-    loss = [np.inf] * k
-    error = [np.inf] * D
-    # iterate the parameters space (d)
-    for j, d in enumerate(DEGREES):
-        # train & test for each fold
-        for i in range(k):
-            # split to train & test sets
-            train_1 = concat(folds[:i])
-            train_2 = concat(folds[i+1:])
-            train_idx = concat((train_1, train_2)).astype(int)
-            test_idx = folds[i]
-            X_train, Y_train = X[train_idx], Y[train_idx]
-            X_test, Y_test = X[test_idx], Y[test_idx]
-            # fit a polynomial to the training set and compute the loss on
-            # the test set
-            poly, _ = fit_polynomial(X_train, Y_train, d)
-            loss[i] = compute_loss(poly(X_test), Y_test)
-        # average the "test" losses on all folds
-        error[j] = np.mean(loss)
-    # get the polynomial degree which minimizes the error
-    d_index = np.argmin(error)
-    d_cv = DEGREES[d_index]
-    # fit a polynomial with the 'best' degree on the whole data set
-    return fit_polynomial(X, Y, d_cv)
-
+unified = unified.iloc[np.random.permutation(len(unified))].reset_index(
+    drop=True)
+error = perform_kfold(T, unified, folds)
+plt.figure()
+plt.plot(range(d+2), error)
+plt.xticks(range(d+2), list(range(d+1)) + ['pruned'])
+plt.xlabel('max_height / pruned')
+plt.ylabel('cross-validation error')
 plt.show()
