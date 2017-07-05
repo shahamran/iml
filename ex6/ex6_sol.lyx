@@ -1,0 +1,690 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass heb-article
+\begin_preamble
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{forest}
+\usetikzlibrary{arrows,automata,positioning}
+\usepackage{placeins}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language hebrew
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.7cm
+\topmargin 1.7cm
+\rightmargin 1.7cm
+\bottommargin 1.7cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\RR}{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\norm}[1]{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Rd}{\mathbb{R}^{d}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\set}[2]{\left\{  #1\:\middle|\:#2\right\}  }
+{\left\{ #1\:\mid\:#2\right\} }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Al}{{\cal A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Hy}{{\cal H}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\fl}[1]{\left\lfloor #1\right\rfloor }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\X}{{\cal X}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Y}{{\cal Y}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\prc}[2]{\mathbb{P}\left[#1\middle|#2\right]}
+{\mathbb{P}\left[#1\mid#2\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pr}[1]{\mathbb{P}\left[#1\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}[1]{\underset{#1}{\mathbb{E}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+מבוא למערכות לומדות
+\begin_inset Newline newline
+\end_inset
+
+תרגיל
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+6
+\end_layout
+
+\begin_layout Author
+רן שחם -
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+203781000
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+-
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+ransha
+\end_layout
+
+\begin_layout Section
+בעיית המסלולים הקצרים ביותר
+\end_layout
+
+\begin_layout Standard
+יהי 
+\begin_inset Formula $G=\left(U,E\right)$
+\end_inset
+
+גרף מכוון עם משקולות 
+\begin_inset Formula $w:E\to\mathbb{R}$
+\end_inset
+
+ וקדקוד מקור 
+\begin_inset Formula $u\in U$
+\end_inset
+
+ כך שכל המעגלים ב-
+\begin_inset Formula $G$
+\end_inset
+
+ הם עם משקל חיובי.
+\end_layout
+
+\begin_layout Standard
+נגדיר: 
+\begin_inset Formula $\mathcal{S}=\mathcal{A}=U$
+\end_inset
+
+ ולכל 
+\begin_inset Formula $s,a\in U$
+\end_inset
+
+ נגדיר: 
+\begin_inset Formula $\rho\left(s,a\right)=\begin{cases}
+-\infty, & \left(a,s\right)\notin E\\
+-w\left(a,s\right), & \left(a,s\right)\in E\\
+0, & a=s=u
+\end{cases}$
+\end_inset
+
+, כלומר ה-
+\lang english
+reward
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang hebrew
+ הוא מספר סופי אם נשארים ב-
+\begin_inset Formula $u$
+\end_inset
+
+ או אם אפשר ללכת מ-
+\begin_inset Formula $a$
+\end_inset
+
+ ל-
+\begin_inset Formula $s$
+\end_inset
+
+ )כלומר הצלע 
+\begin_inset Formula $a\to s$
+\end_inset
+
+ קיימת - או באופן שקול, אפשר ללכת בגרף ההפוך מ-
+\begin_inset Formula $s$
+\end_inset
+
+ ל-
+\begin_inset Formula $a$
+\end_inset
+
+(, והוא שווה למשקל הצלע הזו.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ בנוסף, נגדיר 
+\begin_inset Formula $\tau\left(s,a\right)=a$
+\end_inset
+
+ לכל 
+\begin_inset Formula $s,a\in U$
+\end_inset
+
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+פורמלית, 
+\begin_inset Formula $\tau$
+\end_inset
+
+ מחזיר התפלגות על המצבים.
+ התבקשנו לספק פונקציה דטרמיניסטית, אז יש להסתכל על 
+\begin_inset Formula $\tau\left(s,a\right)$
+\end_inset
+
+ כך: 
+\begin_inset Formula $\tau\left(s,a\right)\left(\left\{ b\right\} \right)=\begin{cases}
+1, & b=a\\
+0, & \text{otherwise}
+\end{cases}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $b\in U$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+מדיניות 
+\begin_inset Formula $\pi$
+\end_inset
+
+ על המרחב הנ"ל היא סדרת קדקודים 
+\begin_inset Formula $\left(v_{0},v_{1},v_{2},\dots\right)$
+\end_inset
+
+ כך שהסוכן מתחיל בקדקוד 
+\begin_inset Formula $v_{0}$
+\end_inset
+
+ ועובר בין קדקודים.
+ נשים לב שמתקיים 
+\begin_inset Formula $V_{\pi}\left(s\right)=\mathbb{E}\left[\sum_{t=0}^{\infty}r\left(s_{t},a_{t}\right)\middle|s_{0}=s\right]=\sum_{t=0}^{\infty}\rho\left(s_{t},a_{t}\right)$
+\end_inset
+
+ לכל 
+\begin_inset Formula $\pi$
+\end_inset
+
+ ו-
+\begin_inset Formula $s\in U$
+\end_inset
+
+, שכן 
+\begin_inset Formula $\rho,\tau$
+\end_inset
+
+ הן דטרמיניסטיות.
+\end_layout
+
+\begin_layout Standard
+כעת, עבור 
+\begin_inset Formula $\pi$
+\end_inset
+
+ כלשהי וקדקוד 
+\begin_inset Formula $s\in U$
+\end_inset
+
+, ברור שאם 
+\begin_inset Formula $\pi$
+\end_inset
+
+ הוא הילוך בגרף המסתיים ב-
+\begin_inset Formula $u$
+\end_inset
+
+ )ואחריו ההילוך תמיד נשאר ב-
+\begin_inset Formula $u$
+\end_inset
+
+( מקיים 
+\begin_inset Formula $V_{\pi}\left(s\right)\neq-\infty$
+\end_inset
+
+ - כי מתקיים 
+\begin_inset Formula $V_{\pi}\left(s\right)=\sum_{i=0}^{N}\rho\left(v_{i},v_{i+1}\right)=-\sum_{i=0}^{N}w\left(v_{i+1},v_{i}\right)>-\infty$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+בכיוון השני, נניח ש-
+\begin_inset Formula $V_{\pi}\left(s\right)\neq-\infty$
+\end_inset
+
+.
+ ברור שההילוך האינסופי המוגדר לעיל )סדרת הקדקודים 
+\begin_inset Formula $v_{0},v_{1},\dots$
+\end_inset
+
+( מקיים 
+\begin_inset Formula $\left(v_{i+1},v_{i}\right)\in E$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+ - אחרת היה מתקיים 
+\begin_inset Formula $\rho\left(v_{i},v_{i+1}\right)=-\infty$
+\end_inset
+
+ עבור 
+\begin_inset Formula $i$
+\end_inset
+
+ כלשהו ולכן הסכום המוגדר ב-
+\begin_inset Formula $V_{\pi}\left(s\right)$
+\end_inset
+
+ היה 
+\begin_inset Formula $-\infty$
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+כי כל הערכים האפשריים ל-
+\begin_inset Formula $\rho$
+\end_inset
+
+ הם אי-חיוביים והם היחידים שנסכמים
+\end_layout
+
+\end_inset
+
+ בסתירה להנחה שהוא לא.
+ אם כך סדרת הקדקודים מתאימה להילוך בגרף ההפוך כנדרש.
+ נראה שסדרה זו חייבת להסתיים ב-
+\begin_inset Formula $u$
+\end_inset
+
+ )ולהישאר שם(, כלומר שקיים 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $v_{n}=u$
+\end_inset
+
+ לכל 
+\begin_inset Formula $n\ge N$
+\end_inset
+
+.
+ בשלילה שלא, אז קיימים אינסוף 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $v_{n}\neq u$
+\end_inset
+
+.
+ מכאן ומעקרון שובך היונים, קיימים אינסוף מעגלים בהילוך 
+\begin_inset Formula $v_{0},v_{1}\dots$
+\end_inset
+
+.
+ נבדוק את תרומתם ל-
+\begin_inset Formula $V_{\pi}\left(s\right)$
+\end_inset
+
+.
+ נתבונן במעגל כלשהו 
+\begin_inset Formula $v_{i},v_{i+1},\dots,v_{i+k}=v_{i}$
+\end_inset
+
+.
+ מתקיים ש-
+\begin_inset Formula $\sum_{j=0}^{k-1}w\left(v_{i+k-j},v_{i+k-j-1}\right)>0$
+\end_inset
+
+ מההנחה שכל המעגלים חיוביים, ולכן 
+\begin_inset Formula $\sum_{j=0}^{k-1}\rho\left(v_{i+j},v_{i+j+1}\right)=-\sum_{j=0}^{k-1}w\left(v_{i+j+1},v_{i+j}\right)<0$
+\end_inset
+
+, כלומר כל מעגל תורם ערך שלילי לסכום, ומכך שיש אינסוף כאלה נקבל ש-
+\begin_inset Formula $V_{\pi}\left(s\right)=-\infty$
+\end_inset
+
+ בסתירה.
+ לכן קיימת נקודה שהחל ממנה ההילוך נשאר ב-
+\begin_inset Formula $u$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+נתבונן בתת-הסדרה 
+\begin_inset Formula $v_{0},\dots,v_{N}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $v_{N}=u$
+\end_inset
+
+ ולכל 
+\begin_inset Formula $n\ge N$
+\end_inset
+
+: 
+\begin_inset Formula $v_{n}=u$
+\end_inset
+
+.
+ כאמור, היא מתאימה להילוך בגרף ההפוך, כלומר מתאימה למסלול מ-
+\begin_inset Formula $u$
+\end_inset
+
+ ל-
+\begin_inset Formula $s$
+\end_inset
+
+.
+ כמוכן מתקיים 
+\begin_inset Formula $V_{\pi}\left(s\right)=\sum_{i=0}^{N-1}\rho\left(v_{i},v_{i+1}\right)=-\sum_{i=0}^{N-1}w\left(v_{i+1},v_{i}\right)$
+\end_inset
+
+ שזהו סכום המסלול הנ"ל מ-
+\begin_inset Formula $u$
+\end_inset
+
+ ל-
+\begin_inset Formula $s$
+\end_inset
+
+.
+ מכאן נסיק שהפונקצייה 
+\begin_inset Formula $V^{*}\left(s\right)$
+\end_inset
+
+ מתאימה למינוס ערכו של המסלול הקצר ביותר מ-
+\begin_inset Formula $u$
+\end_inset
+
+ ל-
+\begin_inset Formula $s$
+\end_inset
+
+, שכן היא ממקסמת את ערך הסכום השווה למינוס משקל המסלול.
+\end_layout
+
+\begin_layout Section
+מבוך
+\end_layout
+
+\begin_layout Section
+סבלנות
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../ex5/trees/q3_pruned.svg
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../ex5/q3errors.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+העץ שהתקבל מהרצת האלגוריתם הגנרי לגיזום )
+\lang english
+pruning
+\lang hebrew
+(, וערכי שגיאת ההכללה )כפי שמתואר בהוראות התרגיל - ההפרש בין שגיאת הולידציה
+ לאימון(
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
