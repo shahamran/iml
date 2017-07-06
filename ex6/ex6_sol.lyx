@@ -652,6 +652,90 @@ status open
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Value Iteration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Formula $\forall s\in\mathcal{S}$
+\end_inset
+
+ set 
+\begin_inset Formula $V_{0}\left(s\right)=-\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+Set 
+\begin_inset Formula $V_{0}\left(u\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+While 
+\begin_inset Formula $V$
+\end_inset
+
+ has not converged
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset space \quad{}
+\end_inset
+
+
+\begin_inset Formula $V_{t+1}\left(s\right)=\max_{a\in\mathcal{A}}\rho\left(s,a\right)+\mathbb{E}_{s'\sim\tau\left(s,a\right)}\left[V_{t}\left(s'\right)\right]$
+\end_inset
+
+ 
+\begin_inset Formula $\forall s\in\mathcal{S}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+לא הספקתי לסיים 
+\begin_inset Formula $\frownie$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 מבוך
 \end_layout
