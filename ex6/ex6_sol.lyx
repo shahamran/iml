@@ -263,6 +263,19 @@ ransha
 בעיית המסלולים הקצרים ביותר
 \end_layout
 
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 יהי 
 \begin_inset Formula $G=\left(U,E\right)$
@@ -294,9 +307,9 @@ ransha
 
  נגדיר: 
 \begin_inset Formula $\rho\left(s,a\right)=\begin{cases}
--\infty, & \left(a,s\right)\notin E\\
 -w\left(a,s\right), & \left(a,s\right)\in E\\
-0, & a=s=u
+0, & a=s=u\\
+-\infty, & \text{otherwise}
 \end{cases}$
 \end_inset
 
@@ -339,7 +352,7 @@ reward
 \begin_inset Formula $a$
 \end_inset
 
-(, והוא שווה למשקל הצלע הזו.
+(, והוא שווה למינוס משקל הצלע הזו.
 
 \family default
 \series default
@@ -624,6 +637,19 @@ status open
 \end_inset
 
 , שכן היא ממקסמת את ערך הסכום השווה למינוס משקל המסלול.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
