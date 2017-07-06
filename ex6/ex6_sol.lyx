@@ -656,8 +656,82 @@ status open
 מבוך
 \end_layout
 
-\begin_layout Section
-סבלנות
+\begin_layout Standard
+האלגוריתם התכנס לערכים הבאים: 
+\begin_inset Formula 
+\[
+V\approx\begin{bmatrix}-5.186 & -4.013 & -5.186\\
+0 & -2.353 & -6.013\\
+-2.353 & -4.013 & -5.186
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נשים לב שערכה של כל משבצת הוא נמוך יותר ככל שהמשבצת רחוקה מהמצב 
+\begin_inset Formula $s_{f}$
+\end_inset
+
+ - וכל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+משבצות שנמצאות במרחק שווה מתכנסות לערך זהה.
+ 
+\end_layout
+
+\begin_layout Standard
+מהרצת האלגוריתם עם מספר איטרציות שונה קיבלנו את התמונות הבאות:
 \end_layout
 
 \begin_layout Standard
@@ -671,36 +745,276 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../ex5/trees/q3_pruned.svg
-	width 90text%
+	filename maze.svg
+	width 100text%
 
 \end_inset
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+מספר הצעדים הנדרש על מנת להגיע מכל משבצת ל-
+\begin_inset Formula $s_{f}$
+\end_inset
+
+ במבוך הוא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\numeric off
+, לכן לאחר
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+איטרציות האלגוריתם יכול לחשב את הערך "האמיתי" של כל משבצת.
+\end_layout
+
+\begin_layout Section
+סבלנות
+\end_layout
+
+\begin_layout Standard
+אלו ערכי 
+\begin_inset Formula $V$
+\end_inset
+
+ שהתקבלו מהרצת האלגוריתם עבור ערכי 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ שונים:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+V_{\gamma=0.5} & \approx\begin{bmatrix}6.99 & 3.49 & 1.749 & 0.99 & 1.99\end{bmatrix}\\
+V_{\gamma=0.75} & \approx\begin{bmatrix}8.99 & 6.749 & 5.062 & 3.79 & 3.99\end{bmatrix}\\
+V_{\gamma=0.85} & \approx\begin{bmatrix}11.66 & 9.916 & 8.429 & 7.164 & 6.66\end{bmatrix}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כאשר ישנם
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+5
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מצבים )השניים הקיצוניים לא באמת קיימים כי לא מגיעים אליהם, אלא חוזרים למצב
+ ההתחלתי( והמצב ההתחלתי הוא הימני ביותר.
+\end_layout
+
+\begin_layout Standard
+ההתנהגות האופטילית עבור 
+\begin_inset Formula $\gamma=0.5$
+\end_inset
+
+ היא ללכת ימינה שכן פעולה זו תביא את הערך 
+\begin_inset Formula $V\left[s_{0}\right]=1.99$
+\end_inset
+
+ לעומת הליכה שמאלה, שתביא את הערך 
+\begin_inset Formula $0.99$
+\end_inset
+
+.
+ אם כך, הסוכן יעדיף תמיד ללכת ימינה מ-
+\begin_inset Formula $s_{0}$
+\end_inset
+
+.
+ גם מהמצב השכן ל-
+\begin_inset Formula $s_{0}$
+\end_inset
+
+ )משמאלו( הסוכן יעדיף לצעוד ימינה כי שם ה-
+\begin_inset Formula $V$
+\end_inset
+
+ גדול יותר.
+ מהמצב הבא אחריו הסוכן כבר יעדיף ללכת שמאלה )אם כי הוא לא יגיע לשם, בהנחה
+ שהוא מתחיל ב-
+\begin_inset Formula $s_{0}$
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Standard
+עבור 
+\begin_inset Formula $\gamma=0.75$
+\end_inset
+
+ ההתנהגות היא זהה מ-
+\begin_inset Formula $s_{0}$
+\end_inset
+
+ )כי 
+\begin_inset Formula $3.99>3.79$
+\end_inset
+
+(, אם כי הפער בין הערכים קטן יותר.
+ לעומת זאת, מהשכן השמאלי של 
+\begin_inset Formula $s_{0}$
+\end_inset
+
+ הסוכן כבר יעדיף ללכת שמאלה, וכך גם עבור כל מצב אחר.
+ כלומר הסוכן עדיין ילך ימינה מיד אם יתחיל ב-
+\begin_inset Formula $s_{0}$
+\end_inset
+
+, אבל אם יגיע איכשהו לכל מצב אחר הוא יעדיף ללכת שמאלה.
+\end_layout
+
+\begin_layout Standard
+עבור 
+\begin_inset Formula $\gamma=0.85$
+\end_inset
+
+ הסוכן כבר יעדיף ללכת שמאלה )מכל מצב(, כלומר הוא למד שהגמול המירבי מתקבל
+ מהליכה שמאלה.
+\end_layout
+
+\begin_layout Standard
+מצורף הגרף עבור הסעיף האחרון:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
 
 \begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../ex5/q3errors.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-העץ שהתקבל מהרצת האלגוריתם הגנרי לגיזום )
-\lang english
-pruning
-\lang hebrew
-(, וערכי שגיאת ההכללה )כפי שמתואר בהוראות התרגיל - ההפרש בין שגיאת הולידציה
- לאימון(
-\end_layout
+	filename patience.svg
+	width 100text%
 
 \end_inset
 
